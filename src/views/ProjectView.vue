@@ -5,6 +5,7 @@
   <div class="container py-2" style="margin-top: 112px">
     <div v-if="!loading">
       <HeaderView :data="data" />
+      <OverviewView :data="data" />
     </div>
 
     <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
@@ -16,10 +17,11 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { raw } from '@/http'
 import NavBar from '@/components/NavBar.vue'
 import SubNavBar from '@/components/SubNavBar.vue'
 import HeaderView from './projectViews/HeaderView.vue'
-import { raw } from '@/http'
+import OverviewView from './projectViews/OverviewView.vue'
 
 const loading = ref(true)
 const route = useRoute()
