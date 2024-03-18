@@ -3,7 +3,7 @@
   <SubNavBar :views="views" />
 
   <div class="container py-2" style="margin-top: 112px">
-    <!-- <HeaderView :data="data" /> -->
+    <HeaderView :data="data" />
   </div>
 </template>
 
@@ -27,7 +27,12 @@ const views = ref([
 ])
 
 onMounted(async () => {
-  const project = await raw.getProjectData(route.params.type as string, route.params.id as string)
+  const project: any = await raw.getProjectData(
+    route.params.type as string,
+    route.params.id as string
+  )
+  project.url = raw.resolvePath(`stablecoin/${route.params.id as string}`)
+  project.logoUrl = raw.resolvePath(`stablecoin/${route.params.id as string}/${project.logo}`)
   data.value = project
 })
 </script>
