@@ -14,7 +14,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(project, idx) in projectsStore.projects" :key="idx">
+              <tr
+                v-for="(project, idx) in projectsStore.stablecoins"
+                :key="idx"
+                @click="goto('stablecoin', project.id)"
+              >
                 <td>
                   <div
                     class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
@@ -37,15 +41,21 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 import CardTable from '@/components/CardTable.vue'
 import { useProjectsStore } from '@/stores/projects'
 
+const router = useRouter()
 const projectsStore = useProjectsStore()
 
 onMounted(async () => {
-  await projectsStore.fetch()
+  await projectsStore.fetchStablecoins()
 })
+
+function goto(type: string, id: string) {
+  router.push(`/${type}/${id}`)
+}
 </script>
 
 <style scoped>

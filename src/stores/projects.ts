@@ -3,23 +3,23 @@ import { defineStore } from 'pinia'
 import { api, raw } from '@/http'
 
 export const useProjectsStore = defineStore('projects', () => {
-  const projects: Ref<Array<any>> = ref([])
+  const stablecoins: Ref<Array<any>> = ref([])
 
-  async function fetch() {
-    const names = await api.getProjectNames('stablecoin')
-    console.log(names)
+  async function fetchStablecoins() {
+    const ids = await api.getProjectIds('stablecoin')
 
-    projects.value = await Promise.all(
-      names.map(async (name: string) => {
-        const data = (await raw.getProjectData(name)) as { [key: string]: any }
+    stablecoins.value = await Promise.all(
+      ids.map(async (id: string) => {
+        const data = (await raw.getProjectData(id)) as { [key: string]: any }
         return {
-          url: raw.resolvePath(`stablecoin/${name}`),
-          logoUrl: raw.resolvePath(`stablecoin/${name}/${data.logo}`),
+          id: id,
+          url: raw.resolvePath(`stablecoin/${id}`),
+          logoUrl: raw.resolvePath(`stablecoin/${id}/${data.logo}`),
           ...data
         }
       })
     )
   }
 
-  return { projects, fetch }
+  return { stablecoins, fetchStablecoins }
 })

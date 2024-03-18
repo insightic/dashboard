@@ -24,7 +24,7 @@ class GitHubAPI {
     return await this.client.get(path, { params: { ref: 'gh-pages', ...params } })
   }
 
-  async getProjectNames(type: string) {
+  async getProjectIds(type: string) {
     const resp = await this.get(`/${type}`)
     return resp.data
       .filter((project: any) => project.type === 'dir')
