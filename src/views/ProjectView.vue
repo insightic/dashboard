@@ -3,7 +3,13 @@
   <SubNavBar :views="views" />
 
   <div class="container py-2" style="margin-top: 112px">
-    <HeaderView :data="data" />
+    <div v-if="!loading">
+      <HeaderView :data="data" />
+    </div>
+
+    <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
+      <div class="loading mx-auto mt-5"></div>
+    </div>
   </div>
 </template>
 
@@ -15,6 +21,7 @@ import SubNavBar from '@/components/SubNavBar.vue'
 import HeaderView from './projectViews/HeaderView.vue'
 import { raw } from '@/http'
 
+const loading = ref(true)
 const route = useRoute()
 const data = ref<any>({})
 
@@ -34,5 +41,6 @@ onMounted(async () => {
   project.url = raw.resolvePath(`stablecoin/${route.params.id as string}`)
   project.logoUrl = raw.resolvePath(`stablecoin/${route.params.id as string}/${project.logo}`)
   data.value = project
+  loading.value = false
 })
 </script>

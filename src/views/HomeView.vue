@@ -2,7 +2,7 @@
   <NavBar />
 
   <div class="container py-2" style="margin-top: 56px">
-    <div class="mt-2">
+    <div v-if="!loading" class="mt-2">
       <div class="h1">Stablecoins</div>
       <div class="row">
         <div class="col-md-12">
@@ -43,11 +43,15 @@
         </div>
       </div>
     </div>
+
+    <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
+      <div class="loading mx-auto mt-5"></div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 import NavBar from '@/components/NavBar.vue'
@@ -55,11 +59,13 @@ import CardTable from '@/components/CardTable.vue'
 import { useProjectsStore } from '@/stores/projects'
 import { ratingColor } from '@/helpers'
 
+const loading = ref(true)
 const router = useRouter()
 const projectsStore = useProjectsStore()
 
 onMounted(async () => {
   await projectsStore.fetchStablecoins()
+  loading.value = false
 })
 
 function goto(type: string, id: string) {
