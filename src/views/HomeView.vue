@@ -7,15 +7,22 @@
           <CardTable>
             <thead>
               <tr>
-                <th style="width: 25%">Logo</th>
-                <th style="width: 25%">Name</th>
+                <th style="width: 15%">Logo</th>
+                <th style="width: 35%">Name</th>
                 <th style="width: 25%">MarketCap</th>
                 <th style="width: 25%">Rating</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(project, idx) in projects" :key="idx">
-                <td></td>
+              <tr v-for="(project, idx) in projectsStore.projects" :key="idx">
+                <td>
+                  <div
+                    class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
+                    style="width: 48px; height: 48px; background-color: white"
+                  >
+                    <img :src="project.logoUrl" />
+                  </div>
+                </td>
                 <td style="text-transform: uppercase">{{ project.name }}</td>
                 <td></td>
                 <td></td>
@@ -25,20 +32,18 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, type Ref } from 'vue'
+import { onMounted } from 'vue'
 
 import CardTable from '@/components/CardTable.vue'
-import { getStablecoinProjects } from '@/http'
+import { useProjectsStore } from '@/stores/projects'
 
-const projects: Ref<Array<any>> = ref([])
+const projectsStore = useProjectsStore()
 
 onMounted(async () => {
-  projects.value = await getStablecoinProjects()
+  await projectsStore.fetch()
 })
 </script>
