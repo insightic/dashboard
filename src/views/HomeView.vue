@@ -24,8 +24,8 @@
                   </div>
                 </td>
                 <td style="text-transform: uppercase">{{ project.name }}</td>
-                <td></td>
-                <td></td>
+                <td>-</td>
+                <td style="text-transform: uppercase">{{ project.rating }}</td>
               </tr>
             </tbody>
           </CardTable>
@@ -47,3 +47,13 @@ onMounted(async () => {
   await projectsStore.fetch()
 })
 </script>
+
+<style scoped>
+td {
+  cursor: pointer;
+}
+
+tr:hover {
+  background-color: #141c28;
+}
+</style>
