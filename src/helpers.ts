@@ -1,23 +1,17 @@
 import { marked } from 'marked'
 
-export function attr() {
-  if (arguments.length === 0) {
-    return undefined
+export function ratingColor(rating: string): string {
+  rating = rating.replaceAll('-', '').replaceAll('+', '').toLowerCase()
+  if (rating === 'a') {
+    return 'text-success'
+  } else if (rating === 'b') {
+    return 'text-primary'
+  } else if (rating === 'c') {
+    return 'text-warning'
+  } else if (rating === 'd') {
+    return 'text-danger'
   }
-  if (arguments.length === 1) {
-    // eslint-disable-next-line prefer-rest-params
-    return arguments[0]
-  }
-  // eslint-disable-next-line prefer-rest-params
-  let obj = arguments[0]
-  for (let i = 1; i < arguments.length; i++) {
-    if (obj == null) {
-      return undefined
-    }
-    // eslint-disable-next-line prefer-rest-params
-    obj = obj[arguments[i]]
-  }
-  return obj
+  return ''
 }
 
 export function notEmpty(obj: any) {

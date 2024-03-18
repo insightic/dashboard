@@ -96,22 +96,9 @@ import {
   IconBrandGithub
 } from '@tabler/icons-vue'
 import CardComponent from '@/components/CardComponent.vue'
+import { ratingColor } from '@/helpers'
 
 defineProps({
   data: Object as any
 })
-
-function ratingColor(rating: string): string {
-  rating = rating.replaceAll('-', '').replaceAll('+', '').toLowerCase()
-  if (rating === 'a') {
-    return 'text-success'
-  } else if (rating === 'b') {
-    return 'text-primary'
-  } else if (rating === 'c') {
-    return 'text-warning'
-  } else if (rating === 'd') {
-    return 'text-danger'
-  }
-  return ''
-}
 </script>

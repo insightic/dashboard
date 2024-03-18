@@ -31,7 +31,12 @@
                 </td>
                 <td style="text-transform: uppercase">{{ project.name }}</td>
                 <td>-</td>
-                <td style="text-transform: uppercase">{{ project.rating }}</td>
+                <td
+                  style="text-transform: uppercase; font-weight: bold"
+                  :class="ratingColor(project.rating)"
+                >
+                  {{ project.rating }}
+                </td>
               </tr>
             </tbody>
           </CardTable>
@@ -48,6 +53,7 @@ import { useRouter } from 'vue-router'
 import NavBar from '@/components/NavBar.vue'
 import CardTable from '@/components/CardTable.vue'
 import { useProjectsStore } from '@/stores/projects'
+import { ratingColor } from '@/helpers'
 
 const router = useRouter()
 const projectsStore = useProjectsStore()
