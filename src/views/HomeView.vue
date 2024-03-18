@@ -1,5 +1,7 @@
 <template>
-  <div class="container py-2">
+  <NavBar />
+
+  <div class="container py-2" style="margin-top: 56px">
     <div class="mt-2">
       <div class="h1">Stablecoins</div>
       <div class="row">
@@ -43,6 +45,7 @@
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
+import NavBar from '@/components/NavBar.vue'
 import CardTable from '@/components/CardTable.vue'
 import { useProjectsStore } from '@/stores/projects'
 

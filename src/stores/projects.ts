@@ -10,7 +10,7 @@ export const useProjectsStore = defineStore('projects', () => {
 
     stablecoins.value = await Promise.all(
       ids.map(async (id: string) => {
-        const data = (await raw.getProjectData(id)) as { [key: string]: any }
+        const data = (await raw.getProjectData('stablecoin', id)) as { [key: string]: any }
         return {
           id: id,
           url: raw.resolvePath(`stablecoin/${id}`),

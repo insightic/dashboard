@@ -52,8 +52,8 @@ class GitHubRaw {
     return await this.client.get(path)
   }
 
-  async getProjectData(project: string) {
-    const resp = await this.get(`stablecoin/${project}/data.yml`)
+  async getProjectData(type: string, id: string) {
+    const resp = await this.get(`${type}/${id}/data.yml`)
     return yaml.load(resp.data)
   }
 }
