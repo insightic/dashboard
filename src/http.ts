@@ -98,6 +98,20 @@ class DataSource {
       // ignore
     }
 
+    try {
+      const resp = await api.get(`${type}/${id}/results/${lastResultId}/twitter.json`)
+      data.twitter = resp.data
+    } catch (e) {
+      // ignore
+    }
+
+    try {
+      const resp = await api.get(`${type}/${id}/results/${lastResultId}/sosovaluenewscrawler.json`)
+      data.sosovaluenewscrawler = resp.data
+    } catch (e) {
+      // ignore
+    }
+
     return data
   }
 }
