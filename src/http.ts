@@ -55,7 +55,7 @@ class DataSource {
   }
 
   async getProjectData(type: string, id: string, withDetails = true) {
-    let resp = await raw.get(`${type}/${id}/data.yml`)
+    const resp = await raw.get(`${type}/${id}/data.yml`)
     const data: any = yaml.load(resp.data)
     data.id = id
     data.type = type
@@ -65,49 +65,38 @@ class DataSource {
 
     if (!withDetails) return data
 
-    let results = []
     try {
-      resp = await api.get(`${type}/${id}/results`)
-      results = resp.data
-        .filter((item: any) => item.type === 'dir')
-        .map((item: any) => item.name)
-        .sort((a: string, b: string) => b.localeCompare(a))
-    } catch (e) {
-      // ignore
-    }
-
-    if (!results || results.length == 0) {
-      return data
-    }
-
-    const lastResultId = results[0]
-
-    try {
-      const resp = await api.get(
-        `${type}/${id}/results/${lastResultId}/smartcontractvalidator.json`
-      )
-      data.scv = resp.data
+      const resp = await raw.get(`${type}/${id}/results/smart_contract_validator_results.json`)
+      if (resp.data.length > 0) {
+        data.scv = resp.data[resp.data.length - 1]
+      }
     } catch (e) {
       // ignore
     }
 
     try {
-      const resp = await api.get(`${type}/${id}/results/${lastResultId}/securityassessment.json`)
-      data.securityassessment = resp.data
+      const resp = await raw.get(`${type}/${id}/results/security_assessment_results.json`)
+      if (resp.data.length > 0) {
+        data.securityassessment = resp.data[resp.data.length - 1]
+      }
     } catch (e) {
       // ignore
     }
 
     try {
-      const resp = await api.get(`${type}/${id}/results/${lastResultId}/twitter.json`)
-      data.twitter = resp.data
+      const resp = await raw.get(`${type}/${id}/results/twitter_results.json`)
+      if (resp.data.length > 0) {
+        data.twitter = resp.data[resp.data.length - 1]
+      }
     } catch (e) {
       // ignore
     }
 
     try {
-      const resp = await api.get(`${type}/${id}/results/${lastResultId}/sosovaluenewscrawler.json`)
-      data.sosovaluenewscrawler = resp.data
+      const resp = await raw.get(`${type}/${id}/results/sosovalue_news_results.json`)
+      if (resp.data.length > 0) {
+        data.sosovaluenews = resp.data[resp.data.length - 1]
+      }
     } catch (e) {
       // ignore
     }
