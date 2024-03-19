@@ -54,13 +54,15 @@ class DataSource {
       .sort((a: any, b: any) => a.localeCompare(b))
   }
 
-  async getProjectData(type: string, id: string) {
+  async getProjectData(type: string, id: string, withDetails = true) {
     let resp = await raw.get(`${type}/${id}/data.yml`)
     const data: any = yaml.load(resp.data)
     data.id = id
     data.type = type
     data.url = raw.resolvePath(`${type}/${id}`)
     data.logoUrl = raw.resolvePath(`${type}/${id}/${data.logo}`)
+
+    if (!withDetails) return data
 
     let results = []
     try {
