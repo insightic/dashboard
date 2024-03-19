@@ -113,34 +113,37 @@
     </div>
   </div>
 
-  <!-- <div class="mb-3">
-        <div class="h1 m-0" v-if="attr(data, 'financial_analysis', 'list_of_investors') &&
-                            attr(data, 'financial_analysis', 'list_of_investors').length > 0
-                            ">
-            List of Investors
-        </div>
-        <div class="row" v-if="attr(data, 'financial_analysis', 'list_of_investors') &&
-                            attr(data, 'financial_analysis', 'list_of_investors').length > 0
-                            ">
-            <div v-for="(item, idx) in attr(data, 'financial_analysis', 'list_of_investors')" :key="idx"
-                class="col-md-3 my-2">
-                <Card class="h-100">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="text-white avatar bg-white" style="box-shadow: none !important">
-                                <img :src="baseUrl + '/' + item.logo" class="w-100 h-100" />
-                            </span>
-                        </div>
-                        <div class="col">
-                            <div class="font-weight-medium">
-                                {{ item.name }}
-                            </div>
-                        </div>
-                    </div>
-                </Card>
+  <div
+    class="mb-3"
+    v-if="
+      data?.financial_analysis?.list_of_investors &&
+      data?.financial_analysis?.list_of_investors.length > 0
+    "
+  >
+    <div class="h1 m-0">List of Investors</div>
+    <div class="row">
+      <div
+        v-for="(item, idx) in data?.financial_analysis?.list_of_investors"
+        :key="idx"
+        class="col-md-3 my-2"
+      >
+        <CardComponent class="h-100">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <span class="text-white avatar bg-white" style="box-shadow: none !important">
+                <img :src="data.baseUrl + '/' + item.logo" class="w-100 h-100" />
+              </span>
             </div>
-        </div>
-    </div> -->
+            <div class="col">
+              <div class="font-weight-medium">
+                {{ item.name }}
+              </div>
+            </div>
+          </div>
+        </CardComponent>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -150,7 +153,6 @@ import CardComponent from '@/components/CardComponent.vue'
 import CardTable from '@/components/CardTable.vue'
 
 defineProps({
-  data: Object,
-  baseUrl: String
+  data: Object
 })
 </script>

@@ -60,6 +60,7 @@ class DataSource {
     data.id = id
     data.type = type
     data.url = raw.resolvePath(`${type}/${id}`)
+    data.baseUrl = raw.resolvePath(`${type}/${id}`)
     data.logoUrl = raw.resolvePath(`${type}/${id}/${data.logo}`)
 
     if (!withDetails) return data
