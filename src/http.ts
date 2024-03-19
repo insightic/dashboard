@@ -83,7 +83,16 @@ class DataSource {
     const lastResultId = results[0]
 
     try {
-      resp = await api.get(`${type}/${id}/results/${lastResultId}/securityassessment.json`)
+      const resp = await api.get(
+        `${type}/${id}/results/${lastResultId}/smartcontractvalidator.json`
+      )
+      data.scv = resp.data
+    } catch (e) {
+      // ignore
+    }
+
+    try {
+      const resp = await api.get(`${type}/${id}/results/${lastResultId}/securityassessment.json`)
       data.securityassessment = resp.data
     } catch (e) {
       // ignore

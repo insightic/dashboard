@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+// @ts-ignore
 import VueApexCharts from 'vue3-apexcharts'
 import ElementPlus from 'element-plus'
 
