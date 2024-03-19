@@ -55,12 +55,37 @@ class DataSource {
   }
 
   async getProjectData(type: string, id: string) {
-    const resp = await raw.get(`${type}/${id}/data.yml`)
+    let resp = await raw.get(`${type}/${id}/data.yml`)
     const data: any = yaml.load(resp.data)
     data.id = id
     data.type = type
     data.url = raw.resolvePath(`${type}/${id}`)
     data.logoUrl = raw.resolvePath(`${type}/${id}/${data.logo}`)
+
+    let results = []
+    try {
+      resp = await api.get(`${type}/${id}/results`)
+      results = resp.data
+        .filter((item: any) => item.type === 'dir')
+        .map((item: any) => item.name)
+        .sort((a: string, b: string) => b.localeCompare(a))
+    } catch (e) {
+      // ignore
+    }
+
+    if (!results || results.length == 0) {
+      return data
+    }
+
+    const lastResultId = results[0]
+
+    try {
+      resp = await api.get(`${type}/${id}/results/${lastResultId}/securityassessment.json`)
+      data.securityassessment = resp.data
+    } catch (e) {
+      // ignore
+    }
+
     return data
   }
 }
