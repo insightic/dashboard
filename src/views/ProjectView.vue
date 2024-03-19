@@ -21,7 +21,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { raw } from '@/http'
+import { dataSource } from '@/http'
 import NavBar from '@/components/NavBar.vue'
 import SubNavBar from '@/components/SubNavBar.vue'
 import HeaderView from './projectViews/HeaderView.vue'
@@ -45,12 +45,10 @@ const views = ref([
 const viewIdx = ref(0)
 
 onMounted(async () => {
-  const project: any = await raw.getProjectData(
+  const project: any = await dataSource.getProjectData(
     route.params.type as string,
     route.params.id as string
   )
-  project.url = raw.resolvePath(`stablecoin/${route.params.id as string}`)
-  project.logoUrl = raw.resolvePath(`stablecoin/${route.params.id as string}/${project.logo}`)
   data.value = project
   loading.value = false
 })
