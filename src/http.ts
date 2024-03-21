@@ -48,10 +48,11 @@ class GitHubRaw {
 class DataSource {
   async getProjectIds(type: string) {
     const resp = await api.get(`/${type}`)
-    return resp.data
+    const ids = resp.data
       .filter((project: any) => project.type === 'dir')
       .map((project: any) => project.name)
       .sort((a: any, b: any) => a.localeCompare(b))
+    return ids
   }
 
   async getProjectData(type: string, id: string, withDetails = true) {
