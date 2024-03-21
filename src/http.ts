@@ -62,46 +62,75 @@ class DataSource {
     data.url = raw.resolvePath(`${type}/${id}`)
     data.baseUrl = raw.resolvePath(`${type}/${id}`)
     data.logoUrl = raw.resolvePath(`${type}/${id}/${data.logo}`)
-
+    data.sosovalue = await this.getProjectSosovalue(type, id)
     if (!withDetails) return data
 
+    data.scv = await this.getProjectSmartContractValidator(type, id)
+    data.securityassessment = await this.getProjectSecurityAssessment(type, id)
+    data.twitter = await this.getProjectTwitter(type, id)
+    data.sosovaluenews = await this.getProjectSosovalueNews(type, id)
+
+    return data
+  }
+
+  async getProjectSosovalue(type: string, id: string) {
+    try {
+      const resp = await raw.get(`${type}/${id}/results/sosovalue_results.json`)
+      if (resp.data.length > 0) {
+        return resp.data[resp.data.length - 1]
+      }
+      return null
+    } catch (e) {
+      return null
+    }
+  }
+
+  async getProjectSmartContractValidator(type: string, id: string) {
     try {
       const resp = await raw.get(`${type}/${id}/results/smart_contract_validator_results.json`)
       if (resp.data.length > 0) {
-        data.scv = resp.data[resp.data.length - 1]
+        return resp.data[resp.data.length - 1]
       }
+      return null
     } catch (e) {
-      // ignore
+      return null
     }
+  }
 
+  async getProjectSecurityAssessment(type: string, id: string) {
     try {
       const resp = await raw.get(`${type}/${id}/results/security_assessment_results.json`)
       if (resp.data.length > 0) {
-        data.securityassessment = resp.data[resp.data.length - 1]
+        return resp.data[resp.data.length - 1]
       }
+      return null
     } catch (e) {
-      // ignore
+      return null
     }
+  }
 
+  async getProjectTwitter(type: string, id: string) {
     try {
       const resp = await raw.get(`${type}/${id}/results/twitter_results.json`)
       if (resp.data.length > 0) {
-        data.twitter = resp.data[resp.data.length - 1]
+        return resp.data[resp.data.length - 1]
       }
+      return null
     } catch (e) {
-      // ignore
+      return null
     }
+  }
 
+  async getProjectSosovalueNews(type: string, id: string) {
     try {
       const resp = await raw.get(`${type}/${id}/results/sosovalue_news_results.json`)
       if (resp.data.length > 0) {
-        data.sosovaluenews = resp.data[resp.data.length - 1]
+        return resp.data[resp.data.length - 1]
       }
+      return null
     } catch (e) {
-      // ignore
+      return null
     }
-
-    return data
   }
 }
 

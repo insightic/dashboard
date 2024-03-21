@@ -17,25 +17,27 @@
             </thead>
             <tbody>
               <tr
-                v-for="(project, idx) in projectsStore.stablecoins"
+                v-for="(project, idx) in projectsStore?.stablecoins"
                 :key="idx"
-                @click="goto('stablecoin', project.id)"
+                @click="goto('stablecoin', project?.id)"
               >
                 <td>
                   <div
                     class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
                     style="width: 48px; height: 48px; background-color: white"
                   >
-                    <img :src="project.logoUrl" />
+                    <img :src="project?.logoUrl" />
                   </div>
                 </td>
-                <td style="text-transform: uppercase">{{ project.name }}</td>
-                <td>-</td>
+                <td style="text-transform: uppercase">{{ project?.name }}</td>
+                <td>
+                  {{ project?.sosovalue?.market_cap_value }}
+                </td>
                 <td
                   style="text-transform: uppercase; font-weight: bold"
-                  :class="ratingColor(project.rating)"
+                  :class="ratingColor(project?.rating)"
                 >
-                  {{ project.rating }}
+                  {{ project?.rating }}
                 </td>
               </tr>
             </tbody>
