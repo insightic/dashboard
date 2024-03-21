@@ -20,7 +20,7 @@
                   <IconSortDescendingLetters :size="16" v-if="!nameInc" />
                 </th>
                 <th
-                  style="width: 25%"
+                  style="width: 25%; cursor: pointer"
                   @click="(marketcapInc = !marketcapInc), (activeSorts = 'marketcap')"
                 >
                   MarketCap
@@ -28,7 +28,10 @@
                   <IconSortAscendingNumbers :size="16" v-if="marketcapInc" />
                   <IconSortDescendingNumbers :size="16" v-if="!marketcapInc" />
                 </th>
-                <th style="width: 25%" @click="(ratingInc = !ratingInc), (activeSorts = 'rating')">
+                <th
+                  style="width: 25%; cursor: pointer"
+                  @click="(ratingInc = !ratingInc), (activeSorts = 'rating')"
+                >
                   Rating
 
                   <IconSortAscendingLetters :size="16" v-if="ratingInc" />
