@@ -67,9 +67,9 @@ class DataSource {
     if (!withDetails) return data
 
     data.scv = await this.getProjectSmartContractValidator(type, id)
-    data.securityassessment = await this.getProjectSecurityAssessment(type, id)
+    data.securityAssessment = await this.getProjectSecurityAssessment(type, id)
     data.twitter = await this.getProjectTwitter(type, id)
-    data.sosovaluenews = await this.getProjectSosovalueNews(type, id)
+    data.sosoValueNews = await this.getProjectSosovalueNews(type, id)
 
     return data
   }
