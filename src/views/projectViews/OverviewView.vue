@@ -26,7 +26,9 @@
 import { render } from '@/helpers'
 import CardComponent from '@/components/CardComponent.vue'
 
-defineProps({
+const props = defineProps({
   data: Object
 })
+
+console.log(props)
 </script>
