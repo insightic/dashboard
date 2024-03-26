@@ -155,6 +155,6 @@ td {
 }
 
 tr:hover {
-  background-color: #141c28;
+  background-color: rgb(0, 0, 0, 0.05);
 }
 </style>
