@@ -54,8 +54,8 @@
                   </div>
                 </td>
                 <td style="text-transform: uppercase">{{ project?.name }}</td>
-                <td>
-                  {{ project?.sosovalue?.market_cap_value }}
+                <td style="text-align: left">
+                  {{ toFixed(project?.sosovalue?.market_cap_value) }}
                 </td>
                 <td
                   style="text-transform: uppercase; font-weight: bold"
@@ -147,6 +147,11 @@ const stablecoins: ComputedRef<Array<any>> = computed(() => {
     return 0
   })
 })
+
+function toFixed(value: unknown) {
+  if (Number.isNaN(Number(value))) return '-'
+  return `$ ${Number(value).toLocaleString()}`
+}
 </script>
 
 <style scoped>
