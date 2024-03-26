@@ -12,7 +12,7 @@
         <div class="m-0">Insightic</div>
       </div>
       <div class="m-0" style="cursor: pointer" @click="router.push('/')">
-        <span>Web3 Dashboard</span>
+        <span>Web3 Dashboard <IconSwitchHorizontal :size="16" /></span>
       </div>
       <div style="width: 128px"></div>
     </div>
@@ -21,6 +21,7 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
+import { IconSwitchHorizontal } from '@tabler/icons-vue'
 
 const router = useRouter()
 </script>
