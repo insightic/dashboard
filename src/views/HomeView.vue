@@ -125,8 +125,23 @@ const stablecoins: ComputedRef<Array<any>> = computed(() => {
     }
 
     if (activeSorts.value == 'rating') {
-      let result = lhs.rating.localeCompare(rhs.rating)
-      return ratingInc.value ? result : -result
+      let lhsRating: string = lhs.rating
+      lhsRating = lhsRating.toLowerCase()
+      let lhsScore = 0
+      if (lhsRating.length >= 1) lhsScore += 10 * (1000 - lhsRating.charCodeAt(0)) + 5
+      if (lhsRating.length >= 2) {
+        if (lhsRating[1] == '+') lhsScore += 1
+        else if (lhsRating[1] == '-') lhsScore -= 1
+      }
+      let rhsRating: string = rhs.rating
+      rhsRating = rhsRating.toLowerCase()
+      let rhsScore = 0
+      if (rhsRating.length >= 1) rhsScore += 10 * (1000 - rhsRating.charCodeAt(0)) + 5
+      if (rhsRating.length >= 2) {
+        if (rhsRating[1] == '+') rhsScore += 1
+        else if (rhsRating[1] == '-') rhsScore -= 1
+      }
+      return ratingInc.value ? lhsScore - rhsScore : rhsScore - lhsScore
     }
 
     return 0
