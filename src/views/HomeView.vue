@@ -16,8 +16,10 @@
                 >
                   Name
 
-                  <IconSortAscendingLetters :size="16" v-if="nameInc" />
-                  <IconSortDescendingLetters :size="16" v-if="!nameInc" />
+                  <span v-if="activeSorts == 'name'">
+                    <IconSortAscendingLetters :size="16" v-if="nameInc" />
+                    <IconSortDescendingLetters :size="16" v-if="!nameInc" />
+                  </span>
                 </th>
                 <th
                   style="width: 25%; cursor: pointer"
@@ -25,8 +27,10 @@
                 >
                   MarketCap
 
-                  <IconSortAscendingNumbers :size="16" v-if="marketcapInc" />
-                  <IconSortDescendingNumbers :size="16" v-if="!marketcapInc" />
+                  <span v-if="activeSorts == 'marketcap'">
+                    <IconSortAscendingNumbers :size="16" v-if="marketcapInc" />
+                    <IconSortDescendingNumbers :size="16" v-if="!marketcapInc" />
+                  </span>
                 </th>
                 <th
                   style="width: 25%; cursor: pointer"
@@ -34,8 +38,10 @@
                 >
                   Rating
 
-                  <IconSortAscendingLetters :size="16" v-if="ratingInc" />
-                  <IconSortDescendingLetters :size="16" v-if="!ratingInc" />
+                  <span v-if="activeSorts == 'rating'">
+                    <IconSortAscendingLetters :size="16" v-if="ratingInc" />
+                    <IconSortDescendingLetters :size="16" v-if="!ratingInc" />
+                  </span>
                 </th>
               </tr>
             </thead>
