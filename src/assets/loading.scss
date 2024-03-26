@@ -1,7 +1,7 @@
 .loading {
   width: 40px;
   aspect-ratio: 1;
-  --c: no-repeat linear-gradient(#fff 0 0);
+  --c: no-repeat linear-gradient(#000000 0 0);
   background:
     var(--c) 0 0,
     var(--c) 0 100%,
@@ -21,7 +21,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #fff;
+  background: #000000;
   top: calc(50% - 4px);
   left: -8px;
   animation: inherit;
