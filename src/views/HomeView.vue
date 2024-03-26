@@ -141,7 +141,7 @@ const stablecoins: ComputedRef<Array<any>> = computed(() => {
         if (rhsRating[1] == '+') rhsScore += 1
         else if (rhsRating[1] == '-') rhsScore -= 1
       }
-      return ratingInc.value ? lhsScore - rhsScore : rhsScore - lhsScore
+      return ratingInc.value ? rhsScore - lhsScore : lhsScore - rhsScore
     }
 
     return 0
