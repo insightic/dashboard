@@ -47,36 +47,23 @@
           <thead>
             <tr>
               <th>Post Content</th>
-              <th>Sentiment Analysis</th>
+              <th style="min-width: 200px">Sentiment Analysis</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, idx) in data?.twitter?.extracted_posts" :key="idx">
               <td>{{ item.post_content }}</td>
-              <td>{{ item.sentiment_analysis }}</td>
+              <td>
+                <span
+                  class="badge me-1"
+                  :class="formatSentimentAnalysis(item.sentiment_analysis)"
+                ></span>
+                <span style="text-transform: capitalize">{{ item.sentiment_analysis }}</span>
+              </td>
             </tr>
           </tbody>
         </CardTable>
       </div>
-
-      <!-- <div class="col-md-12 my-2">
-        <CardTable>
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>Prompt</th>
-              <th>Output</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, idx) in attr(twitter, 'prompts_output')" :key="idx">
-              <td>{{ item.category }}</td>
-              <td>{{ item.Prompt }}</td>
-              <td>{{ item.Output }}</td>
-            </tr>
-          </tbody>
-        </CardTable>
-      </div> -->
     </div>
   </div>
 
@@ -118,25 +105,6 @@
           </tbody>
         </CardTable>
       </div>
-
-      <!-- <div class="col-md-12 my-2">
-        <CardTable>
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>Prompt</th>
-              <th>Output</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, idx) in attr(twitter, 'prompts_output')" :key="idx">
-              <td>{{ item.category }}</td>
-              <td>{{ item.Prompt }}</td>
-              <td>{{ item.Output }}</td>
-            </tr>
-          </tbody>
-        </CardTable>
-      </div> -->
     </div>
   </div>
 </template>
@@ -150,4 +118,14 @@ import CardTable from '@/components/CardTable.vue'
 defineProps({
   data: Object
 })
+
+function formatSentimentAnalysis(value: string) {
+  if (value === 'positive') {
+    return 'bg-success'
+  }
+  if (value === 'negative') {
+    return 'bg-danger'
+  }
+  return 'bg-secondary'
+}
 </script>
