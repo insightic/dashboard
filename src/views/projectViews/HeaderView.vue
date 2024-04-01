@@ -25,7 +25,7 @@
                   :href="data.links.twitter"
                   target="_blank"
                 >
-                  <IconBrandTwitter :stroke-width="1" :size="18" />
+                  <IconBrandX :stroke-width="1" :size="18" />
                 </a>
                 <a
                   class="me-2"
@@ -89,7 +89,7 @@
 <script lang="ts" setup>
 import {
   IconAppWindow,
-  IconBrandTwitter,
+  IconBrandX,
   IconBrandLinkedin,
   IconBrandReddit,
   IconBrandTelegram,

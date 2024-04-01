@@ -10,7 +10,7 @@
     </div>
     <div class="d-flex">
       <a :href="twitter" class="card-btn" target="_blank" v-if="twitter">
-        <IconBrandTwitter class="text-secondary me-2" :stroke-width="1" :size="18" />
+        <IconBrandX class="text-secondary me-2" :stroke-width="1" :size="18" />
         Twitter
       </a>
       <a :href="linkedin" class="card-btn" target="_blank" v-if="linkedin">
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons-vue'
+import { IconBrandLinkedin, IconBrandX } from '@tabler/icons-vue'
 
 defineProps({
   avatar: {
