@@ -58,7 +58,11 @@
           </thead>
           <tbody>
             <tr
-              v-for="(item, idx) in data?.financial_analysis?.market_capitalization_and_liquidity"
+              v-for="(
+                item, idx
+              ) in data?.financial_analysis?.market_capitalization_and_liquidity.filter(
+                (t) => t.value
+              )"
               :key="idx"
             >
               <td
