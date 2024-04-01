@@ -4,18 +4,21 @@
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent class="w-100">
+          <table class="mb-3">
+            <tr>
+              <td style="min-width: 80px">Auditors:</td>
+              <td v-html="render(data?.financial_analysis?.financial_audit?.auditors)"></td>
+            </tr>
+            <tr>
+              <td>Score:</td>
+              <td v-html="render(data?.financial_analysis?.financial_audit?.score)"></td>
+            </tr>
+            <tr>
+              <td>Analysis:</td>
+              <td v-html="render(data?.financial_analysis?.financial_audit?.analysis)"></td>
+            </tr>
+          </table>
           <div class="d-flex">
-            Auditors: &nbsp;&nbsp;
-            <div v-html="render(data?.financial_analysis?.financial_audit?.auditors)"></div>
-          </div>
-          <div class="d-flex">
-            Score: &nbsp;&nbsp;
-            <div v-html="render(data?.financial_analysis?.financial_audit?.score)"></div>
-          </div>
-          <div class="d-flex">
-            Analysis: &nbsp;&nbsp;
-            <div v-html="render(data?.financial_analysis?.financial_audit?.analysis)"></div>
-
             <div
               class="mx-auto"
               style="width: 540px"
