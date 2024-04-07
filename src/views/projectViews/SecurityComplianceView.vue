@@ -74,7 +74,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { render } from '@/helpers'
 
 import CardComponent from '@/components/CardComponent.vue'

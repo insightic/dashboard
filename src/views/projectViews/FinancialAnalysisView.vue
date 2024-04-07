@@ -32,12 +32,12 @@
                 :options="{
                   labels:
                     data?.financial_analysis?.financial_audit?.reserve_holdings_percentage.map(
-                      (t) => t.title
+                      (t: any) => t.title
                     )
                 }"
                 :series="
                   data?.financial_analysis?.financial_audit?.reserve_holdings_percentage.map(
-                    (t) => t.value
+                    (t: any) => t.value
                   )
                 "
               />
@@ -153,7 +153,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { render, notEmpty } from '@/helpers'
 
 import CardComponent from '@/components/CardComponent.vue'
