@@ -17,13 +17,9 @@
 
 <script lang="ts">
 import type { PropType } from 'vue'
-import VueApexCharts from 'vue3-apexcharts'
 import { formatDate } from '../helpers'
 
 export default {
-  components: {
-    apexchart: VueApexCharts
-  },
   props: {
     title: { type: String, required: true },
     labels: { type: Array as PropType<string[]>, required: true },

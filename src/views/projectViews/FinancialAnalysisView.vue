@@ -64,7 +64,7 @@
               v-for="(
                 item, idx
               ) in data?.financial_analysis?.market_capitalization_and_liquidity.filter(
-                (t) => t.value
+                (t: any) => t.value
               )"
               :key="idx"
             >

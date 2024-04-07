@@ -1,11 +1,11 @@
 <template>
-  <div class="mb-3" v-if="data.securityAssessment">
+  <div class="mb-3" v-if="data?.securityAssessment">
     <div class="h1 m-0">Security Assessment</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent>
-          <h3>{{ data.securityAssessment?.report_name }}</h3>
-          <div>{{ data.securityAssessment?.report_summary }}</div>
+          <h3>{{ data?.securityAssessment?.report_name }}</h3>
+          <div>{{ data?.securityAssessment?.report_summary }}</div>
         </CardComponent>
       </div>
       <div class="col-md-6 my-2">
@@ -15,7 +15,7 @@
           >
             <div class="small">SCORE</div>
             <div class="d-flex align-items-center justify-content-center" style="font-size: 4.5rem">
-              {{ data.securityAssessment?.final_score?.toFixed('2') }}
+              {{ data?.securityAssessment?.final_score?.toFixed('2') }}
             </div>
           </div>
         </CardComponent>
@@ -32,13 +32,13 @@
                   show: false
                 }
               },
-              labels: Object.keys(data.securityAssessment?.final_score_by_category)
+              labels: Object.keys(data?.securityAssessment?.final_score_by_category)
             }"
             :series="[
               {
                 name: 'Scores',
-                data: Object.keys(data.securityAssessment?.final_score_by_category).map(
-                  (key) => data.securityAssessment?.final_score_by_category[key]
+                data: Object.keys(data?.securityAssessment?.final_score_by_category).map(
+                  (key) => data?.securityAssessment?.final_score_by_category[key]
                 )
               }
             ]"
