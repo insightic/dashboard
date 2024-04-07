@@ -138,6 +138,46 @@
           ]"
         />
       </div>
+      <div class="col-md-6 my-2">
+        <PieChartComponent
+          title="Top 10 holders"
+          :labels="
+            data?.stablecoin?.topKHolder?.data?.map((d: any) => String(d[0]).substring(0, 10))
+          "
+          :data="data?.stablecoin?.topKHolder?.data?.map((d: any) => d[1])"
+        />
+      </div>
+      <div class="col-md-6 my-2">
+        <PieChartComponent
+          title="Age Stats"
+          :labels="
+            data?.stablecoin?.holderAgeFreqPortfolio?.age?.data?.map((d: any) => String(d[1]))
+          "
+          :data="data?.stablecoin?.holderAgeFreqPortfolio?.age?.data?.map((d: any) => Number(d[2]))"
+        />
+      </div>
+      <div class="col-md-6 my-2">
+        <PieChartComponent
+          title="Freq Stats"
+          :labels="
+            data?.stablecoin?.holderAgeFreqPortfolio?.freq?.data?.map((d: any) => String(d[1]))
+          "
+          :data="
+            data?.stablecoin?.holderAgeFreqPortfolio?.freq?.data?.map((d: any) => Number(d[2]))
+          "
+        />
+      </div>
+      <div class="col-md-6 my-2">
+        <PieChartComponent
+          title="Portfolio Stats"
+          :labels="
+            data?.stablecoin?.holderAgeFreqPortfolio?.portfolio?.data?.map((d: any) => String(d[1]))
+          "
+          :data="
+            data?.stablecoin?.holderAgeFreqPortfolio?.portfolio?.data?.map((d: any) => Number(d[2]))
+          "
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -145,6 +185,7 @@
 <script lang="ts" setup>
 import CardTable from '@/components/CardTable.vue'
 import ChartComponent from '@/components/ChartComponent.vue'
+import PieChartComponent from '@/components/PieChartComponent.vue'
 
 defineProps({
   data: Object
