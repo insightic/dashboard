@@ -76,6 +76,80 @@
       </div>
     </div>
 
+    <div v-if="!loading" class="mt-2">
+      <div class="h1">Centralized Exchange</div>
+      <div class="row">
+        <div class="col-md-12">
+          <CardTable>
+            <thead>
+              <tr>
+                <th style="width: 15%">Logo</th>
+                <th
+                  style="width: 35%; cursor: pointer"
+                  @click="(nameInc = !nameInc), (activeSorts = 'name')"
+                >
+                  Name
+
+                  <span v-if="activeSorts == 'name'">
+                    <IconSortAscendingLetters :size="16" v-if="nameInc" />
+                    <IconSortDescendingLetters :size="16" v-if="!nameInc" />
+                  </span>
+                </th>
+                <th
+                  style="width: 25%; cursor: pointer"
+                  @click="(marketcapInc = !marketcapInc), (activeSorts = 'marketcap')"
+                >
+                  MarketCap
+
+                  <span v-if="activeSorts == 'marketcap'">
+                    <IconSortAscendingNumbers :size="16" v-if="marketcapInc" />
+                    <IconSortDescendingNumbers :size="16" v-if="!marketcapInc" />
+                  </span>
+                </th>
+                <th
+                  style="width: 25%; cursor: pointer"
+                  @click="(ratingInc = !ratingInc), (activeSorts = 'rating')"
+                >
+                  Rating
+
+                  <span v-if="activeSorts == 'rating'">
+                    <IconSortAscendingLetters :size="16" v-if="ratingInc" />
+                    <IconSortDescendingLetters :size="16" v-if="!ratingInc" />
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="(project, idx) in cexes"
+                :key="idx"
+                @click="goto('stablecoin', project?.id)"
+              >
+                <td>
+                  <div
+                    class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
+                    style="width: 48px; height: 48px; background-color: white"
+                  >
+                    <img :src="project?.logoUrl" />
+                  </div>
+                </td>
+                <td style="text-transform: uppercase">{{ project?.name }}</td>
+                <td style="text-align: left">
+                  {{ toFixed(project?.sosovalue?.market_cap_value) }}
+                </td>
+                <td
+                  style="text-transform: uppercase; font-weight: bold"
+                  :class="ratingColor(project?.rating)"
+                >
+                  {{ project?.rating }}
+                </td>
+              </tr>
+            </tbody>
+          </CardTable>
+        </div>
+      </div>
+    </div>
+
     <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
       <div class="loading mx-auto mt-5"></div>
     </div>
@@ -102,7 +176,7 @@ const router = useRouter()
 const projectsStore = useProjectsStore()
 
 onMounted(async () => {
-  await projectsStore.fetchStablecoins()
+  await Promise.all([projectsStore.fetchStablecoins(), projectsStore.fetchCexes()])
   loading.value = false
 })
 
@@ -152,6 +226,11 @@ const stablecoins: ComputedRef<Array<any>> = computed(() => {
 
     return 0
   })
+})
+
+const cexes: ComputedRef<Array<any>> = computed(() => {
+  const data = projectsStore.cexes
+  return data
 })
 
 function toFixed(value: unknown) {

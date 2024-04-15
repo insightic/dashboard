@@ -24,6 +24,7 @@ export function toTitleCase(str: string) {
 }
 
 export function ratingColor(rating: string): string {
+  if (!rating) return ''
   rating = rating.replaceAll('-', '').replaceAll('+', '').toLowerCase()
   if (rating === 'a') {
     return 'text-success'

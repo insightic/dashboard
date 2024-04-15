@@ -4,6 +4,7 @@ import { dataSource } from '@/http'
 
 export const useProjectsStore = defineStore('projects', () => {
   const stablecoins: Ref<Array<any>> = ref([])
+  const cexes: Ref<Array<any>> = ref([])
 
   async function fetchStablecoins() {
     const ids = await dataSource.getProjectIds('stablecoin')
@@ -13,5 +14,13 @@ export const useProjectsStore = defineStore('projects', () => {
     )
   }
 
-  return { stablecoins, fetchStablecoins }
+  async function fetchCexes() {
+    const ids = await dataSource.getProjectIds('cex')
+
+    cexes.value = await Promise.all(
+      ids.map(async (id: string) => await dataSource.getProjectData('cex', id, false))
+    )
+  }
+
+  return { stablecoins, fetchStablecoins, cexes, fetchCexes }
 })
