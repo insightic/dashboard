@@ -6,14 +6,17 @@
         <CardTable style="max-height: 300px">
           <thead class="sticky-top">
             <tr>
-              <th v-for="column in data?.stablecoin?.transaction?.avg_rate?.columns">
+              <th
+                v-for="(column, idx) in data?.stablecoin?.transaction?.avg_rate?.columns"
+                :key="idx"
+              >
                 {{ column }}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="row in data?.stablecoin?.transaction?.avg_rate?.data">
-              <td v-for="item in row">{{ item }}</td>
+            <tr v-for="(row, idx) in data?.stablecoin?.transaction?.avg_rate?.data" :key="idx">
+              <td v-for="(item, idx2) in row" :key="idx2">{{ item }}</td>
             </tr>
           </tbody>
         </CardTable>

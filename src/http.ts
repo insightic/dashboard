@@ -71,6 +71,7 @@ class DataSource {
     data.twitter = await this.getProjectTwitter(type, id)
     data.sosoValueNews = await this.getProjectSosovalueNews(type, id)
     data.stablecoin = await this.getProjectStablecoin(type, id)
+    data.zanRiskScore = await this.getProjectZanRiskScore(type, id)
 
     return data
   }
@@ -140,6 +141,18 @@ class DataSource {
       const resp = await raw.get(`${type}/${id}/results/stablecoin_results.json`)
       if (resp.data.length > 0) {
         return resp.data[resp.data.length - 1]
+      }
+      return null
+    } catch (e) {
+      return null
+    }
+  }
+
+  async getProjectZanRiskScore(type: string, id: string) {
+    try {
+      const resp = await raw.get(`${type}/${id}/results/zan_risk_score_results.json`)
+      if (resp.data.length > 0) {
+        return resp.data
       }
       return null
     } catch (e) {
