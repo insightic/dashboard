@@ -2,25 +2,6 @@
   <div class="mb-3">
     <div class="h1 m-0">Transcations</div>
     <div class="row">
-      <div class="col-md-12 my-2">
-        <CardTable style="max-height: 300px">
-          <thead class="sticky-top">
-            <tr>
-              <th
-                v-for="(column, idx) in data?.stablecoin?.transaction?.avg_rate?.columns"
-                :key="idx"
-              >
-                {{ column }}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(row, idx) in data?.stablecoin?.transaction?.avg_rate?.data" :key="idx">
-              <td v-for="(item, idx2) in row" :key="idx2">{{ item }}</td>
-            </tr>
-          </tbody>
-        </CardTable>
-      </div>
       <div class="col-md-6 my-2">
         <ChartComponent
           type="bar"
@@ -180,7 +161,6 @@
 </template>
 
 <script lang="ts" setup>
-import CardTable from '@/components/CardTable.vue'
 import ChartComponent from '@/components/ChartComponent.vue'
 import PieChartComponent from '@/components/PieChartComponent.vue'
 
