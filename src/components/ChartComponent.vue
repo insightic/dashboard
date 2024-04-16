@@ -61,60 +61,64 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { computed } from 'vue'
 import type { PropType } from 'vue'
 import { formatDate } from '../helpers'
 
-export default {
-  props: {
-    type: { type: String, default: 'area' },
-    title: { type: String, required: true },
-    labels: { type: Array as PropType<string[][]>, required: true },
-    data: { type: Array as PropType<{ name: string; data: number[] }[]>, required: true },
-    updateAt: { type: Date, default: null }
-  },
-  computed: {
-    highest: function () {
-      const values = this.data
-        .map((d) => d.data)
-        .map((d) => (d.length > 0 ? Math.max(...d) : 0))
-        .map((d) => d.toFixed(2))
-      return values.join('/')
-    },
-    lowest: function () {
-      const values = this.data
-        .map((d) => d.data)
-        .map((d) => (d.length > 0 ? Math.min(...d) : 0))
-        .map((d) => d.toFixed(2))
-      return values.join('/')
-    },
-    mean: function () {
-      const values = this.data
-        .map((d) => d.data)
-        .map((d) => (d.length > 0 ? d.reduce((a, b) => a + b) / d.length : 0))
-        .map((d) => d.toFixed(2))
-      return values.join('/')
-    },
-    median: function () {
-      const findMedian = function (array: Array<number>) {
-        const sorted = Array.from(array).sort((a, b) => a - b)
-        const middle = Math.floor(sorted.length / 2)
+const props = defineProps({
+  type: { type: String, default: 'area' },
+  title: { type: String, required: true },
+  labels: { type: Array as PropType<string[][]>, required: true },
+  data: { type: Array as PropType<{ name: string; data: number[] }[]>, required: true },
+  updateAt: { type: Date, default: null }
+})
 
-        if (sorted.length % 2 === 0) {
-          return (sorted[middle - 1] + sorted[middle]) / 2
-        }
-        return sorted[middle]
-      }
-
-      const values = this.data
-        .map((d) => d.data)
-        .map((d) => (d.length > 0 ? findMedian(d) : 0))
-        .map((d) => d.toFixed(2))
-      return values.join('/')
-    }
-  },
-  methods: {
-    formatDate
-  }
+function filterNaN(v: any) {
+  v = Number(v)
+  if (Number.isNaN(v)) return 0
+  return v
 }
+
+const highest = computed(() => {
+  const values = props.data
+    .map((d) => d.data)
+    .map((d) => (d.length > 0 ? Math.max(...d.map(filterNaN)) : 0))
+    .map((d) => d.toFixed(2))
+  return values.join('/')
+})
+
+const lowest = computed(() => {
+  const values = props.data
+    .map((d) => d.data)
+    .map((d) => (d.length > 0 ? Math.min(...d.map(filterNaN)) : 0))
+    .map((d) => d.toFixed(2))
+  return values.join('/')
+})
+
+const mean = computed(() => {
+  const values = props.data
+    .map((d) => d.data)
+    .map((d) => (d.length > 0 ? d.reduce((a, b) => filterNaN(a) + filterNaN(b)) / d.length : 0))
+    .map((d) => d.toFixed(2))
+  return values.join('/')
+})
+
+const median = computed(() => {
+  const findMedian = function (array: Array<number>) {
+    const sorted = Array.from(array).sort((a, b) => filterNaN(a) - filterNaN(b))
+    const middle = Math.floor(sorted.length / 2)
+
+    if (sorted.length % 2 === 0) {
+      return (filterNaN(sorted[middle - 1]) + filterNaN(sorted[middle])) / 2
+    }
+    return filterNaN(sorted[middle])
+  }
+
+  const values = props.data
+    .map((d) => d.data)
+    .map((d) => (d.length > 0 ? findMedian(d) : 0))
+    .map((d) => d.toFixed(2))
+  return values.join('/')
+})
 </script>
