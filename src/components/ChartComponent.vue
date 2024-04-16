@@ -28,17 +28,23 @@
         </table>
       </div>
     </div>
-    <div style="height: 192px">
+    <div style="height: 500px">
       <apexchart
         v-if="data.length > 0 && data[0].data.length > 0"
-        style="height: 150px"
-        height="150px"
+        height="100%"
         :type="type"
         :series="fixedData"
         :options="{
           chart: {
-            sparkline: { enabled: true },
-            animations: { enabled: false }
+            // sparkline: { enabled: true },
+            // animations: { enabled: false }
+          },
+          yaxis: {
+            labels: {
+              formatter: function (v: number) {
+                return v.toFixed(2)
+              }
+            }
           },
           legend: {
             show: false

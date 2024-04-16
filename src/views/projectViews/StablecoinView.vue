@@ -102,7 +102,7 @@
       <div class="col-md-12 my-2">
         <ChartComponent
           title="Token Supply Over Time"
-          :labels="[data?.stablecoin?.supply?.data.map((d: any) => String(d[0]))]"
+          :labels="data?.stablecoin?.supply?.data.map((d: any) => String(d[0]))"
           :data="[
             {
               name: 'Token Supply Over Time',
@@ -114,7 +114,7 @@
       <div class="col-md-6 my-2">
         <ChartComponent
           title="Token Price in USD over time"
-          :labels="[data?.stablecoin?.price?.data.map((d: any) => String(d[0]))]"
+          :labels="data?.stablecoin?.price?.data.map((d: any) => String(d[0]))"
           :data="[
             {
               name: 'Token Price in USD over time',
@@ -126,7 +126,7 @@
       <div class="col-md-6 my-2">
         <ChartComponent
           title="Token Price in ETH over time"
-          :labels="[data?.stablecoin?.price?.data.map((d: any) => String(d[0]))]"
+          :labels="data?.stablecoin?.price?.data.map((d: any) => String(d[0]))"
           :data="[
             {
               name: 'Token Price in ETH over time',
