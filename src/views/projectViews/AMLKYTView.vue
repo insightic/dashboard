@@ -6,7 +6,7 @@
         <ChartComponent
           type="bar"
           title="Top 100 Holder Risk Score"
-          :labels="[data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)]"
+          :labels="data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)"
           :data="[
             {
               name: 'Top 100 Holder Risk Score',
@@ -21,7 +21,7 @@
         <ChartComponent
           type="bar"
           title="Top 1000 Holder Risk Score"
-          :labels="[data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)]"
+          :labels="data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)"
           :data="[
             {
               name: 'Top 1000 Holder Risk Score',
@@ -36,7 +36,7 @@
         <ChartComponent
           type="bar"
           title="Average Transaction Risk Score"
-          :labels="[data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)]"
+          :labels="data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)"
           :data="[
             {
               name: 'Average Transaction Risk Score',

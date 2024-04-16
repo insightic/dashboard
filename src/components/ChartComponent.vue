@@ -1,5 +1,5 @@
 <template>
-  <div class="card overflow-hidden">
+  <div class="card">
     <div class="card-header">
       <div class="card-title">{{ title }}</div>
       <div class="ms-auto text-secondary small" v-if="updateAt">
@@ -31,17 +31,14 @@
     <div style="height: 192px">
       <apexchart
         v-if="data.length > 0 && data[0].data.length > 0"
-        style="height: 196px"
-        height="196px"
+        style="height: 150px"
+        height="150px"
         :type="type"
-        :series="data"
+        :series="fixedData"
         :options="{
           chart: {
             sparkline: { enabled: true },
             animations: { enabled: false }
-          },
-          tooltip: {
-            theme: 'dark'
           },
           legend: {
             show: false
@@ -69,7 +66,7 @@ import { formatDate } from '../helpers'
 const props = defineProps({
   type: { type: String, default: 'area' },
   title: { type: String, required: true },
-  labels: { type: Array as PropType<string[][]>, required: true },
+  labels: { type: Array as PropType<string[]>, required: true },
   data: { type: Array as PropType<{ name: string; data: number[] }[]>, required: true },
   updateAt: { type: Date, default: null }
 })
@@ -80,26 +77,33 @@ function filterNaN(v: any) {
   return v
 }
 
+const fixedData = computed(() => {
+  return props.data.map((d) => ({
+    name: d.name,
+    data: d.data.map((v) => filterNaN(v))
+  }))
+})
+
 const highest = computed(() => {
-  const values = props.data
+  const values = fixedData.value
     .map((d) => d.data)
-    .map((d) => (d.length > 0 ? Math.max(...d.map(filterNaN)) : 0))
+    .map((d) => (d.length > 0 ? Math.max(...d) : 0))
     .map((d) => d.toFixed(2))
   return values.join('/')
 })
 
 const lowest = computed(() => {
-  const values = props.data
+  const values = fixedData.value
     .map((d) => d.data)
-    .map((d) => (d.length > 0 ? Math.min(...d.map(filterNaN)) : 0))
+    .map((d) => (d.length > 0 ? Math.min(...d) : 0))
     .map((d) => d.toFixed(2))
   return values.join('/')
 })
 
 const mean = computed(() => {
-  const values = props.data
+  const values = fixedData.value
     .map((d) => d.data)
-    .map((d) => (d.length > 0 ? d.reduce((a, b) => filterNaN(a) + filterNaN(b)) / d.length : 0))
+    .map((d) => (d.length > 0 ? d.reduce((a, b) => a + b) / d.length : 0))
     .map((d) => d.toFixed(2))
   return values.join('/')
 })
@@ -115,7 +119,7 @@ const median = computed(() => {
     return filterNaN(sorted[middle])
   }
 
-  const values = props.data
+  const values = fixedData.value
     .map((d) => d.data)
     .map((d) => (d.length > 0 ? findMedian(d) : 0))
     .map((d) => d.toFixed(2))

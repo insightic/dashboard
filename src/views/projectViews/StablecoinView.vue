@@ -25,9 +25,7 @@
         <ChartComponent
           type="bar"
           title="Daily Frequency"
-          :labels="[
-            data?.stablecoin?.transaction?.daily_frequency?.data.map((d: any) => `${d[0]}`)
-          ]"
+          :labels="data?.stablecoin?.transaction?.daily_frequency?.data.map((d: any) => `${d[0]}`)"
           :data="[
             {
               name: 'Daily Frequency',
@@ -42,9 +40,9 @@
         <ChartComponent
           type="bar"
           title="Hourly Frequency"
-          :labels="[
+          :labels="
             data?.stablecoin?.transaction?.hourly_frequency.data.map((d: any) => `${d[0]}:00`)
-          ]"
+          "
           :data="[
             {
               name: 'Hourly Frequency',
@@ -58,10 +56,7 @@
       <div class="col-md-6 my-2">
         <ChartComponent
           title="Daily Bought/Sold Volume"
-          :labels="[
-            data?.stablecoin?.transaction?.daily_bought_vol.data.map((d: any) => `${d[0]}`),
-            data?.stablecoin?.transaction?.daily_sold_vol.data.map((d: any) => `${d[0]}`)
-          ]"
+          :labels="data?.stablecoin?.transaction?.daily_bought_vol.data.map((d: any) => `${d[0]}`)"
           :data="[
             {
               name: 'Daily Bought Volume',
@@ -79,10 +74,9 @@
       <div class="col-md-6 my-2">
         <ChartComponent
           title="Hourly Bought/Sold Volume"
-          :labels="[
-            data?.stablecoin?.transaction?.hourly_bought_vol.data.map((d: any) => `${d[0]}:00`),
-            data?.stablecoin?.transaction?.hourly_sold_vol.data.map((d: any) => `${d[0]}:00`)
-          ]"
+          :labels="
+            data?.stablecoin?.transaction?.hourly_bought_vol.data.map((d: any) => `${d[0]}:00`)
+          "
           :data="[
             {
               name: 'Hourly Bought Volume',
