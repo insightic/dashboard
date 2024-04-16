@@ -6,11 +6,12 @@
     <div v-if="!loading">
       <HeaderView :data="data" />
       <OverviewView :data="data" v-if="viewIdx == 0" />
-      <TeamSocialMediaView :data="data" v-if="viewIdx == 1" />
-      <SmartContractValidationView :data="data" v-if="viewIdx == 2" />
-      <FinancialAnalysisView :data="data" v-if="viewIdx == 3" />
-      <SecurityComplianceView :data="data" v-if="viewIdx == 4" />
-      <StablecoinView :data="data" v-if="viewIdx == 5" />
+      <AMLKYTView :data="data" v-if="viewIdx == 1" />
+      <TeamSocialMediaView :data="data" v-if="viewIdx == 2" />
+      <SmartContractValidationView :data="data" v-if="viewIdx == 3" />
+      <FinancialAnalysisView :data="data" v-if="viewIdx == 4" />
+      <SecurityComplianceView :data="data" v-if="viewIdx == 5" />
+      <StablecoinView :data="data" v-if="viewIdx == 6" />
     </div>
 
     <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
@@ -27,6 +28,7 @@ import NavBar from '@/components/NavBar.vue'
 import SubNavBar from '@/components/SubNavBar.vue'
 import HeaderView from './projectViews/HeaderView.vue'
 import OverviewView from './projectViews/OverviewView.vue'
+import AMLKYTView from './projectViews/AMLKYTView.vue'
 import TeamSocialMediaView from './projectViews/TeamSocialMediaView.vue'
 import SmartContractValidationView from './projectViews/SmartContractValidationView.vue'
 import FinancialAnalysisView from './projectViews/FinancialAnalysisView.vue'
@@ -39,6 +41,7 @@ const data = ref<any>({})
 
 const views = ref([
   { name: 'Overview', icon: 'bi-house-door' },
+  { name: 'AML/KYT', icon: 'bi-shield-check' },
   { name: 'Team & Social Media', icon: 'bi-people' },
   { name: 'Smart Contract Validation', icon: 'bi-check2-square' },
   { name: 'Financial Analysis', icon: 'bi-currency-dollar' },
