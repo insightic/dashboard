@@ -11,8 +11,8 @@ const router = createRouter({
     },
     {
       path: '/:type/:id',
-      name: 'stablecoin',
-      component: () => import('../views/StablecoinView.vue')
+      name: 'project',
+      component: () => import('../views/ProjectView.vue')
     }
   ]
 })
