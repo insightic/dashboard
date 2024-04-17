@@ -10,9 +10,7 @@
           :data="[
             {
               name: 'Top 100 Holder Risk Score',
-              data: data?.zanRiskScore?.map((d: any) =>
-                Number(d['avg_top_100_holder_risk_score'])
-              )
+              data: data?.zanRiskScore?.map((d: any) => Number(d['avg_top_100_holder_risk_score']))
             }
           ]"
         />
@@ -25,9 +23,7 @@
           :data="[
             {
               name: 'Top 1000 Holder Risk Score',
-              data: data?.zanRiskScore?.map((d: any) =>
-                Number(d['avg_top_1000_holder_risk_score'])
-              )
+              data: data?.zanRiskScore?.map((d: any) => Number(d['avg_top_1000_holder_risk_score']))
             }
           ]"
         />
