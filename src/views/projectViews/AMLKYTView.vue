@@ -11,7 +11,7 @@
             {
               name: 'Top 100 Holder Risk Score',
               data: data?.zanRiskScore?.map((d: any) =>
-                Number(d['average_top_100_holder_risk_score'])
+                Number(d['avg_top_100_holder_risk_score'])
               )
             }
           ]"
@@ -26,7 +26,7 @@
             {
               name: 'Top 1000 Holder Risk Score',
               data: data?.zanRiskScore?.map((d: any) =>
-                Number(d['average_top_1000_holder_risk_score'])
+                Number(d['avg_top_1000_holder_risk_score'])
               )
             }
           ]"
@@ -52,9 +52,7 @@
 <script lang="ts" setup>
 import ChartComponent from '@/components/ChartComponent.vue'
 
-const props = defineProps({
+defineProps({
   data: Object
 })
-
-console.log(props.data?.zanRiskScore)
 </script>
