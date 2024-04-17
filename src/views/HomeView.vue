@@ -120,11 +120,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="(project, idx) in cexes"
-                :key="idx"
-                @click="goto('stablecoin', project?.id)"
-              >
+              <tr v-for="(project, idx) in cexes" :key="idx" @click="goto('cex', project?.id)">
                 <td>
                   <div
                     class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
