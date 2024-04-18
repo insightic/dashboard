@@ -11,6 +11,8 @@
               <div class="h3 mb-0">{{ data?.name }}</div>
               <div>{{ data?.type }} @ {{ data?.registration }}</div>
               <div>Established at {{ data?.established }}</div>
+              <div>Launched at {{ data?.launch_info?.launch_date }}</div>
+              <div>{{ data?.launch_info?.growth }}</div>
               <div class="mt-2 small">
                 <a
                   class="me-2"
@@ -22,8 +24,8 @@
                 </a>
                 <a
                   class="me-2"
-                  v-if="data?.links?.twitter"
-                  :href="data.links.twitter"
+                  v-if="data?.community_data?.twitter"
+                  :href="`https://twitter.com/${data.community_data.twitter}`"
                   target="_blank"
                 >
                   <IconBrandX :stroke-width="1" :size="18" />
@@ -93,7 +95,9 @@ import {
   IconBrandLinkedin,
   IconBrandReddit,
   IconBrandTelegram,
-  IconBrandGithub
+  IconBrandGithub,
+  IconBrandApple,
+  IconBrandGoogle
 } from '@tabler/icons-vue'
 import CardComponent from '@/components/CardComponent.vue'
 
