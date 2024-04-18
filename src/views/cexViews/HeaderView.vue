@@ -67,7 +67,20 @@
       </div>
 
       <div class="col-md-4 my-2">
-        <CardComponent class="h-100"> </CardComponent>
+        <CardComponent class="h-100">
+          <div
+            class="text-center h-100 d-flex flex-column align-items-center justify-content-center"
+          >
+            <div class="small">TRUST SCORE</div>
+            <div
+              class="d-flex align-items-center justify-content-center"
+              style="font-size: 4.5rem"
+              v-if="data?.trust_score"
+            >
+              {{ data?.trust_score }}
+            </div>
+          </div>
+        </CardComponent>
       </div>
     </div>
   </div>

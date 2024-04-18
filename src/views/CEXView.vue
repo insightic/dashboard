@@ -35,6 +35,7 @@ onMounted(async () => {
     route.params.id as string
   )
   data.value = project
+  console.log(data.value)
   loading.value = false
 })
 </script>
