@@ -95,28 +95,6 @@
                     <IconSortDescendingLetters :size="16" v-if="!nameInc" />
                   </span>
                 </th>
-                <th
-                  style="width: 25%; cursor: pointer"
-                  @click="(marketcapInc = !marketcapInc), (activeSorts = 'marketcap')"
-                >
-                  MarketCap
-
-                  <span v-if="activeSorts == 'marketcap'">
-                    <IconSortAscendingNumbers :size="16" v-if="marketcapInc" />
-                    <IconSortDescendingNumbers :size="16" v-if="!marketcapInc" />
-                  </span>
-                </th>
-                <th
-                  style="width: 25%; cursor: pointer"
-                  @click="(ratingInc = !ratingInc), (activeSorts = 'rating')"
-                >
-                  Rating
-
-                  <span v-if="activeSorts == 'rating'">
-                    <IconSortAscendingLetters :size="16" v-if="ratingInc" />
-                    <IconSortDescendingLetters :size="16" v-if="!ratingInc" />
-                  </span>
-                </th>
               </tr>
             </thead>
             <tbody>
@@ -130,15 +108,6 @@
                   </div>
                 </td>
                 <td style="text-transform: uppercase">{{ project?.name }}</td>
-                <td style="text-align: left">
-                  {{ toFixed(project?.sosovalue?.market_cap_value) }}
-                </td>
-                <td
-                  style="text-transform: uppercase; font-weight: bold"
-                  :class="ratingColor(project?.rating)"
-                >
-                  {{ project?.rating }}
-                </td>
               </tr>
             </tbody>
           </CardTable>
