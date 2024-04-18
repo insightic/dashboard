@@ -10,7 +10,9 @@ export const useProjectsStore = defineStore('projects', () => {
     const ids = await dataSource.getProjectIds('stablecoin')
 
     stablecoins.value = await Promise.all(
-      ids.map(async (id: string) => await dataSource.getProjectData('stablecoin', id, false))
+      ids.map(
+        async (id: string) => await dataSource.getProjectData('stablecoin', id, { sosovalue: true })
+      )
     )
   }
 
@@ -18,7 +20,7 @@ export const useProjectsStore = defineStore('projects', () => {
     const ids = await dataSource.getProjectIds('cex')
 
     cexes.value = await Promise.all(
-      ids.map(async (id: string) => await dataSource.getProjectData('cex', id, false))
+      ids.map(async (id: string) => await dataSource.getProjectData('cex', id, {}))
     )
   }
 

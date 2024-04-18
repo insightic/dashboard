@@ -53,7 +53,16 @@ const viewIdx = ref(0)
 onMounted(async () => {
   const project: any = await dataSource.getProjectData(
     route.params.type as string,
-    route.params.id as string
+    route.params.id as string,
+    {
+      sosovalue: true,
+      scv: true,
+      securityAssessment: true,
+      twitter: true,
+      sosoValueNews: true,
+      stablecoin: true,
+      zanRiskScore: true
+    }
   )
   data.value = project
   loading.value = false

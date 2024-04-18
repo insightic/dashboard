@@ -55,7 +55,7 @@ class DataSource {
     return ids
   }
 
-  async getProjectData(type: string, id: string, withDetails = true) {
+  async getProjectData(type: string, id: string, features: { [key: string]: boolean } = {}) {
     const resp = await raw.get(`${type}/${id}/data.yml`)
     const data: any = yaml.load(resp.data)
     data.id = id
@@ -63,15 +63,27 @@ class DataSource {
     data.url = raw.resolvePath(`${type}/${id}`)
     data.baseUrl = raw.resolvePath(`${type}/${id}`)
     data.logoUrl = raw.resolvePath(`${type}/${id}/${data.logo}`)
-    data.sosovalue = await this.getProjectSosovalue(type, id)
-    if (!withDetails) return data
-
-    data.scv = await this.getProjectSmartContractValidator(type, id)
-    data.securityAssessment = await this.getProjectSecurityAssessment(type, id)
-    data.twitter = await this.getProjectTwitter(type, id)
-    data.sosoValueNews = await this.getProjectSosovalueNews(type, id)
-    data.stablecoin = await this.getProjectStablecoin(type, id)
-    data.zanRiskScore = await this.getProjectZanRiskScore(type, id)
+    if (features['sosovalue']) {
+      data.sosovalue = await this.getProjectSosovalue(type, id)
+    }
+    if (features['scv']) {
+      data.scv = await this.getProjectSmartContractValidator(type, id)
+    }
+    if (features['securityAssessment']) {
+      data.securityAssessment = await this.getProjectSecurityAssessment(type, id)
+    }
+    if (features['twitter']) {
+      data.twitter = await this.getProjectTwitter(type, id)
+    }
+    if (features['sosoValueNews']) {
+      data.sosoValueNews = await this.getProjectSosovalueNews(type, id)
+    }
+    if (features['stablecoin']) {
+      data.stablecoin = await this.getProjectStablecoin(type, id)
+    }
+    if (features['zanRiskScore']) {
+      data.zanRiskScore = await this.getProjectZanRiskScore(type, id)
+    }
 
     return data
   }
