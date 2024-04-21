@@ -84,6 +84,9 @@ class DataSource {
     if (features['zanRiskScore']) {
       data.zanRiskScore = await this.getProjectZanRiskScore(type, id)
     }
+    if (features['assetFlow']) {
+      data.assetFlow = await this.getProjectAssetFlow(type, id)
+    }
 
     return data
   }
@@ -165,6 +168,18 @@ class DataSource {
       const resp = await raw.get(`${type}/${id}/results/zan_risk_score_results.json`)
       if (resp.data.length > 0) {
         return resp.data
+      }
+      return null
+    } catch (e) {
+      return null
+    }
+  }
+
+  async getProjectAssetFlow(type: string, id: string) {
+    try {
+      const resp = await raw.get(`${type}/${id}/results/asset_flow.json`)
+      if (resp.data.length > 0) {
+        return resp.data[resp.data.length - 1]
       }
       return null
     } catch (e) {
