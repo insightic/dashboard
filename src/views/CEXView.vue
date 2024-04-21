@@ -7,6 +7,7 @@
       <HeaderView :data="data" />
       <OverviewView v-if="viewIdx == 0" :data="data" />
       <AssetFlowView v-if="viewIdx == 1" :data="data" />
+      <CoinMarketCapView v-if="viewIdx == 2" :data="data" />
     </div>
     <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
       <div class="loading mx-auto mt-5"></div>
@@ -22,6 +23,7 @@ import SubNavBar from '@/components/SubNavBar.vue'
 import HeaderView from './cexViews/HeaderView.vue'
 import OverviewView from './cexViews/OverviewView.vue'
 import AssetFlowView from './cexViews/AssetFlowView.vue'
+import CoinMarketCapView from './cexViews/CoinMarketCapView.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -30,7 +32,8 @@ const data = ref<any>({})
 const loading = ref(true)
 const views = ref([
   { name: 'Overview', icon: 'bi-house-door' },
-  { name: 'Asset Flow', icon: 'bi-activity' }
+  { name: 'Asset Flow', icon: 'bi-activity' },
+  { name: 'Coin Market Cap', icon: 'bi-currency-dollar' }
 ])
 const viewIdx = ref(0)
 
@@ -39,7 +42,8 @@ onMounted(async () => {
     route.params.type as string,
     route.params.id as string,
     {
-      assetFlow: true
+      assetFlow: true,
+      coinMarketCap: true
     }
   )
   data.value = project
