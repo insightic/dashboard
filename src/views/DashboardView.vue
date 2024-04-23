@@ -135,7 +135,7 @@ import { useRouter, useRoute } from 'vue-router'
 import NavBar from '@/components/NavBar.vue'
 import CardTable from '@/components/CardTable.vue'
 import { useProjectsStore } from '@/stores/projects'
-import { ratingColor } from '@/helpers'
+import { ratingColor, formatNumber } from '@/helpers'
 import {
   IconSortAscendingLetters,
   IconSortDescendingLetters,
@@ -174,7 +174,7 @@ function goto(type: string, id: string) {
 
 function toFixed(value: unknown) {
   if (Number.isNaN(Number(value))) return '-'
-  return `$ ${Number(value).toLocaleString()}`
+  return `$${formatNumber(Number(value))}`
 }
 
 const nameInc = ref(true)

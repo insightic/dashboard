@@ -50,7 +50,7 @@ onMounted(() => {
       left: 100,
       top: idx * 120 + 50,
       name: value.entities,
-      volume: formatNumber(value.totalValue),
+      volume: '$' + formatNumber(value.totalValue),
       Class: FlowNode
     })
     edges.push({
@@ -67,7 +67,7 @@ onMounted(() => {
       left: 700,
       top: idx * 120 + 50,
       name: value.entities,
-      volume: formatNumber(value.totalValue),
+      volume: '$' + formatNumber(value.totalValue),
       Class: FlowNode
     })
     edges.push({
