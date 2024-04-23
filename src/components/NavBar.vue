@@ -11,17 +11,29 @@
         </div>
         <div class="m-0">Insightic</div>
       </div>
-      <div class="m-0" style="cursor: pointer" @click="router.push('/')">
-        <span>Web3 Dashboard <IconSwitchHorizontal :size="16" /></span>
-      </div>
-      <div style="width: 128px"></div>
+      <div class="m-0"></div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-light" @click="goto('stablecoins')">Stablecoins</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" @click="goto('cex')">CEX</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" @click="goto('lending')">Lending</a>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
-import { IconSwitchHorizontal } from '@tabler/icons-vue'
-
 const router = useRouter()
+const emits = defineEmits(['change'])
+
+function goto(type: string) {
+  router.push(`/${type}`)
+  emits('change', type)
+}
 </script>

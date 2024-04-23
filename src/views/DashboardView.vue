@@ -1,8 +1,8 @@
 <template>
-  <NavBar />
+  <NavBar @change="onChange" />
 
   <div class="container py-2" style="margin-top: 56px">
-    <div v-if="!loading" class="mt-2">
+    <div v-if="!loading && type === 'stablecoins'" class="mt-2">
       <div class="h1">Stablecoins</div>
       <div class="row">
         <div class="col-md-12">
@@ -76,7 +76,7 @@
       </div>
     </div>
 
-    <div v-if="!loading" class="mt-2">
+    <div v-if="!loading && type === 'cex'" class="mt-2">
       <div class="h1">Centralized Exchange</div>
       <div class="row">
         <div class="col-md-12">
@@ -123,7 +123,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, computed, type ComputedRef } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 import NavBar from '@/components/NavBar.vue'
 import CardTable from '@/components/CardTable.vue'
@@ -138,15 +138,32 @@ import {
 
 const loading = ref(true)
 const router = useRouter()
+const route = useRoute()
 const projectsStore = useProjectsStore()
 
-onMounted(async () => {
-  await Promise.all([projectsStore.fetchStablecoins(), projectsStore.fetchCexes()])
+onMounted(async () => await fetch())
+
+const type = computed(() => route.params.type as string)
+
+async function onChange(type: string) {
+  router.push(`/${type}`)
+  await fetch()
+}
+
+async function fetch() {
+  loading.value = true
+  if (type.value === 'stablecoins') await projectsStore.fetchStablecoins()
+  if (type.value === 'cex') await projectsStore.fetchCexes()
   loading.value = false
-})
+}
 
 function goto(type: string, id: string) {
   router.push(`/${type}/${id}`)
+}
+
+function toFixed(value: unknown) {
+  if (Number.isNaN(Number(value))) return '-'
+  return `$ ${Number(value).toLocaleString()}`
 }
 
 const nameInc = ref(true)
@@ -197,11 +214,6 @@ const cexes: ComputedRef<Array<any>> = computed(() => {
   const data = projectsStore.cexes
   return data
 })
-
-function toFixed(value: unknown) {
-  if (Number.isNaN(Number(value))) return '-'
-  return `$ ${Number(value).toLocaleString()}`
-}
 </script>
 
 <style scoped>
