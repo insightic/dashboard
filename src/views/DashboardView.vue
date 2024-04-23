@@ -148,12 +148,16 @@ const router = useRouter()
 const route = useRoute()
 const projectsStore = useProjectsStore()
 
-onMounted(async () => await fetch())
+onMounted(async () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  await fetch()
+})
 
 const type = computed(() => route.params.type as string)
 
 async function onChange(type: string) {
   router.push(`/${type}`)
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   await fetch()
 }
 

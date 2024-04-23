@@ -1,6 +1,6 @@
 <template>
   <NavBar />
-  <SubNavBar :views="views" :view-idx="viewIdx" @change-view="(idx) => (viewIdx = idx)" />
+  <SubNavBar :views="views" :view-idx="viewIdx" @change-view="changeView" />
 
   <div class="container py-2" style="margin-top: 112px">
     <div v-if="!loading">
@@ -49,8 +49,13 @@ const views = ref([
   { name: 'Stablecoin', icon: 'bi-coin' }
 ])
 const viewIdx = ref(0)
+function changeView(idx: number) {
+  viewIdx.value = idx
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+}
 
 onMounted(async () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   const project: any = await dataSource.getProjectData(
     route.params.type as string,
     route.params.id as string,
