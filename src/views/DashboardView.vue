@@ -115,6 +115,13 @@
       </div>
     </div>
 
+    <div v-if="!loading && type === 'lending'" class="mt-2">
+      <div class="text-center mt-5">
+        <img src="/logo.png" alt="" width="64" height="64" />
+        <div class="h3 mt-2">Coming soon...</div>
+      </div>
+    </div>
+
     <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
       <div class="loading mx-auto mt-5"></div>
     </div>
