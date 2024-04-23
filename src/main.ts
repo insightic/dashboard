@@ -6,6 +6,7 @@ import router from './router'
 import VueApexCharts from 'vue3-apexcharts'
 import ElementPlus from 'element-plus'
 
+import 'butterfly-dag/dist/index.css'
 import './assets/main.scss'
 
 const app = createApp(App)
