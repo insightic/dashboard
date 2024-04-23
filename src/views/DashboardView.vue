@@ -219,7 +219,12 @@ const stablecoins: ComputedRef<Array<any>> = computed(() => {
 
 const cexes: ComputedRef<Array<any>> = computed(() => {
   const data = projectsStore.cexes
-  return data
+  return data.sort((lhs: any, rhs: any) => {
+    if (activeSorts.value == 'name') {
+      let result = lhs.name.localeCompare(rhs.name)
+      return nameInc.value ? result : -result
+    }
+  })
 })
 </script>
 
