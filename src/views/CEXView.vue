@@ -48,11 +48,11 @@ onMounted(async () => {
     route.params.id as string,
     {
       assetFlow: true,
-      coinMarketCap: true
+      coinMarketCap: true,
+      securityScore: true
     }
   )
   data.value = project
-  console.log(data.value)
   loading.value = false
 })
 </script>

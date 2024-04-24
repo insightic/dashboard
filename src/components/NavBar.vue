@@ -13,13 +13,13 @@
       </div>
       <div class="m-0"></div>
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item" style="cursor: pointer">
           <a class="nav-link text-light" @click="goto('stablecoins')">Stablecoins</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="cursor: pointer">
           <a class="nav-link text-light" @click="goto('cex')">CEX</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="cursor: pointer">
           <a class="nav-link text-light" @click="goto('lending')">Lending</a>
         </li>
       </ul>

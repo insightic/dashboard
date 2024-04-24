@@ -9,7 +9,7 @@
           <CardTable>
             <thead>
               <tr>
-                <th style="width: 15%">Logo</th>
+                <th style="width: 25%">Logo</th>
                 <th
                   style="width: 35%; cursor: pointer"
                   @click="(nameInc = !nameInc), (activeSorts = 'name')"
@@ -33,7 +33,7 @@
                   </span>
                 </th>
                 <th
-                  style="width: 25%; cursor: pointer"
+                  style="width: 15%; cursor: pointer"
                   @click="(ratingInc = !ratingInc), (activeSorts = 'rating')"
                 >
                   Rating
@@ -83,9 +83,9 @@
           <CardTable>
             <thead>
               <tr>
-                <th style="width: 15%">Logo</th>
+                <th style="width: 25%">Logo</th>
                 <th
-                  style="width: 35%; cursor: pointer"
+                  style="width: 45%; cursor: pointer"
                   @click="(nameInc = !nameInc), (activeSorts = 'name')"
                 >
                   Name
@@ -95,6 +95,7 @@
                     <IconSortDescendingLetters :size="16" v-if="!nameInc" />
                   </span>
                 </th>
+                <th style="width: 30%">Trust Score</th>
               </tr>
             </thead>
             <tbody>
@@ -108,6 +109,7 @@
                   </div>
                 </td>
                 <td style="text-transform: uppercase">{{ project?.name }}</td>
+                <td>{{ project?.securityScore?.combined_security_score }}</td>
               </tr>
             </tbody>
           </CardTable>

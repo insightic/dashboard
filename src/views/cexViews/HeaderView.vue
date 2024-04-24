@@ -77,9 +77,9 @@
             <div
               class="d-flex align-items-center justify-content-center"
               style="font-size: 4.5rem"
-              v-if="data?.trust_score"
+              v-if="data?.securityScore?.combined_security_score"
             >
-              {{ data?.trust_score }}
+              {{ data?.securityScore?.combined_security_score }}
             </div>
           </div>
         </CardComponent>

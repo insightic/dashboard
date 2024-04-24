@@ -20,7 +20,9 @@ export const useProjectsStore = defineStore('projects', () => {
     const ids = await dataSource.getProjectIds('cex')
 
     cexes.value = await Promise.all(
-      ids.map(async (id: string) => await dataSource.getProjectData('cex', id, {}))
+      ids.map(
+        async (id: string) => await dataSource.getProjectData('cex', id, { securityScore: true })
+      )
     )
   }
 
