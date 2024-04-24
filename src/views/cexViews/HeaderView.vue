@@ -73,7 +73,19 @@
           <div
             class="text-center h-100 d-flex flex-column align-items-center justify-content-center"
           >
-            <div class="small">TRUST SCORE</div>
+            <div class="small">
+              TRUST SCORE
+              <el-tooltip
+                class="box-item"
+                style="max-width: 320px"
+                effect="dark"
+                :raw-content="true"
+                content="Trust Score is a rating algorithm developed by insightic to<br/>evaluate the legitimacy of an exchange. Trust Score is calculated<br/>on a range of metrics such as liquidity, scale of operations, cybersecurity score<br/>, and more from various data sources, including trustworthy third parties<br/>and home-grown databases."
+                placement="bottom-start"
+              >
+                <IconInfoCircle :size="16" style="cursor: pointer" />
+              </el-tooltip>
+            </div>
             <div
               class="d-flex align-items-center justify-content-center"
               style="font-size: 4.5rem"
@@ -96,8 +108,7 @@ import {
   IconBrandReddit,
   IconBrandTelegram,
   IconBrandGithub,
-  IconBrandApple,
-  IconBrandGoogle
+  IconInfoCircle
 } from '@tabler/icons-vue'
 import CardComponent from '@/components/CardComponent.vue'
 
