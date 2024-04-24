@@ -67,7 +67,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import type { PropType } from 'vue'
-import { formatDate } from '../helpers'
+import { formatDate, formatNumber } from '../helpers'
 
 const props = defineProps({
   type: { type: String, default: 'area' },
@@ -94,7 +94,7 @@ const highest = computed(() => {
   const values = fixedData.value
     .map((d) => d.data)
     .map((d) => (d.length > 0 ? Math.max(...d) : 0))
-    .map((d) => d.toFixed(2))
+    .map((d) => formatNumber(d))
   return values.join('/')
 })
 
@@ -102,7 +102,7 @@ const lowest = computed(() => {
   const values = fixedData.value
     .map((d) => d.data)
     .map((d) => (d.length > 0 ? Math.min(...d) : 0))
-    .map((d) => d.toFixed(2))
+    .map((d) => formatNumber(d))
   return values.join('/')
 })
 
@@ -110,7 +110,7 @@ const mean = computed(() => {
   const values = fixedData.value
     .map((d) => d.data)
     .map((d) => (d.length > 0 ? d.reduce((a, b) => a + b) / d.length : 0))
-    .map((d) => d.toFixed(2))
+    .map((d) => formatNumber(d))
   return values.join('/')
 })
 
@@ -128,7 +128,7 @@ const median = computed(() => {
   const values = fixedData.value
     .map((d) => d.data)
     .map((d) => (d.length > 0 ? findMedian(d) : 0))
-    .map((d) => d.toFixed(2))
+    .map((d) => formatNumber(d))
   return values.join('/')
 })
 </script>

@@ -1,20 +1,16 @@
 import moment from 'moment'
 import { marked } from 'marked'
 
-export function formatDateTime(date: string | Date, fromNow: boolean = false): string {
+export function formatDate(
+  date: string | Date,
+  format: string = 'YYYY/MM/DD',
+  fromNow: boolean = false
+): string {
   const time = moment(date)
   if (!fromNow) {
-    return `${time.format('YYYY/MM/DD HH:mm:ss')}`
+    return `${time.format(format)}`
   }
-  return `${time.fromNow()}, ${time.format('YYYY/MM/DD HH:mm:ss')}`
-}
-
-export function formatDate(date: string | Date, fromNow: boolean = false): string {
-  const time = moment(date)
-  if (!fromNow) {
-    return `${time.format('YYYY/MM/DD')}`
-  }
-  return `${time.fromNow()}, ${time.format('YYYY/MM/DD')}`
+  return `${time.fromNow()}, ${time.format(format)}`
 }
 
 export function toTitleCase(str: string) {

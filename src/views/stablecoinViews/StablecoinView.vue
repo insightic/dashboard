@@ -6,7 +6,11 @@
         <ChartComponent
           type="bar"
           title="Daily Frequency"
-          :labels="data?.stablecoin?.transaction?.daily_frequency?.data.map((d: any) => `${d[0]}`)"
+          :labels="
+            data?.stablecoin?.transaction?.daily_frequency?.data.map(
+              (d: any) => `${formatDate(d[0], 'MM/DD')}`
+            )
+          "
           :data="[
             {
               name: 'Daily Frequency',
@@ -37,7 +41,11 @@
       <div class="col-md-6 my-2">
         <ChartComponent
           title="Daily Bought/Sold Volume"
-          :labels="data?.stablecoin?.transaction?.daily_bought_vol.data.map((d: any) => `${d[0]}`)"
+          :labels="
+            data?.stablecoin?.transaction?.daily_bought_vol.data.map(
+              (d: any) => `${formatDate(d[0], 'MM/DD')}`
+            )
+          "
           :data="[
             {
               name: 'Daily Bought Volume',
@@ -163,6 +171,7 @@
 <script lang="ts" setup>
 import ChartComponent from '@/components/ChartComponent.vue'
 import PieChartComponent from '@/components/PieChartComponent.vue'
+import { formatDate } from '@/helpers'
 
 defineProps({
   data: Object
