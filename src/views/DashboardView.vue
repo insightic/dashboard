@@ -95,7 +95,17 @@
                     <IconSortDescendingLetters :size="16" v-if="!nameInc" />
                   </span>
                 </th>
-                <th style="width: 30%">Trust Score</th>
+                <th
+                  style="width: 30%; cursor: pointer"
+                  @click="(trustScoreInc = !trustScoreInc), (activeSorts = 'trustScore')"
+                >
+                  Trust Score
+
+                  <span v-if="activeSorts == 'trustScore'">
+                    <IconSortAscendingNumbers :size="16" v-if="trustScoreInc" />
+                    <IconSortDescendingNumbers :size="16" v-if="!trustScoreInc" />
+                  </span>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -182,6 +192,7 @@ function toFixed(value: unknown) {
 const nameInc = ref(true)
 const marketcapInc = ref(true)
 const ratingInc = ref(true)
+const trustScoreInc = ref(true)
 const activeSorts = ref('name')
 
 const stablecoins: ComputedRef<Array<any>> = computed(() => {
@@ -229,6 +240,13 @@ const cexes: ComputedRef<Array<any>> = computed(() => {
     if (activeSorts.value == 'name') {
       let result = lhs.name.localeCompare(rhs.name)
       return nameInc.value ? result : -result
+    }
+
+    if (activeSorts.value == 'trustScore') {
+      let lhsTrustScore = lhs.securityScore?.combined_security_score || 0
+      let rhsTrustScore = rhs.securityScore?.combined_security_score || 0
+      let result = lhsTrustScore - rhsTrustScore
+      return trustScoreInc.value ? result : -result
     }
   })
 })
