@@ -6,7 +6,7 @@
         <ChartComponent
           type="bar"
           title="Top 100 Holder Risk Score"
-          :labels="data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)"
+          :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
           :data="[
             {
               name: 'Top 100 Holder Risk Score',
@@ -19,7 +19,7 @@
         <ChartComponent
           type="bar"
           title="Top 1000 Holder Risk Score"
-          :labels="data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)"
+          :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
           :data="[
             {
               name: 'Top 1000 Holder Risk Score',
@@ -32,7 +32,7 @@
         <ChartComponent
           type="bar"
           title="Average Transaction Risk Score"
-          :labels="data?.zanRiskScore?.map((d: any) => `${d['created_date']}`)"
+          :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
           :data="[
             {
               name: 'Average Transaction Risk Score',
@@ -47,6 +47,7 @@
 
 <script lang="ts" setup>
 import ChartComponent from '@/components/ChartComponent.vue'
+import { formatDate } from '@/helpers'
 
 defineProps({
   data: Object
