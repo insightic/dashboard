@@ -5,7 +5,7 @@
       <div class="col-md-6 my-2">
         <ChartComponent
           type="bar"
-          title="Top 100 Holder Risk Score"
+          title="AVG Top 100 Holder Risk Score"
           :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
           :data="[
             {
@@ -18,7 +18,7 @@
       <div class="col-md-6 my-2">
         <ChartComponent
           type="bar"
-          title="Top 1000 Holder Risk Score"
+          title="AVG Top 1000 Holder Risk Score"
           :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
           :data="[
             {
