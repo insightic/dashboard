@@ -93,6 +93,9 @@ class DataSource {
     if (features['coinMarketCap']) {
       data.coinMarketCap = await this.getProjectCoinMarketCap(type, id)
     }
+    if (features['por']) {
+      data.por = await this.getProjectPOR(type, id)
+    }
 
     return data
   }
@@ -208,6 +211,18 @@ class DataSource {
   async getProjectCoinMarketCap(type: string, id: string) {
     try {
       const resp = await raw.get(`${type}/${id}/results/coinmarketcap_results.json`)
+      if (resp.data.length > 0) {
+        return resp.data[resp.data.length - 1]
+      }
+      return null
+    } catch (e) {
+      return null
+    }
+  }
+
+  async getProjectPOR(type: string, id: string) {
+    try {
+      const resp = await raw.get(`${type}/${id}/results/por.json`)
       if (resp.data.length > 0) {
         return resp.data[resp.data.length - 1]
       }
