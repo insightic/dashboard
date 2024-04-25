@@ -39,10 +39,13 @@
             // sparkline: { enabled: true },
             // animations: { enabled: false }
           },
+          xaxis: {
+            tickAmount: 5
+          },
           yaxis: {
             labels: {
               formatter: function (v: number) {
-                return v.toFixed(2)
+                return formatNumber(v)
               }
             }
           },
