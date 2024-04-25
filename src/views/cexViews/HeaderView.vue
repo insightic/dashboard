@@ -80,7 +80,7 @@
                 style="max-width: 320px"
                 effect="dark"
                 :raw-content="true"
-                content="Trust Score is a rating algorithm developed by insightic to<br/>evaluate the legitimacy of an exchange. Trust Score is calculated<br/>on a range of metrics such as liquidity, scale of operations, cybersecurity score<br/>, and more from various data sources, including trustworthy third parties<br/>and home-grown databases."
+                content="Trust Score is a rating algorithm developed by insightic to evaluate the legitimacy of<br/>an exchange. Trust Score is calculated on a range of metrics such as liquidity, scale<br/>of operations, cybersecurity score, and more from various data sources, including<br/>trustworthy third parties and home-grown databases."
                 placement="bottom-start"
               >
                 <IconInfoCircle :size="16" style="cursor: pointer" />

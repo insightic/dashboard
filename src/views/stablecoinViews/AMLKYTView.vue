@@ -6,6 +6,7 @@
         <ChartComponent
           type="bar"
           title="AVG Top 100 Holder Risk Score"
+          title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
           :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
           :data="[
             {
@@ -19,6 +20,7 @@
         <ChartComponent
           type="bar"
           title="AVG Top 1000 Holder Risk Score"
+          title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
           :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
           :data="[
             {
@@ -32,6 +34,7 @@
         <ChartComponent
           type="bar"
           title="Average Transaction Risk Score"
+          title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
           :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
           :data="[
             {

@@ -1,7 +1,20 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <div class="card-title">{{ title }}</div>
+      <div class="card-title">
+        {{ title }}
+        <el-tooltip
+          v-if="titleTooltip"
+          class="box-item"
+          style="max-width: 320px"
+          effect="dark"
+          :raw-content="true"
+          :content="titleTooltip"
+          placement="bottom-start"
+        >
+          <IconInfoCircle :size="16" style="cursor: pointer" />
+        </el-tooltip>
+      </div>
       <div class="ms-auto text-secondary small" v-if="updateAt">
         Last Update: {{ formatDate(updateAt) }}
       </div>
@@ -71,10 +84,12 @@
 import { computed } from 'vue'
 import type { PropType } from 'vue'
 import { formatDate, formatNumber } from '../helpers'
+import { IconInfoCircle } from '@tabler/icons-vue'
 
 const props = defineProps({
   type: { type: String, default: 'area' },
   title: { type: String, required: true },
+  titleTooltip: { type: String, default: null },
   labels: { type: Array as PropType<string[]>, required: true },
   data: { type: Array as PropType<{ name: string; data: number[] }[]>, required: true },
   updateAt: { type: Date, default: null }
