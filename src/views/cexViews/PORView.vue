@@ -44,6 +44,7 @@
                           'text-success': row.balanceUSDTChange >= 0,
                           'text-danger': row.balanceUSDTChange < 0
                         }"
+                        v-if="row.symbol.toLowerCase() !== 'others'"
                       >
                         ≈ {{ row.balanceUSDTChange.toFixed(2) }}% USDT
 
