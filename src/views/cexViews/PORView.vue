@@ -33,7 +33,7 @@
                           'text-danger': row.tokenBalanceChange < 0
                         }"
                       >
-                        {{ (row.tokenBalanceChange * 100).toFixed(2) }}%
+                        {{ row.tokenBalanceChange.toFixed(2) }}%
 
                         <IconTrendingUp :size="16" v-if="row.tokenBalanceChange >= 0" />
                         <IconTrendingDown :size="16" v-else />
@@ -45,7 +45,7 @@
                           'text-danger': row.balanceUSDTChange < 0
                         }"
                       >
-                        ≈ {{ (row.balanceUSDTChange * 100).toFixed(2) }}% USDT
+                        ≈ {{ row.balanceUSDTChange.toFixed(2) }}% USDT
 
                         <IconTrendingUp :size="16" v-if="row.balanceUSDTChange >= 0" />
                         <IconTrendingDown :size="16" v-else />
