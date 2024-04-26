@@ -19,7 +19,7 @@ class BaseNode extends Node {
   draw(opts: Options) {
     const container = document.createElement('div')
     container.innerHTML = `
-    <div class="border rounded py-2 px-2 position-absolute d-flex flex-column justify-content-center" style="width: 144px; height: 100px" >
+    <div class="border rounded py-2 px-2 position-absolute d-flex flex-column justify-content-center" style="width: 144px; height: 100px; cursor: pointer; user-select: none;" >
       {{TEMPLATE}}
       <div class="text-center mt-2">${opts.options.name}</div>
     </div>
