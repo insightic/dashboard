@@ -27,8 +27,29 @@
                       <div class="small">≈ {{ formatNumber(row.balanceUSDT) }} USDT</div>
                     </td>
                     <td>
-                      <div>{{ row.tokenBalanceChange }}</div>
-                      <div class="small">≈ {{ row.balanceUSDTChange }} USDT</div>
+                      <div
+                        :class="{
+                          'text-success': row.tokenBalanceChange >= 0,
+                          'text-danger': row.tokenBalanceChange < 0
+                        }"
+                      >
+                        {{ (row.tokenBalanceChange * 100).toFixed(2) }}%
+
+                        <IconTrendingUp :size="16" v-if="row.tokenBalanceChange >= 0" />
+                        <IconTrendingDown :size="16" v-else />
+                      </div>
+                      <div
+                        class="small"
+                        :class="{
+                          'text-success': row.balanceUSDTChange >= 0,
+                          'text-danger': row.balanceUSDTChange < 0
+                        }"
+                      >
+                        ≈ {{ (row.balanceUSDTChange * 100).toFixed(2) }}% USDT
+
+                        <IconTrendingUp :size="16" v-if="row.balanceUSDTChange >= 0" />
+                        <IconTrendingDown :size="16" v-else />
+                      </div>
                     </td>
                     <td>{{ ((row.balanceUSDT / total) * 100).toFixed(2) }}%</td>
                   </tr>
@@ -45,6 +66,7 @@
 <script lang="ts" setup>
 import CardComponent from '@/components/CardComponent.vue'
 import PieChartComponent from '@/components/PieChartComponent.vue'
+import { IconTrendingUp, IconTrendingDown } from '@tabler/icons-vue'
 import { computed } from 'vue'
 import { formatNumber } from '@/helpers'
 
