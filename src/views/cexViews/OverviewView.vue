@@ -14,7 +14,7 @@
       </div>
       <div class="col-md-6 my-2">
         <CardComponent class="h-100" subheader="restricted countries">
-          <div v-for="(c, idx) in data?.restricted_countries" :key="idx">{{ c }}</div>
+          <div v-html="render(data?.restricted_countries)"></div>
         </CardComponent>
       </div>
       <div class="col-md-6 my-2">
@@ -45,6 +45,7 @@
 
 <script lang="ts" setup>
 import CardComponent from '@/components/CardComponent.vue'
+import { render } from '@/helpers';
 
 defineProps({
   data: Object
