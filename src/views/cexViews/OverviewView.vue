@@ -13,7 +13,7 @@
         </CardComponent>
       </div>
       <div class="col-md-6 my-2">
-        <CardComponent class="h-100" subheader="restricted countries">
+        <CardComponent class="h-100" :subheader="`${data.name} restricted countries`">
           <div v-html="render(data?.restricted_countries)"></div>
         </CardComponent>
       </div>
