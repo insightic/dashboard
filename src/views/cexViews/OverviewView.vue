@@ -45,7 +45,7 @@
 
 <script lang="ts" setup>
 import CardComponent from '@/components/CardComponent.vue'
-import { render } from '@/helpers';
+import { render } from '@/helpers'
 
 defineProps({
   data: Object

@@ -14,6 +14,9 @@
               <div>Launched at {{ data?.launch_info?.launch_date }}</div>
               <div>{{ data?.launch_info?.growth }}</div>
               <div class="mt-2 small">
+                <a class="me-2" v-if="data?.email" :href="`mailto:${data.email}`">
+                  <IconMail :stroke-width="1" :size="18" />
+                </a>
                 <a
                   class="me-2"
                   v-if="data?.website_info?.url"
@@ -24,40 +27,56 @@
                 </a>
                 <a
                   class="me-2"
-                  v-if="data?.community_data?.twitter"
-                  :href="`https://twitter.com/${data.community_data.twitter}`"
+                  v-if="data?.website_info?.facebook"
+                  :href="data.website_info.facebook"
+                  target="_blank"
+                >
+                  <IconBrandFacebook :stroke-width="1" :size="18" />
+                </a>
+                <a
+                  class="me-2"
+                  v-if="data?.website_info?.twitter"
+                  :href="data.website_info.twitter"
                   target="_blank"
                 >
                   <IconBrandX :stroke-width="1" :size="18" />
                 </a>
                 <a
                   class="me-2"
-                  v-if="data?.links?.linkedin"
-                  :href="data.links.linkedin"
+                  v-if="data?.website_info?.linkedin"
+                  :href="data.website_info.linkedin"
                   target="_blank"
                 >
                   <IconBrandLinkedin :stroke-width="1" :size="18" />
                 </a>
                 <a
                   class="me-2"
-                  v-if="data?.links?.reddit"
-                  :href="data.links.reddit"
+                  v-if="data?.website_info?.discord"
+                  :href="data.website_info.discord"
+                  target="_blank"
+                >
+                  <IconBrandDiscord :stroke-width="1" :size="18" />
+                </a>
+                <a
+                  class="me-2"
+                  v-if="data?.website_info?.reddit"
+                  :href="data.website_info.reddit"
                   target="_blank"
                 >
                   <IconBrandReddit :stroke-width="1" :size="18" />
                 </a>
                 <a
                   class="me-2"
-                  v-if="data?.links?.github"
-                  :href="data.links.github"
+                  v-if="data?.website_info?.github"
+                  :href="data.website_info.github"
                   target="_blank"
                 >
                   <IconBrandGithub :stroke-width="1" :size="18" />
                 </a>
                 <a
                   class="me-2"
-                  v-if="data?.links?.telegram"
-                  :href="data.links.telegram"
+                  v-if="data?.website_info?.telegram"
+                  :href="data.website_info.telegram"
                   target="_blank"
                 >
                   <IconBrandTelegram :stroke-width="1" :size="18" />
@@ -103,7 +122,10 @@
 <script lang="ts" setup>
 import {
   IconAppWindow,
+  IconMail,
   IconBrandX,
+  IconBrandDiscord,
+  IconBrandFacebook,
   IconBrandLinkedin,
   IconBrandReddit,
   IconBrandTelegram,
