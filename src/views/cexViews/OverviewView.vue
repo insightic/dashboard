@@ -28,9 +28,11 @@
         </CardComponent>
       </div>
       <div class="col-md-6 my-2">
-        <CardComponent class="h-100" subheader="margin trading">
-          <div>{{ data?.margin_trading?.availability }}</div>
-          <div>{{ data?.margin_trading?.leverage }}</div>
+        <CardComponent
+          class="h-100"
+          :subheader="`Is It Possible To Use Leverage or Margin Trading on ${data.name}?`"
+        >
+          <div>{{ data?.margin_trading?.details }}</div>
         </CardComponent>
       </div>
       <div class="col-md-6 my-2">
