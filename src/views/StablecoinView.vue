@@ -11,7 +11,7 @@
       <SmartContractValidationView :data="data" v-if="viewIdx == 3" />
       <FinancialAnalysisView :data="data" v-if="viewIdx == 4" />
       <SecurityComplianceView :data="data" v-if="viewIdx == 5" />
-      <StablecoinView :data="data" v-if="viewIdx == 6" />
+      <OnChainStatisticView :data="data" v-if="viewIdx == 6" />
     </div>
 
     <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
@@ -33,7 +33,7 @@ import TeamSocialMediaView from './stablecoinViews/TeamSocialMediaView.vue'
 import SmartContractValidationView from './stablecoinViews/SmartContractValidationView.vue'
 import FinancialAnalysisView from './stablecoinViews/FinancialAnalysisView.vue'
 import SecurityComplianceView from './stablecoinViews/SecurityComplianceView.vue'
-import StablecoinView from './stablecoinViews/StablecoinView.vue'
+import OnChainStatisticView from './stablecoinViews/OnChainStatisticView.vue'
 
 const loading = ref(true)
 const route = useRoute()
@@ -46,7 +46,7 @@ const views = ref([
   { name: 'Smart Contract Validation', icon: 'bi-check2-square' },
   { name: 'Financial Analysis', icon: 'bi-currency-dollar' },
   { name: 'Security and Compliance', icon: 'bi-lock' },
-  { name: 'Stablecoin', icon: 'bi-coin' }
+  { name: 'On-chain Statistic', icon: 'bi-coin' }
 ])
 const viewIdx = ref(0)
 function changeView(idx: number) {
