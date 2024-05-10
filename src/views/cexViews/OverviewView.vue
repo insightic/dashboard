@@ -13,7 +13,7 @@
         </CardComponent>
       </div>
       <div class="col-md-6 my-2">
-        <CardComponent class="h-100" :subheader="`${data.name} restricted countries`">
+        <CardComponent class="h-100" :subheader="`${data?.name} restricted countries`">
           <div v-html="render(data?.restricted_countries)"></div>
         </CardComponent>
       </div>
@@ -30,7 +30,7 @@
       <div class="col-md-6 my-2">
         <CardComponent
           class="h-100"
-          :subheader="`Is It Possible To Use Leverage or Margin Trading on ${data.name}?`"
+          :subheader="`Is It Possible To Use Leverage or Margin Trading on ${data?.name}?`"
         >
           <div>{{ data?.margin_trading?.details }}</div>
         </CardComponent>
