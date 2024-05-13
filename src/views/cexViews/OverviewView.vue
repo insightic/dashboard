@@ -41,6 +41,13 @@
           <div>{{ data?.most_active_trading_pair?.volume_24h }}</div>
         </CardComponent>
       </div>
+      <div class="col-md-6 my-2">
+        <CardComponent class="h-100" subheader="fees">
+          <div>
+            <a :href="data?.fees?.url" target="_blank">{{ data?.fees?.url }}</a>
+          </div>
+        </CardComponent>
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +56,9 @@
 import CardComponent from '@/components/CardComponent.vue'
 import { render } from '@/helpers'
 
-defineProps({
+const props = defineProps({
   data: Object
 })
+
+console.log(props.data)
 </script>
