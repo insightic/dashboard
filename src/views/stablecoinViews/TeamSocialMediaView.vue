@@ -43,6 +43,16 @@
     <div class="h1 m-0">Twitter</div>
     <div class="row">
       <div class="col-md-12 my-2">
+        <CardComponent subheader="Overall Prompt Summary">
+          {{ data?.twitter?.overall_prompt_summary }}
+        </CardComponent>
+      </div>
+      <div class="col-md-6 my-2" v-for="(prompt, idx) in data?.twitter?.prompts_output" :key="idx">
+        <CardComponent :subheader="prompt.category" class="h-100">
+          {{ prompt.Output }}
+        </CardComponent>
+      </div>
+      <div class="col-md-12 my-2">
         <CardTable>
           <thead>
             <tr>
@@ -115,9 +125,11 @@ import PeopleComponent from '@/components/PeopleComponent.vue'
 import CardComponent from '@/components/CardComponent.vue'
 import CardTable from '@/components/CardTable.vue'
 
-defineProps({
+const props = defineProps({
   data: Object
 })
+
+console.log(props.data)
 
 function formatSentimentAnalysis(value: string) {
   if (value === 'positive') {
