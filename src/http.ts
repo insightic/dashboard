@@ -96,6 +96,9 @@ class DataSource {
     if (features['por']) {
       data.por = await this.getProjectPOR(type, id)
     }
+    if (features['transactionMonitoring']) {
+      data.transactionMonitoring = await this.getProjectTransactionMonitoring(type, id)
+    }
 
     return data
   }
@@ -227,6 +230,17 @@ class DataSource {
         return resp.data[resp.data.length - 1]
       }
       return null
+    } catch (e) {
+      return null
+    }
+  }
+
+  async getProjectTransactionMonitoring(type: string, id: string) {
+    try {
+      const resp = await raw.get(`${type}/${id}/results/transaction_monitoring_results.json`)
+      return resp.data.sort((a: any, b: any) => {
+        return new Date(b.created_date).getTime() - new Date(a.created_date).getTime()
+      })
     } catch (e) {
       return null
     }

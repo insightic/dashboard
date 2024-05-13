@@ -56,7 +56,8 @@ onMounted(async () => {
       assetFlow: true,
       coinMarketCap: true,
       securityScore: true,
-      por: true
+      por: true,
+      transactionMonitoring: true
     }
   )
   data.value = project
