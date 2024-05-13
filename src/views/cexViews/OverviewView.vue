@@ -48,6 +48,28 @@
           </div>
         </CardComponent>
       </div>
+      <div class="col-md-6 my-2">
+        <CardComponent class="h-100" subheader="cybersecurity tests">
+          <div class="small text-secondary mb-2">
+            Last Update: {{ data?.cybersecurity_details?.last_updated }}
+          </div>
+
+          <table>
+            <tr>
+              <td class="small text-secondary">Penetration Test: &nbsp;</td>
+              <td>{{ data?.cybersecurity_details?.penetration_test }}</td>
+            </tr>
+            <tr>
+              <td class="small text-secondary">Proof of Funds:</td>
+              <td>{{ data?.cybersecurity_details?.proof_of_funds }}</td>
+            </tr>
+            <tr>
+              <td class="small text-secondary">Bug Bounty:</td>
+              <td>{{ data?.cybersecurity_details?.bug_bounty }}</td>
+            </tr>
+          </table>
+        </CardComponent>
+      </div>
     </div>
   </div>
 </template>
@@ -56,9 +78,7 @@
 import CardComponent from '@/components/CardComponent.vue'
 import { render } from '@/helpers'
 
-const props = defineProps({
+defineProps({
   data: Object
 })
-
-console.log(props.data)
 </script>
