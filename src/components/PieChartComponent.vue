@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import type { PropType } from 'vue'
-import { formatDate } from '../helpers'
+import { formatDate, formatNumber } from '../helpers'
 
 export default {
   props: {
@@ -32,6 +32,13 @@ export default {
         labels: this.labels,
         tooltip: {
           theme: 'dark'
+        },
+        yaxis: {
+          labels: {
+            formatter: function (v: number) {
+              return formatNumber(v)
+            }
+          }
         },
         legend: {
           show: false
