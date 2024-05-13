@@ -57,6 +57,7 @@ onMounted(async () => {
       coinMarketCap: true,
       securityScore: true,
       por: true,
+      webReview: true,
       transactionMonitoring: true
     }
   )

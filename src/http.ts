@@ -96,6 +96,9 @@ class DataSource {
     if (features['por']) {
       data.por = await this.getProjectPOR(type, id)
     }
+    if (features['webReview']) {
+      data.webReview = await this.getProjectWebReview(type, id)
+    }
     if (features['transactionMonitoring']) {
       data.transactionMonitoring = await this.getProjectTransactionMonitoring(type, id)
     }
@@ -230,6 +233,17 @@ class DataSource {
         return resp.data[resp.data.length - 1]
       }
       return null
+    } catch (e) {
+      return null
+    }
+  }
+
+  async getProjectWebReview(type: string, id: string) {
+    try {
+      const resp = await raw.get(`${type}/${id}/results/web_review_results.json`)
+      if (resp.data.length > 0) {
+        return resp.data[resp.data.length - 1]
+      }
     } catch (e) {
       return null
     }
