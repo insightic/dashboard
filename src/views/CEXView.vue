@@ -6,9 +6,10 @@
     <div v-if="!loading">
       <HeaderView :data="data" />
       <OverviewView v-if="viewIdx == 0" :data="data" />
-      <TeamSocialMediaView v-if="viewIdx == 2" :data="data" />
-      <AssetFlowView v-if="viewIdx == 2" :data="data" />
-      <PORView v-if="viewIdx == 3" :data="data" />
+      <TeamSocialMediaView v-if="viewIdx == 1" :data="data" />
+      <TransactionMonitoringView v-if="viewIdx == 2" :data="data" />
+      <AssetFlowView v-if="viewIdx == 3" :data="data" />
+      <PORView v-if="viewIdx == 4" :data="data" />
     </div>
     <div v-if="loading" class="p-3 mx-auto" style="max-width: 960px">
       <div class="loading mx-auto mt-5"></div>
@@ -24,6 +25,7 @@ import SubNavBar from '@/components/SubNavBar.vue'
 import HeaderView from './cexViews/HeaderView.vue'
 import OverviewView from './cexViews/OverviewView.vue'
 import TeamSocialMediaView from './cexViews/TeamSocialMediaView.vue'
+import TransactionMonitoringView from './cexViews/TransactionMonitoringView.vue'
 import AssetFlowView from './cexViews/AssetFlowView.vue'
 import PORView from './cexViews/PORView.vue'
 import { useRoute } from 'vue-router'
@@ -35,6 +37,7 @@ const loading = ref(true)
 const views = ref([
   { name: 'Overview', icon: 'bi-house-door' },
   { name: 'Team & Social Media', icon: 'bi-people' },
+  { name: 'Transaction Monitoring', icon: 'bi-cash' },
   { name: 'Asset Flow', icon: 'bi-activity' },
   { name: 'Proof of Reserve', icon: 'bi-check2-square' }
 ])
