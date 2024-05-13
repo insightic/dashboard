@@ -1,12 +1,18 @@
 <template>
+  <div class="h1 m-0">Summary</div>
   <div class="row">
+    <div class="col-md-12 my-2">
+      <CardComponent>
+        {{ data.webReview.overall_prompt_summary }}
+      </CardComponent>
+    </div>
     <div class="col-md-6 my-2" v-for="(prompt, idx) in data.webReview.prompts_output" :key="idx">
       <CardComponent :subheader="prompt.category" class="h-100">
         {{ prompt.Output }}
       </CardComponent>
     </div>
   </div>
-  <div class="h2">Reviews</div>
+  <div class="h1 m-0">Reviews</div>
   <div class="row">
     <div class="col-md-6 my-2" v-for="(review, idx) in data.webReview.list_of_reviews" :key="idx">
       <CardComponent :subheader="review.review_title" class="h-100">
