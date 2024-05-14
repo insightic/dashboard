@@ -19,12 +19,28 @@
       </div>
       <div class="col-md-6 my-2">
         <CardComponent class="h-100" subheader="trading information">
-          <div>{{ data?.trading_information?.active_pairs }}</div>
-          <div>{{ data?.trading_information?.btc_24h }}</div>
-          <div>{{ data?.trading_information?.coins }}</div>
-          <div>{{ data?.trading_information?.exchange_reserves }}</div>
-          <div>{{ data?.trading_information?.total_assets }}</div>
-          <div>{{ data?.trading_information?.volume_24h }}</div>
+          <table>
+            <tr>
+              <td class="small secondary">Coins:</td>
+              <td>{{ data?.trading_information?.coins }}</td>
+            </tr>
+            <tr>
+              <td class="small secondary">Total Assets:</td>
+              <td>{{ data?.trading_information?.total_assets }}</td>
+            </tr>
+            <tr>
+              <td class="small secondary">Exchange Reserves:&nbsp;&nbsp;</td>
+              <td>{{ data?.trading_information?.exchange_reserves }}</td>
+            </tr>
+            <tr>
+              <td class="small secondary">BTC 24h:</td>
+              <td>{{ data?.trading_information?.btc_24h }}</td>
+            </tr>
+            <tr>
+              <td class="small secondary">Volume 24h:</td>
+              <td>{{ data?.trading_information?.volume_24h }}</td>
+            </tr>
+          </table>
         </CardComponent>
       </div>
       <div class="col-md-6 my-2">
@@ -78,7 +94,9 @@
 import CardComponent from '@/components/CardComponent.vue'
 import { render } from '@/helpers'
 
-defineProps({
+const props = defineProps({
   data: Object
 })
+
+console.log(props.data)
 </script>
