@@ -45,6 +45,22 @@
       <div class="col-md-12 my-2">
         <ChartComponent
           type="bar"
+          title="Top 1000 Holder Risk Score Distribution"
+          title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
+          :labels="
+            Object.keys(data?.zanRiskScore[data?.zanRiskScore.length - 1].top_1k_holder_score_dist_bin10)
+          "
+          :data="[
+            {
+              name: 'Top 1000 Holder Risk Score Bins',
+              data: Object.values(data?.zanRiskScore[data?.zanRiskScore.length - 1].top_1k_holder_score_dist_bin10)
+            }
+          ]"
+        />
+      </div>
+      <div class="col-md-12 my-2">
+        <ChartComponent
+          type="bar"
           title="Average Transaction Risk Score"
           title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
           :labels="
