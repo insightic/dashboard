@@ -7,11 +7,17 @@
           type="bar"
           title="AVG Top 100 Holder Risk Score"
           title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
-          :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
+          :labels="
+            data?.zanRiskScore
+              ?.filter((d: any) => d?.chain_name == chains[0])
+              .map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)
+          "
           :data="[
             {
               name: 'Top 100 Holder Risk Score',
-              data: data?.zanRiskScore?.map((d: any) => Number(d['avg_top_100_holder_risk_score']))
+              data: data?.zanRiskScore
+                ?.filter((d: any) => d?.chain_name == chains[0])
+                .map((d: any) => Number(d['avg_top_100_holder_risk_score']))
             }
           ]"
         />
@@ -21,11 +27,17 @@
           type="bar"
           title="AVG Top 1000 Holder Risk Score"
           title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
-          :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
+          :labels="
+            data?.zanRiskScore
+              ?.filter((d: any) => d?.chain_name == chains[0])
+              .map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)
+          "
           :data="[
             {
               name: 'Top 1000 Holder Risk Score',
-              data: data?.zanRiskScore?.map((d: any) => Number(d['avg_top_1000_holder_risk_score']))
+              data: data?.zanRiskScore
+                ?.filter((d: any) => d?.chain_name == chains[0])
+                .map((d: any) => Number(d['avg_top_1000_holder_risk_score']))
             }
           ]"
         />
@@ -35,11 +47,17 @@
           type="bar"
           title="Average Transaction Risk Score"
           title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
-          :labels="data?.zanRiskScore?.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
+          :labels="
+            data?.zanRiskScore
+              ?.filter((d: any) => d?.chain_name == chains[0])
+              .map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)
+          "
           :data="[
             {
               name: 'Average Transaction Risk Score',
-              data: data?.zanRiskScore?.map((d: any) => Number(d['avg_tx_risk_score']))
+              data: data?.zanRiskScore
+                ?.filter((d: any) => d?.chain_name == chains[0])
+                .map((d: any) => Number(d['avg_tx_risk_score']))
             }
           ]"
         />
@@ -50,9 +68,17 @@
 
 <script lang="ts" setup>
 import ChartComponent from '@/components/ChartComponent.vue'
+import { computed } from 'vue'
 import { formatDate } from '@/helpers'
 
-defineProps({
+const props = defineProps({
   data: Object
+})
+
+const chains = computed(() => {
+  function onlyUnique(value: any, index: any, array: any) {
+    return array.indexOf(value) === index
+  }
+  return props.data?.zanRiskScore?.map((d: any) => d.chain_name).filter(onlyUnique)
 })
 </script>
