@@ -78,7 +78,7 @@
   </div>
 
   <div class="mb-3" v-if="data?.sosoValueNews">
-    <div class="h1 m-0">Soso Value News</div>
+    <div class="h1 m-0">News</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent>
