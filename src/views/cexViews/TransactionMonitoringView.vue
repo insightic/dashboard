@@ -1,12 +1,14 @@
 <template>
   <CardComponent>
-    <div class="row" v-for="(day, idx) in transactions" :key="idx">
+    <div class="row">
       <div class="col-md-3">
-        <h2>{{ formatDate(day.created_date) }}</h2>
+        <el-select v-model="day" placeholder="Select" style="width: 240px">
+          <el-option v-for="item in days" :key="item" :label="item" :value="item" />
+        </el-select>
       </div>
       <div class="col-md-9">
         <el-timeline style="max-width: 600px">
-          <el-timeline-item v-for="(transaction, index) in day.results" :key="index">
+          <el-timeline-item v-for="(transaction, index) in dayTransactions.results" :key="index">
             <div class="h3 mb-0">{{ transaction.title }}</div>
             <div class="mb-2">
               {{ formatDate(day.created_date) }} {{ transaction.time_recorded }}
@@ -46,7 +48,7 @@
 
 <script lang="ts" setup>
 import CardComponent from '@/components/CardComponent.vue'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { formatDate } from '@/helpers'
 
 const props = defineProps(['data'])
@@ -55,5 +57,11 @@ const transactions = computed(() =>
     0,
     props.data.transactionMonitoring.length > 5 ? 5 : props.data.transactionMonitoring.length
   )
+)
+
+const days = computed(() => transactions.value.map((t: any) => t.created_date))
+const day = ref(days.value[0])
+const dayTransactions = computed(
+  () => transactions.value.filter((t: any) => t.created_date === day.value)[0]
 )
 </script>
