@@ -1,60 +1,60 @@
-import{c as Hi,d as $r,o as wt,a as Wt,b as le,F as xr,r as Gr,n as bo,t as Yt,e as Pn,f as rg,g as Gt,w as Xn,u as On,h as ig,i as ni,j as Gi,k as Li,l as Ii,m as Lr,p as Mo,q as oo,s as $i,v as og,x as Gs,C as Ro,_ as $s,y as Hs,z as Ks,A as zf,B as Gf,D as $f,E as Hf,G as kf,H as ag}from"./index-DzZ60Uy_.js";/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+import{c as Hi,d as $r,o as wt,a as Wt,b as le,F as xr,r as Gr,n as bo,t as Yt,e as Pn,f as rg,g as Gt,w as Xn,u as On,h as ig,i as ni,j as Gi,k as Li,l as Ii,m as Lr,p as Mo,q as oo,s as $i,v as og,x as Gs,C as Ro,_ as $s,y as Hs,z as Ks,A as zf,B as Gf,D as $f,E as Hf,G as kf,H as ag}from"./index-IiYyqijP.js";/**
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var Kf=Hi("outline","app-window","IconAppWindow",[["path",{d:"M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z",key:"svg-0"}],["path",{d:"M6 8h.01",key:"svg-1"}],["path",{d:"M9 8h.01",key:"svg-2"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var sg=Hi("outline","brand-discord","IconBrandDiscord",[["path",{d:"M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0",key:"svg-0"}],["path",{d:"M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0",key:"svg-1"}],["path",{d:"M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3",key:"svg-2"}],["path",{d:"M7 16.5c3.5 1 6.5 1 10 0",key:"svg-3"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var ug=Hi("outline","brand-facebook","IconBrandFacebook",[["path",{d:"M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3",key:"svg-0"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var Yf=Hi("outline","brand-github","IconBrandGithub",[["path",{d:"M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5",key:"svg-0"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var Ys=Hi("outline","brand-linkedin","IconBrandLinkedin",[["path",{d:"M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z",key:"svg-0"}],["path",{d:"M8 11l0 5",key:"svg-1"}],["path",{d:"M8 8l0 .01",key:"svg-2"}],["path",{d:"M12 16l0 -5",key:"svg-3"}],["path",{d:"M16 16v-3a2 2 0 0 0 -4 0",key:"svg-4"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var Xf=Hi("outline","brand-reddit","IconBrandReddit",[["path",{d:"M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z",key:"svg-0"}],["path",{d:"M12 8l1 -5l6 1",key:"svg-1"}],["path",{d:"M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0",key:"svg-2"}],["circle",{cx:"9",cy:"13",r:".5",fill:"currentColor",key:"svg-3"}],["circle",{cx:"15",cy:"13",r:".5",fill:"currentColor",key:"svg-4"}],["path",{d:"M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5",key:"svg-5"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var Vf=Hi("outline","brand-telegram","IconBrandTelegram",[["path",{d:"M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4",key:"svg-0"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var Xs=Hi("outline","brand-x","IconBrandX",[["path",{d:"M4 4l11.733 16h4.267l-11.733 -16z",key:"svg-0"}],["path",{d:"M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772",key:"svg-1"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var jf=Hi("outline","info-circle","IconInfoCircle",[["path",{d:"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0",key:"svg-0"}],["path",{d:"M12 9h.01",key:"svg-1"}],["path",{d:"M11 12h1v4h1",key:"svg-2"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var fg=Hi("outline","mail","IconMail",[["path",{d:"M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z",key:"svg-0"}],["path",{d:"M3 7l9 6l9 -6",key:"svg-1"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
  */var Ff=Hi("outline","trending-down","IconTrendingDown",[["path",{d:"M3 7l6 6l4 -4l8 8",key:"svg-0"}],["path",{d:"M21 10l0 7l-7 0",key:"svg-1"}]]);/**
- * @license @tabler/icons-vue v3.2.0 - MIT
+ * @license @tabler/icons-vue v3.5.0 - MIT
  *
  * This source code is licensed under the MIT license.
  * See the LICENSE file in the root directory of this source tree.
