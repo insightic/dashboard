@@ -51,7 +51,7 @@
               name: 'Top 1000 Holder Risk Score Bins',
               data: Object.values(
                 activeChainData[activeChainData.length - 1].top_1k_holder_score_dist_bin10
-              ).map((t) => t.toFixed(0))
+              ).map((t: any) => t.toFixed(0))
             }
           ]"
         />
