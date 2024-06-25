@@ -10,7 +10,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6 my-2">
+      <div class="col-md-6 my-2" v-if="activeChainData">
         <ChartComponent
           type="bar"
           title="AVG Top 100 Holder Risk Score"
@@ -24,7 +24,7 @@
           ]"
         />
       </div>
-      <div class="col-md-6 my-2">
+      <div class="col-md-6 my-2" v-if="activeChainData">
         <ChartComponent
           type="bar"
           title="AVG Top 1000 Holder Risk Score"
@@ -38,7 +38,7 @@
           ]"
         />
       </div>
-      <div class="col-md-12 my-2">
+      <div class="col-md-12 my-2" v-if="activeChainData">
         <ChartComponent
           type="bar"
           title="Top 1000 Holder Risk Score Distribution"
@@ -56,7 +56,7 @@
           ]"
         />
       </div>
-      <div class="col-md-12 my-2">
+      <div class="col-md-12 my-2" v-if="activeChainData">
         <ChartComponent
           type="bar"
           title="Average Transaction Risk Score"
@@ -90,7 +90,7 @@ const chains = computed(() => {
   return props.data?.zanRiskScore?.map((d: any) => d.chain_name).filter(onlyUnique)
 })
 
-const activeChain = ref(chains.value[0])
+const activeChain = ref(chains.value && chains.value.length > 0 ? chains.value[0] : null)
 const activeChainData = computed(() => {
   return props.data?.zanRiskScore?.filter((d: any) => d.chain_name == activeChain.value)
 })
