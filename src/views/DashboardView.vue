@@ -6,72 +6,34 @@
       <div class="h1">Stablecoins</div>
       <div class="row">
         <div class="col-md-12">
-          <CardTable>
-            <thead>
-              <tr>
-                <th style="width: 25%">Logo</th>
-                <th
-                  style="width: 35%; cursor: pointer"
-                  @click="(nameInc = !nameInc), (activeSorts = 'name')"
+          <el-table :data="stablecoins" style="width: 100%">
+            <el-table-column label="Logo" min-width="100">
+              <template #default="scope">
+                <div
+                  class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
+                  style="width: 48px; height: 48px; background-color: white"
                 >
-                  Name
-
-                  <span v-if="activeSorts == 'name'">
-                    <IconSortAscendingLetters :size="16" v-if="nameInc" />
-                    <IconSortDescendingLetters :size="16" v-if="!nameInc" />
-                  </span>
-                </th>
-                <th
-                  style="width: 25%; cursor: pointer"
-                  @click="(marketcapInc = !marketcapInc), (activeSorts = 'marketcap')"
-                >
-                  MarketCap
-
-                  <span v-if="activeSorts == 'marketcap'">
-                    <IconSortAscendingNumbers :size="16" v-if="marketcapInc" />
-                    <IconSortDescendingNumbers :size="16" v-if="!marketcapInc" />
-                  </span>
-                </th>
-                <th
-                  style="width: 15%; cursor: pointer"
-                  @click="(ratingInc = !ratingInc), (activeSorts = 'rating')"
-                >
-                  Rating
-
-                  <span v-if="activeSorts == 'rating'">
-                    <IconSortAscendingLetters :size="16" v-if="ratingInc" />
-                    <IconSortDescendingLetters :size="16" v-if="!ratingInc" />
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="(project, idx) in stablecoins"
-                :key="idx"
-                @click="goto('stablecoin', project?.id)"
-              >
-                <td>
-                  <div
-                    class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
-                    style="width: 48px; height: 48px; background-color: white"
-                  >
-                    <img :src="project?.logoUrl" />
-                  </div>
-                </td>
-                <td style="text-transform: uppercase">{{ project?.name }}</td>
-                <td style="text-align: left">
-                  {{ toFixed(project?.sosovalue?.market_cap_value) }}
-                </td>
-                <td
+                  <img :src="scope?.row?.logoUrl" />
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="name" label="Name" min-width="200" />
+            <el-table-column label="MarketCap" min-width="200">
+              <template #default="scope">
+                <div>{{ toFixed(scope?.row?.sosovalue?.market_cap_value) }}</div>
+              </template>
+            </el-table-column>
+            <el-table-column label="Rating" min-width="200">
+              <template #default="scope">
+                <div
                   style="text-transform: uppercase; font-weight: bold"
-                  :class="ratingColor(project?.rating)"
+                  :class="ratingColor(scope?.row?.rating)"
                 >
-                  {{ project?.rating }}
-                </td>
-              </tr>
-            </tbody>
-          </CardTable>
+                  {{ scope?.row?.rating }}
+                </div>
+              </template>
+            </el-table-column>
+          </el-table>
         </div>
       </div>
     </div>
@@ -80,49 +42,24 @@
       <div class="h1">Centralized Exchange</div>
       <div class="row">
         <div class="col-md-12">
-          <CardTable>
-            <thead>
-              <tr>
-                <th style="width: 25%">Logo</th>
-                <th
-                  style="width: 45%; cursor: pointer"
-                  @click="(nameInc = !nameInc), (activeSorts = 'name')"
+          <el-table :data="cexes" style="width: 100%">
+            <el-table-column label="Logo" min-width="100">
+              <template #default="scope">
+                <div
+                  class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
+                  style="width: 48px; height: 48px; background-color: white"
                 >
-                  Name
-
-                  <span v-if="activeSorts == 'name'">
-                    <IconSortAscendingLetters :size="16" v-if="nameInc" />
-                    <IconSortDescendingLetters :size="16" v-if="!nameInc" />
-                  </span>
-                </th>
-                <th
-                  style="width: 30%; cursor: pointer"
-                  @click="(trustScoreInc = !trustScoreInc), (activeSorts = 'trustScore')"
-                >
-                  Trust Score
-
-                  <span v-if="activeSorts == 'trustScore'">
-                    <IconSortAscendingNumbers :size="16" v-if="trustScoreInc" />
-                    <IconSortDescendingNumbers :size="16" v-if="!trustScoreInc" />
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(project, idx) in cexes" :key="idx" @click="goto('cex', project?.id)">
-                <td>
-                  <div
-                    class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
-                    style="width: 48px; height: 48px; background-color: white"
-                  >
-                    <img :src="project?.logoUrl" />
-                  </div>
-                </td>
-                <td style="text-transform: uppercase">{{ project?.name }}</td>
-                <td>{{ project?.securityScore?.combined_security_score }}</td>
-              </tr>
-            </tbody>
-          </CardTable>
+                  <img :src="scope?.row?.logoUrl" />
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="name" label="Name" min-width="200"/>
+            <el-table-column label="Trust Score" min-width="200">
+              <template #default="scope">
+                <div>{{ scope?.row?.securityScore?.combined_security_score }}</div>
+              </template>
+            </el-table-column>
+          </el-table>
         </div>
       </div>
     </div>
@@ -145,7 +82,6 @@ import { ref, onMounted, computed, type ComputedRef } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
 import NavBar from '@/components/NavBar.vue'
-import CardTable from '@/components/CardTable.vue'
 import { useProjectsStore } from '@/stores/projects'
 import { ratingColor, formatNumber } from '@/helpers'
 import {
