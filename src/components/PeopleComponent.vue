@@ -1,24 +1,38 @@
 <template>
-  <div class="card">
-    <div class="card-body p-4 text-center">
-      <span
-        class="avatar avatar-xl mb-3 rounded"
-        :style="`background-image: url(${avatar})`"
-      ></span>
-      <h3 class="m-0 mb-1">{{ name }}</h3>
+  <el-card>
+    <div class="p-2 text-center d-flex flex-column">
+      <div
+        class="avatar avatar-xl mb-3 rounded mx-auto"
+        :style="{
+          backgroundImage: `url(${avatar})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          width: '64px',
+          height: '64px'
+        }"
+      ></div>
+      <h4 class="m-0 mb-1">{{ name }}</h4>
       <div class="text-secondary">{{ title }}</div>
+      <div class="d-flex justify-content-center">
+        <a :href="twitter" class="card-btn" target="_blank" v-if="twitter">
+          <IconBrandX
+            class="me-2"
+            :style="{ color: `var(--el-color-primary)` }"
+            :stroke-width="1"
+            :size="18"
+          />
+        </a>
+        <a :href="linkedin" class="card-btn" target="_blank" v-if="linkedin">
+          <IconBrandLinkedin
+            class="me-2"
+            :style="{ color: `var(--el-color-primary)` }"
+            :stroke-width="1"
+            :size="18"
+          />
+        </a>
+      </div>
     </div>
-    <div class="d-flex">
-      <a :href="twitter" class="card-btn" target="_blank" v-if="twitter">
-        <IconBrandX class="text-secondary me-2" :stroke-width="1" :size="18" />
-        Twitter
-      </a>
-      <a :href="linkedin" class="card-btn" target="_blank" v-if="linkedin">
-        <IconBrandLinkedin class="text-secondary me-2" :stroke-width="1" :size="18" />
-        LinkedIn
-      </a>
-    </div>
-  </div>
+  </el-card>
 </template>
 
 <script lang="ts" setup>

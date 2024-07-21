@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3" v-if="notEmpty(data?.team)">
-    <div class="h1 m-0">Team</div>
+    <div class="h2 mb-2">Team</div>
     <div class="row">
       <div class="col-sm-6 col-md-4 my-2" v-for="(people, idx) in data?.team" :key="idx">
         <PeopleComponent
@@ -16,7 +16,7 @@
   </div>
 
   <div class="mb-3" v-if="notEmpty(data?.social_media?.twitter)">
-    <div class="h1 m-0">Social Media</div>
+    <div class="h2 mb-0">Social Media</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardTable>
@@ -40,7 +40,7 @@
   </div>
 
   <div class="mb-3" v-if="data?.twitter">
-    <div class="h1 m-0">Twitter</div>
+    <div class="h2 mb-2">Twitter</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent subheader="Overall Prompt Summary">
@@ -78,7 +78,7 @@
   </div>
 
   <div class="mb-3" v-if="data?.sosoValueNews">
-    <div class="h1 m-0">News</div>
+    <div class="h2 mb-2">News</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent>

@@ -11,7 +11,7 @@
   </div>
 
   <div v-for="(info, idx) in data?.details" :key="idx" class="mb-3">
-    <div class="h2 m-0">{{ info.title }}</div>
+    <div class="h2 mb-2">{{ info.title }}</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent class="h-100">
