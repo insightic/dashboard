@@ -1,21 +1,12 @@
+@use 'bootstrap/dist/css/bootstrap.min.css';
 @use 'bootstrap-icons/font/bootstrap-icons.css';
-@use '@tabler/core/dist/css/tabler.min.css';
-@use 'element-plus/dist/index.css';
-
 @use './loading.scss';
 
 body {
-  line-height: 1.6;
+  color: unset;
+  background-color: unset;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-p {
-  margin-bottom: 0px;
-}
 
-ul {
-  margin-bottom: 0px;
-}
 
-ol {
-  margin-bottom: 0px;
-}
