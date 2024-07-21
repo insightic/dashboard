@@ -20,6 +20,19 @@ export function toTitleCase(str: string) {
   })
 }
 
+export function formatTime(hourIdx: number | string) {
+  hourIdx = +hourIdx
+  if (hourIdx < 0) {
+    hourIdx = 0
+  }
+  if (hourIdx > 23) {
+    hourIdx = 23
+  }
+
+  const now = new Date()
+  return moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), hourIdx, 0, 0))
+}
+
 export function ratingColor(rating: string): string {
   if (!rating) return ''
   rating = rating.replaceAll('-', '').replaceAll('+', '').toLowerCase()

@@ -1,14 +1,13 @@
 <template>
   <div class="mb-3">
-    <div class="h1 m-0">Transcations</div>
+    <div class="h1 m-0">Transactions</div>
     <div class="row">
       <div class="col-md-6 my-2">
-        <ChartComponent
-          type="bar"
+        <TimeSeriesComponent
           title="Daily Frequency"
           :labels="
             data?.stablecoin?.transaction?.daily_frequency?.data.map(
-              (d: any) => `${formatDate(d[0], 'MM/DD')}`
+              (d: any) => `${formatDate(d[0], 'YYYY-MM-DD')}`
             )
           "
           :data="[
@@ -22,11 +21,12 @@
         />
       </div>
       <div class="col-md-6 my-2">
-        <ChartComponent
-          type="bar"
+        <TimeSeriesComponent
           title="Hourly Frequency"
           :labels="
-            data?.stablecoin?.transaction?.hourly_frequency.data.map((d: any) => `${d[0]}:00`)
+            data?.stablecoin?.transaction?.hourly_frequency.data.map((t: any) =>
+              formatTime(t[0]).unix()
+            )
           "
           :data="[
             {
@@ -169,11 +169,14 @@
 </template>
 
 <script lang="ts" setup>
+import TimeSeriesComponent from '@/components/TimeSeriesComponent.vue'
 import ChartComponent from '@/components/ChartComponent.vue'
 import PieChartComponent from '@/components/PieChartComponent.vue'
-import { formatDate } from '@/helpers'
+import { formatDate, formatTime } from '@/helpers'
 
-defineProps({
+const props = defineProps({
   data: Object
 })
+
+console.log(props?.data?.stablecoin?.transaction)
 </script>
