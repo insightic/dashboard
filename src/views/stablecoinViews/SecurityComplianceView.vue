@@ -1,10 +1,12 @@
 <template>
   <div class="mb-3" v-if="data?.securityAssessment">
-    <div class="h1 m-0">Security Assessment</div>
+    <div class="h2 mb-2">Security Assessment</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent>
-          <h3>{{ data?.securityAssessment?.report_name }}</h3>
+          <h5 :style="{ color: `var(--el-color-primary)` }">
+            {{ data?.securityAssessment?.report_name }}
+          </h5>
           <div>{{ data?.securityAssessment?.report_summary }}</div>
         </CardComponent>
       </div>
@@ -49,26 +51,21 @@
   </div>
 
   <div v-for="(info, idx) in data?.security_and_compliance" :key="idx" class="mb-3">
-    <div class="h1 m-0">{{ info.title }}</div>
+    <div class="h2 mb-2">{{ info.title }}</div>
     <div class="row">
       <div class="col-md-12 my-2">
-        <CardTable class="w-100 h-100">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, idx) in info.value" :key="idx">
-              <td
-                v-html="render(item.title)"
-                style="width: 30%; min-width: 120px; max-width: 300px; vertical-align: top"
-              ></td>
-              <td v-html="render(item.value)" style="vertical-align: top"></td>
-            </tr>
-          </tbody>
-        </CardTable>
+        <el-table class="cursor-font" :border="true" :data="info.value">
+          <el-table-column label="Title">
+            <template #default="scope">
+              <div v-html="render(scope.row.title)"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="Value" min-width="250">
+            <template #default="scope">
+              <div v-html="render(scope.row.value)"></div>
+            </template>
+          </el-table-column>
+        </el-table>
       </div>
     </div>
   </div>
