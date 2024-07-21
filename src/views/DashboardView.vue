@@ -3,17 +3,23 @@
 
   <div class="container py-2" style="margin-top: 56px">
     <div v-if="!loading && type === 'stablecoins'" class="mt-2">
-      <div class="h1">Stablecoins</div>
-      <div class="row">
+      <div class="h1 my-4">Stablecoins</div>
+      <div class="row mb-5">
         <div class="col-md-12">
-          <el-table :data="stablecoins" style="width: 100%">
-            <el-table-column label="Logo" min-width="100">
+          <el-table
+            :row-style="{ cursor: 'pointer' }"
+            :data="stablecoins"
+            :border="true"
+            style="width: 100%"
+            @row-click="(row: any) => goto('stablecoin', row?.id)"
+          >
+            <el-table-column label="Logo" class="cursor-font" min-width="100">
               <template #default="scope">
                 <div
                   class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
-                  style="width: 48px; height: 48px; background-color: white"
+                  style="width: 32px; height: 32px; background-color: white"
                 >
-                  <img :src="scope?.row?.logoUrl" />
+                  <img :src="scope?.row?.logoUrl" style="width: 100%; height: 100%" alt="" />
                 </div>
               </template>
             </el-table-column>
@@ -49,17 +55,23 @@
     </div>
 
     <div v-if="!loading && type === 'cex'" class="mt-2">
-      <div class="h1">Centralized Exchange</div>
-      <div class="row">
+      <div class="h1 my-4">Centralized Exchange</div>
+      <div class="row mb-5">
         <div class="col-md-12">
-          <el-table :data="cexes" style="width: 100%">
+          <el-table
+            :row-style="{ cursor: 'pointer' }"
+            :data="cexes"
+            :border="true"
+            style="width: 100%"
+            @row-click="(row: any) => goto('stablecoin', row?.id)"
+          >
             <el-table-column label="Logo" min-width="100">
               <template #default="scope">
                 <div
                   class="rounded p-1 d-flex flex-column align-items-center justify-content-center"
-                  style="width: 48px; height: 48px; background-color: white"
+                  style="width: 32px; height: 32px; background-color: white"
                 >
-                  <img :src="scope?.row?.logoUrl" />
+                  <img :src="scope?.row?.logoUrl" style="width: 100%; height: 100%" alt="" />
                 </div>
               </template>
             </el-table-column>
@@ -165,16 +177,5 @@ function sortMethod(getter: any, isRating?: boolean) {
 }
 
 const stablecoins: ComputedRef<Array<any>> = computed(() => projectsStore.stablecoins)
-
 const cexes: ComputedRef<Array<any>> = computed(() => projectsStore.cexes)
 </script>
-
-<style scoped>
-td {
-  cursor: pointer;
-}
-
-tr:hover {
-  background-color: rgb(0, 0, 0, 0.05);
-}
-</style>

@@ -7,11 +7,10 @@ import VueApexCharts from 'vue3-apexcharts'
 import ElementPlus from 'element-plus'
 
 import './assets/main.scss'
-import 'element-plus/dist/index.css';
-import 'element-plus/theme-chalk/dark/css-vars.css';
+import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 import 'butterfly-dag/dist/index.css'
-
 
 const app = createApp(App)
 
