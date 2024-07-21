@@ -3,7 +3,7 @@
 
   <SubNavBar :views="views" :view-idx="viewIdx" @change-view="changeView" />
 
-  <div class="container py-2 mt-4">
+  <div class="container py-2 mt-4" style="max-width: 1080px">
     <div v-if="!loading">
       <HeaderView :data="data" />
       <OverviewView :data="data" v-if="viewIdx == 0" />

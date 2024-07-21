@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <div class="h1 m-0">Overview</div>
+    <div class="h2 mb-2">Overview</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent class="h-100">
@@ -11,7 +11,7 @@
   </div>
 
   <div v-for="(info, idx) in data?.details" :key="idx" class="mb-3">
-    <div class="h1 m-0">{{ info.title }}</div>
+    <div class="h2 m-0">{{ info.title }}</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent class="h-100">
@@ -26,9 +26,7 @@
 import { render } from '@/helpers'
 import CardComponent from '@/components/CardComponent.vue'
 
-const props = defineProps({
+defineProps({
   data: Object
 })
-
-console.log(props)
 </script>

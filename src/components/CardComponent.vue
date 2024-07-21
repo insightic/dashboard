@@ -1,7 +1,6 @@
 <template>
   <el-card>
-    <div v-if="topline" class="card-status-top" :class="`bg-${topline}`"></div>
-    <div class="card-body">
+    <div class="w-100 h-100 small cursor-font">
       <div v-if="subheader" class="subheader" v-html="subheader"></div>
       <slot />
     </div>
@@ -11,10 +10,6 @@
 <script lang="ts" setup>
 defineProps({
   subheader: {
-    type: String,
-    default: null
-  },
-  topline: {
     type: String,
     default: null
   }
