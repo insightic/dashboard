@@ -1,5 +1,5 @@
 <template>
-  <div class="card overflow-hidden">
+  <el-card>
     <div class="card-header">
       <div class="card-title">{{ title }}</div>
       <div class="ms-auto text-secondary small" v-if="updateAt">
@@ -12,7 +12,7 @@
     <div>
       <apexchart type="pie" max-height="300px" :options="chartOptions" :series="series"></apexchart>
     </div>
-  </div>
+  </el-card>
 </template>
 
 <script lang="ts">

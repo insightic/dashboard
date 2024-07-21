@@ -42,6 +42,7 @@ onMounted(() => {
   const chart = createChart(chartDiv.value as HTMLElement, {
     height: 300,
     layout: {
+      fontFamily: `'Lucida Console', Monaco, monospace`,
       background: { color: 'transparent' },
       textColor: '#fff'
     },

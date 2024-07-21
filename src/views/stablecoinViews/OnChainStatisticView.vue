@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <div class="h1 m-0">Transactions</div>
+    <div class="h1 mb-2">Transactions</div>
     <div class="row">
       <div class="col-md-6 my-2">
         <TimeSeriesComponent
@@ -59,26 +59,6 @@
             }
           ]"
         />
-        <!--        <ChartComponent-->
-        <!--          title="Daily Bought/Sold Volume"-->
-        <!--          :labels="-->
-        <!--            data?.stablecoin?.transaction?.daily_bought_vol.data.map(-->
-        <!--              (d: any) => `${formatDate(d[0], 'MM/DD')}`-->
-        <!--            )-->
-        <!--          "-->
-        <!--          :data="[-->
-        <!--            {-->
-        <!--              name: 'Daily Bought Volume',-->
-        <!--              data: data?.stablecoin?.transaction?.daily_bought_vol.data.map((d: any) =>-->
-        <!--                Number(d[1])-->
-        <!--              )-->
-        <!--            },-->
-        <!--            {-->
-        <!--              name: 'Daily Sold Volume',-->
-        <!--              data: data?.stablecoin?.transaction?.daily_sold_vol.data.map((d: any) => Number(d[1]))-->
-        <!--            }-->
-        <!--          ]"-->
-        <!--        />-->
       </div>
       <div class="col-md-6 my-2">
         <TimeSeriesComponent
@@ -108,10 +88,10 @@
   </div>
 
   <div class="mb-3">
-    <div class="h1 m-0">Supply</div>
+    <div class="h1 mb-2">Supply</div>
     <div class="row">
       <div class="col-md-12 my-2">
-        <ChartComponent
+        <TimeSeriesComponent
           title="Token Supply Over Time"
           :labels="data?.stablecoin?.supply?.data.map((d: any) => String(d[0])).reverse()"
           :data="[
@@ -123,7 +103,7 @@
         />
       </div>
       <div class="col-md-6 my-2">
-        <ChartComponent
+        <TimeSeriesComponent
           title="Token Price in USD over time"
           :labels="data?.stablecoin?.price?.data.map((d: any) => String(d[0])).reverse()"
           :data="[
@@ -135,7 +115,7 @@
         />
       </div>
       <div class="col-md-6 my-2">
-        <ChartComponent
+        <TimeSeriesComponent
           title="Token Price in ETH over time"
           :labels="data?.stablecoin?.price?.data.map((d: any) => String(d[0])).reverse()"
           :data="[
