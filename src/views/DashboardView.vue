@@ -1,7 +1,7 @@
 <template>
   <NavBar @change="onChange" />
 
-  <div class="container py-2" style="margin-top: 56px">
+  <div class="container py-2">
     <div v-if="!loading && type === 'stablecoins'" class="mt-2">
       <div class="h1 my-4">Stablecoins</div>
       <div class="row mb-5">

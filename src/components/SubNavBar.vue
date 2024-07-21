@@ -1,44 +1,32 @@
 <template>
-  <nav class="fixed-top navbar navbar-expand" style="margin-top: 52px">
-    <div class="container-xl">
-      <ul class="navbar-nav flex-row subNav">
-        <li
-          class="nav-item"
-          v-for="(item, idx) in views"
-          :key="idx"
-          :class="{ active: idx == viewIdx }"
-          @click="changeView(idx)"
-          style="cursor: pointer"
-        >
-          <a class="nav-link">
-            <span class="nav-link-icon" :class="{ 'text-primary': idx == viewIdx }">
-              <i class="bi" :class="item.icon"></i>
-            </span>
-            <span
-              class="nav-link-title d-lg-inline-block"
-              :class="{ 'text-primary': idx == viewIdx, 'd-none': idx != viewIdx }"
-              style="white-space: nowrap"
-            >
-              {{ item.name }}
-            </span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <el-menu mode="horizontal" :default-active="activeIndex">
+    <el-menu-item v-for="(view, idx) in views" :key="idx" :index="idx" @click="changeView(idx)">
+      <div class="d-flex">
+        <div class="me-2">
+          <i class="bi" :class="view.icon"></i>
+        </div>
+        <div>{{ view.name }}</div>
+      </div>
+    </el-menu-item>
+  </el-menu>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
+
 defineProps({
   views: Array<any>,
   viewIdx: Number
 })
+
+const activeIndex = ref(0)
 
 const emit = defineEmits<{
   (event: 'changeView', idx: number): void
 }>()
 
 function changeView(idx: number) {
+  activeIndex.value = idx
   emit('changeView', idx)
 }
 </script>

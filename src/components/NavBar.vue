@@ -3,8 +3,7 @@
     mode="horizontal"
     :default-active="activeIndex"
     :ellipsis="false"
-    class="fixed-top"
-    style="position: fixed !important; background-color: var(--el-color-black)"
+    style="background-color: var(--el-color-black)"
   >
     <div class="d-flex justify-content-center align-items-center px-2">
       <img class="me-2" src="/logo.png" alt="" width="24" height="24" />
