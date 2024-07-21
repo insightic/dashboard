@@ -1,15 +1,19 @@
 <template>
   <div class="mb-3" v-if="data">
-    <div class="h1 m-0">Smart Contract Validation</div>
+    <div class="h1 mb-2">Smart Contract Validation</div>
     <div class="row">
       <div class="col-md-4 my-2" v-for="(info, idx) in data?.scv" :key="idx">
-        <CardComponent class="h-100" :topline="calculateTopline(info.pass)">
-          <div class="h3 mb-0">#{{ info.id }} - {{ info.title }}</div>
-          <div class="fix-line mb-2" v-html="render(info.description)"></div>
-          <div style="text-decoration: underline">whitepaper</div>
-          <div class="fix-line" v-html="render(info.whitepaper)"></div>
-          <div style="text-decoration: underline">code</div>
-          <div class="fix-line" v-html="render(info.code)"></div>
+        <CardComponent class="h-100">
+          <div class="mb-2" :style="{ color: `var(--el-color-${calculateType(info.pass)}` }">
+            #{{ info.id }} - {{ info.title }}
+          </div>
+          <div style="font-size: 0.75rem">
+            <div class="fix-line mb-2" v-html="render(info.description)"></div>
+            <div style="text-decoration: underline">whitepaper</div>
+            <div class="fix-line mb-1" v-html="render(info.whitepaper)"></div>
+            <div style="text-decoration: underline">code</div>
+            <div class="fix-line" v-html="render(info.code)"></div>
+          </div>
         </CardComponent>
       </div>
     </div>
@@ -24,7 +28,7 @@ defineProps({
   data: Object
 })
 
-function calculateTopline(pass: string) {
+function calculateType(pass: string) {
   pass = pass.toLowerCase()
   if (pass === 'yes') {
     return 'success'
