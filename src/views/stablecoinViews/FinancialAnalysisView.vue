@@ -92,26 +92,33 @@
       "
     >
       <div class="col-md-12 my-2">
-        <CardTable class="w-100 h-100">
-          <thead>
-            <tr>
-              <th>Round</th>
-              <th>Amount</th>
-              <th>Valuation</th>
-              <th>Date</th>
-              <th>Investors</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, idx) in data?.financial_analysis?.investments" :key="idx">
-              <td v-html="render(item.round)" style="vertical-align: top"></td>
-              <td v-html="render(item.amount)" style="vertical-align: top"></td>
-              <td v-html="render(item.valuation)" style="vertical-align: top"></td>
-              <td v-html="render(item.date)" style="vertical-align: top"></td>
-              <td v-html="render(item.investors)" style="vertical-align: top"></td>
-            </tr>
-          </tbody>
-        </CardTable>
+        <el-table class="cursor-font" :border="true" :data="data?.financial_analysis?.investments">
+          <el-table-column label="Round">
+            <template #default="scope">
+              <div v-html="render(scope.row.round)"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="Amount">
+            <template #default="scope">
+              <div v-html="render(scope.row.amount)"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="Valuation">
+            <template #default="scope">
+              <div v-html="render(scope.row.valuation)"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="Date">
+            <template #default="scope">
+              <div v-html="render(scope.row.date)"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="Investors" min-width="200">
+            <template #default="scope">
+              <div v-html="render(scope.row.investors)"></div>
+            </template>
+          </el-table-column>
+        </el-table>
       </div>
     </div>
   </div>
