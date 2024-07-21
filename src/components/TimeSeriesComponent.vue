@@ -63,8 +63,12 @@ onMounted(() => {
     })
     areaSeries.setData(values[0])
   } else {
+    const colors = ['#0054a6', '#43ff64']
     for (let i = 0; i < values.length; i++) {
       const lineSeries = chart.addLineSeries()
+      lineSeries.applyOptions({
+        color: colors[i]
+      })
       lineSeries.setData(values[i])
     }
   }
