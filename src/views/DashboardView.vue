@@ -17,13 +17,23 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="name" label="Name" min-width="200" />
-            <el-table-column label="MarketCap" min-width="200">
+            <el-table-column prop="name" label="Name" sortable min-width="200" />
+            <el-table-column
+              label="MarketCap"
+              sortable
+              :sort-method="sortMethod((row: any) => row?.sosovalue?.market_cap_value)"
+              min-width="200"
+            >
               <template #default="scope">
                 <div>{{ toFixed(scope?.row?.sosovalue?.market_cap_value) }}</div>
               </template>
             </el-table-column>
-            <el-table-column label="Rating" min-width="200">
+            <el-table-column
+              label="Rating"
+              sortable
+              :sort-method="sortMethod((row: any) => row?.rating, true)"
+              min-width="200"
+            >
               <template #default="scope">
                 <div
                   style="text-transform: uppercase; font-weight: bold"
@@ -53,8 +63,13 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="name" label="Name" min-width="200"/>
-            <el-table-column label="Trust Score" min-width="200">
+            <el-table-column prop="name" label="Name" sortable min-width="200" />
+            <el-table-column
+              label="Trust Score"
+              sortable
+              :sort-method="sortMethod((row: any) => row?.securityScore?.combined_security_score)"
+              min-width="200"
+            >
               <template #default="scope">
                 <div>{{ scope?.row?.securityScore?.combined_security_score }}</div>
               </template>
@@ -84,12 +99,6 @@ import { useRouter, useRoute } from 'vue-router'
 import NavBar from '@/components/NavBar.vue'
 import { useProjectsStore } from '@/stores/projects'
 import { ratingColor, formatNumber } from '@/helpers'
-import {
-  IconSortAscendingLetters,
-  IconSortDescendingLetters,
-  IconSortAscendingNumbers,
-  IconSortDescendingNumbers
-} from '@tabler/icons-vue'
 
 const loading = ref(true)
 const router = useRouter()
@@ -125,29 +134,15 @@ function toFixed(value: unknown) {
   return `$${formatNumber(Number(value))}`
 }
 
-const nameInc = ref(true)
-const marketcapInc = ref(true)
-const ratingInc = ref(true)
-const trustScoreInc = ref(true)
-const activeSorts = ref('name')
+function sortMethod(getter: any, isRating?: boolean) {
+  function toNumber(value: unknown) {
+    if (Number.isNaN(Number(value))) return -Number.MAX_VALUE
+    return Number(value)
+  }
 
-const stablecoins: ComputedRef<Array<any>> = computed(() => {
-  const data = projectsStore.stablecoins
-  return data.sort((lhs: any, rhs: any) => {
-    if (activeSorts.value == 'name') {
-      let result = lhs.name.localeCompare(rhs.name)
-      return nameInc.value ? result : -result
-    }
-
-    if (activeSorts.value == 'marketcap') {
-      let lhsMarketcap = lhs?.sosovalue?.market_cap_value || 0
-      let rhsMarketcap = rhs?.sosovalue?.market_cap_value || 0
-      let result = lhsMarketcap - rhsMarketcap
-      return marketcapInc.value ? result : -result
-    }
-
-    if (activeSorts.value == 'rating') {
-      let lhsRating: string = lhs.rating
+  return (lhs: any, rhs: any) => {
+    if (isRating) {
+      let lhsRating: string = getter(lhs)
       lhsRating = lhsRating.toLowerCase()
       let lhsScore = 0
       if (lhsRating.length >= 1) lhsScore += 10 * (1000 - lhsRating.charCodeAt(0)) + 5
@@ -155,7 +150,7 @@ const stablecoins: ComputedRef<Array<any>> = computed(() => {
         if (lhsRating[1] == '+') lhsScore += 1
         else if (lhsRating[1] == '-') lhsScore -= 1
       }
-      let rhsRating: string = rhs.rating
+      let rhsRating: string = getter(rhs)
       rhsRating = rhsRating.toLowerCase()
       let rhsScore = 0
       if (rhsRating.length >= 1) rhsScore += 10 * (1000 - rhsRating.charCodeAt(0)) + 5
@@ -163,29 +158,15 @@ const stablecoins: ComputedRef<Array<any>> = computed(() => {
         if (rhsRating[1] == '+') rhsScore += 1
         else if (rhsRating[1] == '-') rhsScore -= 1
       }
-      return ratingInc.value ? rhsScore - lhsScore : lhsScore - rhsScore
+      return lhsScore - rhsScore
     }
+    return toNumber(getter(lhs)) - toNumber(getter(rhs))
+  }
+}
 
-    return 0
-  })
-})
+const stablecoins: ComputedRef<Array<any>> = computed(() => projectsStore.stablecoins)
 
-const cexes: ComputedRef<Array<any>> = computed(() => {
-  const data = projectsStore.cexes
-  return data.sort((lhs: any, rhs: any) => {
-    if (activeSorts.value == 'name') {
-      let result = lhs.name.localeCompare(rhs.name)
-      return nameInc.value ? result : -result
-    }
-
-    if (activeSorts.value == 'trustScore') {
-      let lhsTrustScore = lhs.securityScore?.combined_security_score || 0
-      let rhsTrustScore = rhs.securityScore?.combined_security_score || 0
-      let result = lhsTrustScore - rhsTrustScore
-      return trustScoreInc.value ? result : -result
-    }
-  })
-})
+const cexes: ComputedRef<Array<any>> = computed(() => projectsStore.cexes)
 </script>
 
 <style scoped>
