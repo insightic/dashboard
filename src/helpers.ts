@@ -1,5 +1,6 @@
 import moment from 'moment'
 import { marked } from 'marked'
+import Autolinker from 'autolinker'
 
 export function formatDate(
   date: string | Date,
@@ -40,7 +41,8 @@ export function notEmpty(obj: any) {
 }
 
 export function render(str: string) {
-  return marked.parse(str || '')
+  const linkedText = Autolinker.link(str || '')
+  return marked.parse(linkedText || '')
 }
 
 export function formatNumber(num: number) {

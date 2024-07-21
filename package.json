@@ -15,6 +15,7 @@
   "dependencies": {
     "@tabler/icons-vue": "^3.11.0",
     "apexcharts": "^3.50.0",
+    "autolinker": "^4.0.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",

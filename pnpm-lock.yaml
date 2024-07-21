@@ -14,6 +14,9 @@ importers:
       apexcharts:
         specifier: ^3.50.0
         version: 3.50.0
+      autolinker:
+        specifier: ^4.0.0
+        version: 4.0.0
       axios:
         specifier: ^1.7.2
         version: 1.7.2
@@ -666,6 +669,9 @@ packages:
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
+
+  autolinker@4.0.0:
+    resolution: {integrity: sha512-fl5Kh6BmEEZx+IWBfEirnRUU5+cOiV0OK7PEt0RBKvJMJ8GaRseIOeDU3FKf4j3CE5HVefcjHmhYPOcaVt0bZw==}
 
   axios@1.7.2:
     resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
@@ -2040,6 +2046,10 @@ snapshots:
   async-validator@4.2.5: {}
 
   asynckit@0.4.0: {}
+
+  autolinker@4.0.0:
+    dependencies:
+      tslib: 2.6.2
 
   axios@1.7.2:
     dependencies:
