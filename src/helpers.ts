@@ -37,15 +37,15 @@ export function ratingColor(rating: string): string {
   if (!rating) return ''
   rating = rating.replaceAll('-', '').replaceAll('+', '').toLowerCase()
   if (rating === 'a') {
-    return 'text-success'
+    return 'var(--el-color-success)'
   } else if (rating === 'b') {
-    return 'text-primary'
+    return 'var(--el-color-primary)'
   } else if (rating === 'c') {
-    return 'text-warning'
+    return 'var(--el-color-warning)'
   } else if (rating === 'd') {
-    return 'text-danger'
+    return 'var(--el-color-danger)'
   }
-  return ''
+  return 'white'
 }
 
 export function notEmpty(obj: any) {

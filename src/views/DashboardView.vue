@@ -43,7 +43,7 @@
               <template #default="scope">
                 <div
                   style="text-transform: uppercase; font-weight: bold"
-                  :class="ratingColor(scope?.row?.rating)"
+                  :style="{ color: ratingColor(scope?.row?.rating) }"
                 >
                   {{ scope?.row?.rating }}
                 </div>

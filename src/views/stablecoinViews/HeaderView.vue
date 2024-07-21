@@ -13,6 +13,7 @@
               <div class="mt-2 small">
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.links?.website"
                   :href="data.links.website"
                   target="_blank"
@@ -21,6 +22,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.links?.twitter"
                   :href="data.links.twitter"
                   target="_blank"
@@ -29,6 +31,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.links?.linkedin"
                   :href="data.links.linkedin"
                   target="_blank"
@@ -37,6 +40,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.links?.reddit"
                   :href="data.links.reddit"
                   target="_blank"
@@ -45,6 +49,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.links?.github"
                   :href="data.links.github"
                   target="_blank"
@@ -53,6 +58,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.links?.telegram"
                   :href="data.links.telegram"
                   target="_blank"
@@ -75,7 +81,7 @@
               class="d-flex align-items-center justify-content-center"
               style="font-size: 4.5rem"
               v-if="data?.rating"
-              :class="ratingColor(data?.rating)"
+              :style="{ color: ratingColor(data?.rating) }"
             >
               {{ data?.rating }}
             </div>
