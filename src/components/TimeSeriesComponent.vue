@@ -62,6 +62,11 @@ onMounted(() => {
       bottomColor: 'rgba(56, 33, 110, 0.1)'
     })
     areaSeries.setData(values[0])
+  } else {
+    for (let i = 0; i < values.length; i++) {
+      const lineSeries = chart.addLineSeries()
+      lineSeries.setData(values[i])
+    }
   }
 
   chart.timeScale().fitContent()

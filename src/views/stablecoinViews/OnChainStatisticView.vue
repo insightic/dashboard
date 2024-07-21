@@ -39,11 +39,11 @@
         />
       </div>
       <div class="col-md-6 my-2">
-        <ChartComponent
-          title="Daily Bought/Sold Volume"
+        <TimeSeriesComponent
+          title="Daily Bought / Sold Volume"
           :labels="
             data?.stablecoin?.transaction?.daily_bought_vol.data.map(
-              (d: any) => `${formatDate(d[0], 'MM/DD')}`
+              (d: any) => `${formatDate(d[0], 'YYYY-MM-DD')}`
             )
           "
           :data="[
@@ -59,12 +59,34 @@
             }
           ]"
         />
+        <!--        <ChartComponent-->
+        <!--          title="Daily Bought/Sold Volume"-->
+        <!--          :labels="-->
+        <!--            data?.stablecoin?.transaction?.daily_bought_vol.data.map(-->
+        <!--              (d: any) => `${formatDate(d[0], 'MM/DD')}`-->
+        <!--            )-->
+        <!--          "-->
+        <!--          :data="[-->
+        <!--            {-->
+        <!--              name: 'Daily Bought Volume',-->
+        <!--              data: data?.stablecoin?.transaction?.daily_bought_vol.data.map((d: any) =>-->
+        <!--                Number(d[1])-->
+        <!--              )-->
+        <!--            },-->
+        <!--            {-->
+        <!--              name: 'Daily Sold Volume',-->
+        <!--              data: data?.stablecoin?.transaction?.daily_sold_vol.data.map((d: any) => Number(d[1]))-->
+        <!--            }-->
+        <!--          ]"-->
+        <!--        />-->
       </div>
       <div class="col-md-6 my-2">
-        <ChartComponent
-          title="Hourly Bought/Sold Volume"
+        <TimeSeriesComponent
+          title="Hourly Bought / Sold Volume"
           :labels="
-            data?.stablecoin?.transaction?.hourly_bought_vol.data.map((d: any) => `${d[0]}:00`)
+            data?.stablecoin?.transaction?.hourly_bought_vol.data.map((t: any) =>
+              formatTime(t[0]).unix()
+            )
           "
           :data="[
             {
