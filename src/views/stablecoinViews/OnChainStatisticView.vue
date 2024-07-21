@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <div class="h1 mb-2">Transactions</div>
+    <div class="h2 mb-2">Transactions</div>
     <div class="row">
       <div class="col-md-6 my-2">
         <TimeSeriesComponent
@@ -88,7 +88,7 @@
   </div>
 
   <div class="mb-3">
-    <div class="h1 mb-2">Supply</div>
+    <div class="h2 mb-2">Supply</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <TimeSeriesComponent
