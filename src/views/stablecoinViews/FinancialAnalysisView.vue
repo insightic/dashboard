@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <div class="h1 mb-2">Financial Audit</div>
+    <div class="h2 mb-2">Financial Audit</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent class="w-100">
@@ -49,40 +49,36 @@
   </div>
 
   <div class="mb-3">
-    <div class="h1 mb-2">Market Capitalization and Liquidity</div>
+    <div class="h2 mb-2">Market Capitalization and Liquidity</div>
     <div class="row">
       <div class="col-md-12 my-2">
-        <CardTable class="w-100 h-100">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="(
-                item, idx
-              ) in data?.financial_analysis?.market_capitalization_and_liquidity.filter(
-                (t: any) => t.value
-              )"
-              :key="idx"
-            >
-              <td
-                v-html="render(item.title)"
-                style="width: 30%; min-width: 120px; max-width: 300px; vertical-align: top"
-              ></td>
-              <td v-html="render(item.value)" style="vertical-align: top"></td>
-            </tr>
-          </tbody>
-        </CardTable>
+        <el-table
+          class="cursor-font"
+          :border="true"
+          :data="
+            data?.financial_analysis?.market_capitalization_and_liquidity.filter(
+              (t: any) => t.value
+            )
+          "
+        >
+          <el-table-column label="Title">
+            <template #default="scope">
+              <div v-html="render(scope.row.title)"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="Value">
+            <template #default="scope">
+              <div v-html="render(scope.row.value)"></div>
+            </template>
+          </el-table-column>
+        </el-table>
       </div>
     </div>
   </div>
 
   <div class="mb-3">
     <div
-      class="h1 m-0"
+      class="h2 mb-2"
       v-if="
         data?.financial_analysis?.investments && data?.financial_analysis?.investments.length > 0
       "
@@ -127,7 +123,7 @@
       data?.financial_analysis?.list_of_investors.length > 0
     "
   >
-    <div class="h1 mb-2">List of Investors</div>
+    <div class="h2 mb-2">List of Investors</div>
     <div class="row">
       <div
         v-for="(item, idx) in data?.financial_analysis?.list_of_investors"
