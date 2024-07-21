@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <div class="h1 m-0">Financial Audit</div>
+    <div class="h1 mb-2">Financial Audit</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent class="w-100">
@@ -49,7 +49,7 @@
   </div>
 
   <div class="mb-3">
-    <div class="h1 m-0">Market Capitalization and Liquidity</div>
+    <div class="h1 mb-2">Market Capitalization and Liquidity</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardTable class="w-100 h-100">
@@ -127,7 +127,7 @@
       data?.financial_analysis?.list_of_investors.length > 0
     "
   >
-    <div class="h1 m-0">List of Investors</div>
+    <div class="h1 mb-2">List of Investors</div>
     <div class="row">
       <div
         v-for="(item, idx) in data?.financial_analysis?.list_of_investors"
@@ -136,13 +136,13 @@
       >
         <CardComponent class="h-100">
           <div class="row align-items-center">
-            <div class="col-auto">
+            <div class="col-4">
               <span class="text-white avatar bg-white" style="box-shadow: none !important">
                 <img :src="data.baseUrl + '/' + item.logo" class="w-100 h-100" />
               </span>
             </div>
-            <div class="col">
-              <div class="font-weight-medium">
+            <div class="col-8">
+              <div class="small">
                 {{ item.name }}
               </div>
             </div>
