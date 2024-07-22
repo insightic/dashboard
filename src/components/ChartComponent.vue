@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <el-card>
     <div class="card-header">
       <div class="card-title">
         {{ title }}
@@ -77,7 +77,7 @@
         }"
       ></apexchart>
     </div>
-  </div>
+  </el-card>
 </template>
 
 <script lang="ts" setup>

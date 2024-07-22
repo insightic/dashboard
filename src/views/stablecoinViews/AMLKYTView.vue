@@ -55,11 +55,10 @@
         />
       </div>
       <div class="col-md-12 my-2" v-if="activeChainData">
-        <ChartComponent
-          type="bar"
+        <TimeSeriesComponent
           title="Average Transaction Risk Score"
           title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
-          :labels="activeChainData.map((d: any) => `${formatDate(d?.created_date, 'MM/DD')}`)"
+          :labels="activeChainData.map((d: any) => `${formatDate(d?.created_date, 'YYYY-MM-DD')}`)"
           :data="[
             {
               name: 'Average Transaction Risk Score',
