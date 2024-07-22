@@ -15,30 +15,6 @@
     </div>
   </div>
 
-  <div class="mb-3" v-if="notEmpty(data?.social_media?.twitter)">
-    <div class="h2 mb-0">Social Media</div>
-    <div class="row">
-      <div class="col-md-12 my-2">
-        <CardTable>
-          <thead>
-            <tr>
-              <th>Total/Average</th>
-              <th>Last Week</th>
-              <th>2 Weeks Ago</th>
-              <th>3 Weeks Ago</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, idx) in data?.social_media?.twitter" :key="idx">
-              <td>{{ item.title }}</td>
-              <td v-for="(value, idx2) in item.value" :key="idx2">{{ value }}</td>
-            </tr>
-          </tbody>
-        </CardTable>
-      </div>
-    </div>
-  </div>
-
   <div class="mb-3" v-if="data?.twitter">
     <div class="h2 mb-2">Twitter</div>
     <div class="row">
@@ -98,22 +74,11 @@
         </CardComponent>
       </div>
       <div class="col-md-12 my-2">
-        <CardTable>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Content</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, idx) in data?.sosoValueNews?.extracted_news" :key="idx">
-              <td>{{ item.title }}</td>
-              <td>{{ item.body }}</td>
-              <td>{{ item.created_time }}</td>
-            </tr>
-          </tbody>
-        </CardTable>
+        <el-table :border="true" :data="extractedNews">
+          <el-table-column prop="title" label="Title" />
+          <el-table-column prop="body" label="Content" />
+          <el-table-column prop="created_time" label="Date" />
+        </el-table>
       </div>
     </div>
   </div>
@@ -124,12 +89,19 @@ import { notEmpty } from '@/helpers'
 import PeopleComponent from '@/components/PeopleComponent.vue'
 import CardComponent from '@/components/CardComponent.vue'
 import CardTable from '@/components/CardTable.vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   data: Object
 })
 
-console.log(props.data)
+const extractedNews = computed(() => {
+  const news: Array<any> = props.data?.sosoValueNews?.extracted_news
+  if (news && news.length > 10) {
+    return news.slice(0, 10)
+  }
+  return news
+})
 
 function formatSentimentAnalysis(value: string) {
   if (value === 'positive') {
