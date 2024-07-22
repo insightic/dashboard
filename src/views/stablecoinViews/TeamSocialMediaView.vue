@@ -29,26 +29,19 @@
         </CardComponent>
       </div>
       <div class="col-md-12 my-2">
-        <CardTable>
-          <thead>
-            <tr>
-              <th>Post Content</th>
-              <th style="min-width: 200px">Sentiment Analysis</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, idx) in data?.twitter?.extracted_posts" :key="idx">
-              <td>{{ item.post_content }}</td>
-              <td>
-                <span
-                  class="badge me-1"
-                  :class="formatSentimentAnalysis(item.sentiment_analysis)"
-                ></span>
-                <span style="text-transform: capitalize">{{ item.sentiment_analysis }}</span>
-              </td>
-            </tr>
-          </tbody>
-        </CardTable>
+        <el-table :border="true" :data="data?.twitter?.extracted_posts">
+          <el-table-column prop="post_content" label="Post Content" min-width="200" />
+          <el-table-column prop="sentiment_analysis" label="Sentiment Analysis">
+            <template #default="scope">
+              <div
+                class="rounded px-2 py-1 d-inline"
+                :class="formatSentimentAnalysis(scope.row.sentiment_analysis)"
+              >
+                {{ scope.row.sentiment_analysis }}
+              </div>
+            </template>
+          </el-table-column>
+        </el-table>
       </div>
     </div>
   </div>
