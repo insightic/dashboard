@@ -64,7 +64,9 @@ onMounted(() => {
     grid: {
       vertLines: { color: 'transparent' },
       horzLines: { color: 'transparent' }
-    }
+    },
+    handleScale: false,
+    handleScroll: false
   })
 
   if (!props.useBarChart) {
