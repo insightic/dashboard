@@ -63,7 +63,7 @@
             :data="cexes"
             :border="true"
             style="width: 100%"
-            @row-click="(row: any) => goto('stablecoin', row?.id)"
+            @row-click="(row: any) => goto('cex', row?.id)"
           >
             <el-table-column label="Logo" min-width="100">
               <template #default="scope">

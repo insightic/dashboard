@@ -1,6 +1,5 @@
 <template>
   <NavBar />
-
   <SubNavBar :views="views" :view-idx="viewIdx" @change-view="changeView" />
 
   <div class="container py-2 mt-4" style="max-width: 1080px">

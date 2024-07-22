@@ -1,5 +1,5 @@
 <template>
-  <div class="h1 m-0">Summary</div>
+  <div class="h2 mb-2">Summary</div>
   <div class="row">
     <div class="col-md-12 my-2">
       <CardComponent>
@@ -12,7 +12,7 @@
       </CardComponent>
     </div>
   </div>
-  <div class="h1 m-0">Reviews</div>
+  <div class="h2 mb-2">Reviews</div>
   <div class="row">
     <div class="col-md-6 my-2" v-for="(review, idx) in data.webReview.list_of_reviews" :key="idx">
       <CardComponent :subheader="review.review_title" class="h-100">

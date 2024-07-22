@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <div class="h1 m-0">Asset Flow</div>
+    <div class="h2 mb-2">Asset Flow</div>
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent

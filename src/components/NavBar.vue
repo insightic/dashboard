@@ -10,6 +10,9 @@
       <b>Insightic</b>
     </div>
     <div class="flex-grow-1"></div>
+    <div class="d-flex justify-content-center align-items-center me-3">
+      <span class="small me-2">Dark Mode</span> <el-switch />
+    </div>
     <el-menu-item index="1" @click="goto(1, 'stablecoins')">
       <div>Stablecoins</div>
     </el-menu-item>
