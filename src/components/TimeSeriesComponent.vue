@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 import { type PropType, ref, onMounted } from 'vue'
-import { createChart } from 'lightweight-charts'
+import { createChart, type Time } from 'lightweight-charts'
 import { IconInfoCircle } from '@tabler/icons-vue'
 
 const props = defineProps({
@@ -27,7 +27,8 @@ const props = defineProps({
   titleTooltip: { type: String, default: null },
   labels: { type: Array as PropType<string[]>, required: true },
   data: { type: Array as PropType<{ name: string; data: number[] }[]>, required: true },
-  useBarChart: { type: Boolean, default: false }
+  useHistogramChart: { type: Boolean, default: false },
+  useBins: { type: Boolean, default: false }
 })
 
 const chartDiv = ref<HTMLDivElement | null>(null)
@@ -45,7 +46,7 @@ onMounted(() => {
 
   const values = rawValues.map((value) =>
     value.map((v, i) => ({
-      time: props.labels[i],
+      time: props.useBins ? (i as Time) : props.labels[i],
       value: v
     }))
   )
@@ -69,7 +70,19 @@ onMounted(() => {
     handleScroll: false
   })
 
-  if (!props.useBarChart) {
+  if (props.useBins) {
+    chart.applyOptions({
+      timeScale: {
+        timeVisible: true,
+        secondsVisible: false,
+        tickMarkFormatter: (time: any) => {
+          return props.labels[time]
+        }
+      }
+    })
+  }
+
+  if (!props.useHistogramChart) {
     if (values.length == 1) {
       const lineSeries = chart.addLineSeries()
       lineSeries.setData(values[0])
@@ -93,8 +106,8 @@ onMounted(() => {
     }
   } else {
     for (let i = 0; i < values.length; i++) {
-      const barSeries = chart.addBarSeries()
-      barSeries.setData(values[i])
+      const histogramSeries = chart.addHistogramSeries()
+      histogramSeries.setData(values[i])
     }
   }
 

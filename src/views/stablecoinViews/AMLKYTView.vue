@@ -37,10 +37,11 @@
         />
       </div>
       <div class="col-md-12 my-2" v-if="activeChainData">
-        <ChartComponent
-          type="bar"
+        <TimeSeriesComponent
           title="Top 1000 Holder Risk Score Distribution"
           title-tooltip="100: Critical<br/>67-99: High risk<br/>34-66: Medium risk<br/>1-33: Low risk<br/>0: No risk"
+          use-histogram-chart
+          use-bins
           :labels="
             Object.keys(activeChainData[activeChainData.length - 1].top_1k_holder_score_dist_bin10)
           "
@@ -49,7 +50,7 @@
               name: 'Top 1000 Holder Risk Score Bins',
               data: Object.values(
                 activeChainData[activeChainData.length - 1].top_1k_holder_score_dist_bin10
-              ).map((t: any) => t.toFixed(0))
+              )
             }
           ]"
         />
