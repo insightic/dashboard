@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 import { type PropType, ref, onMounted } from 'vue'
-import { createChart, type Time } from 'lightweight-charts'
+import { createChart, CrosshairMode, type Time } from 'lightweight-charts'
 import { IconInfoCircle } from '@tabler/icons-vue'
 
 const props = defineProps({
@@ -66,14 +66,20 @@ onMounted(() => {
       vertLines: { color: 'transparent' },
       horzLines: { color: 'transparent' }
     },
+    crosshair: {
+      mode: CrosshairMode.Normal
+    },
     handleScale: false,
     handleScroll: false
   })
 
   if (props.useBins) {
     chart.applyOptions({
+      crosshair: {
+        mode: CrosshairMode.Hidden
+      },
       timeScale: {
-        timeVisible: true,
+        timeVisible: false,
         secondsVisible: false,
         tickMarkFormatter: (time: any) => {
           return props.labels[time]
