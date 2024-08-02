@@ -1,56 +1,52 @@
 <template>
-  <div class="mb-3">
+  <div>
     <div class="h2 mb-2">Financial Audit</div>
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-md-12 my-2">
         <CardComponent class="w-100">
-          <table class="mb-3">
-            <tr>
+          <table class="mb-5">
+            <tr style="height: 30px; vertical-align: top">
               <td style="min-width: 80px">Auditors:</td>
               <td v-html="render(data?.financial_analysis?.financial_audit?.auditors)"></td>
             </tr>
-            <tr>
+            <tr style="height: 30px; vertical-align: top">
               <td>Score:</td>
               <td v-html="render(data?.financial_analysis?.financial_audit?.score)"></td>
             </tr>
-            <tr>
+            <tr style="height: 30px; vertical-align: top">
               <td>Analysis:</td>
               <td v-html="render(data?.financial_analysis?.financial_audit?.analysis)"></td>
             </tr>
           </table>
-          <div class="d-flex">
-            <div
-              class="mx-auto"
-              style="width: 540px"
-              v-if="
+
+          <apexchart
+            class="d-flex justify-content-center"
+            v-if="
                 notEmpty(data?.financial_analysis?.financial_audit?.reserve_holdings_percentage)
               "
-            >
-              <apexchart
-                width="540"
-                type="pie"
-                :options="{
+            width="540"
+            type="pie"
+            :options="{
                   labels:
                     data?.financial_analysis?.financial_audit?.reserve_holdings_percentage.map(
                       (t: any) => t.title
-                    )
+                    ),
+                    legend: { labels: { colors:'#FFFFFF' } }
                 }"
-                :series="
+            :series="
                   data?.financial_analysis?.financial_audit?.reserve_holdings_percentage.map(
                     (t: any) => t.value
                   )
                 "
-              />
-            </div>
-          </div>
+          />
         </CardComponent>
       </div>
     </div>
   </div>
 
-  <div class="mb-3">
+  <div>
     <div class="h2 mb-2">Market Capitalization and Liquidity</div>
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-md-12 my-2">
         <el-table
           class="cursor-font"
@@ -76,7 +72,7 @@
     </div>
   </div>
 
-  <div class="mb-3">
+  <div>
     <div
       class="h2 mb-2"
       v-if="
@@ -86,7 +82,7 @@
       Investments
     </div>
     <div
-      class="row"
+      class="row mb-3"
       v-if="
         data?.financial_analysis?.investments && data?.financial_analysis?.investments.length > 0
       "

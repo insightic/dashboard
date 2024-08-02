@@ -123,7 +123,6 @@
         <CardComponent>
           <div class="d-flex">
             <apexchart
-              class=""
               width="540"
               type="pie"
               :options="{
