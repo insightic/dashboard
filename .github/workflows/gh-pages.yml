@@ -25,7 +25,7 @@ jobs:
         run: |
           pnpm install
           pnpm run build
-          mv dist/index.html dist/404.html
+          cp dist/index.html dist/404.html
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' }}
