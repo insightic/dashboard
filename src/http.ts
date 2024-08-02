@@ -75,6 +75,9 @@ class DataSource {
     if (features['twitter']) {
       data.twitter = await this.getProjectTwitter(type, id)
     }
+    if (features['linkedin']) {
+      data.linkedin = await this.getProjectLinkedIn(type, id)
+    }
     if (features['sosoValueNews']) {
       data.sosoValueNews = await this.getProjectSosovalueNews(type, id)
     }
@@ -145,6 +148,18 @@ class DataSource {
   async getProjectTwitter(type: string, id: string) {
     try {
       const resp = await raw.get(`${type}/${id}/results/twitter_results.json`)
+      if (resp.data.length > 0) {
+        return resp.data[resp.data.length - 1]
+      }
+      return null
+    } catch (e) {
+      return null
+    }
+  }
+
+  async getProjectLinkedIn(type: string, id: string) {
+    try {
+      const resp = await raw.get(`${type}/${id}/results/linkedin_results.json`)
       if (resp.data.length > 0) {
         return resp.data[resp.data.length - 1]
       }

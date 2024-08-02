@@ -72,6 +72,50 @@
     </div>
   </div>
 
+  <div v-if="data?.linkedin">
+    <div class="h2">LinkedIn Profile</div>
+    <CardComponent class="mb-3">
+      <div class="d-flex align-items-center">
+        <div>
+          <div>{{data?.linkedin?.profile_title}}</div>
+          <div>{{data?.linkedin?.profile_overview}}</div>
+          <div>{{data?.linkedin?.industry}}</div>
+        </div>
+
+        <div class="mx-auto"></div>
+
+        <div class="text-center" style="width: 200px">
+          <div class="h4">{{data?.linkedin?.profile_followers ?? '0'}}</div>
+          <div class="text-secondary">Followers</div>
+        </div>
+
+        <div class="text-center" style="width: 200px">
+          <div class="h4">{{data?.linkedin?.profile_following ?? '0'}}</div>
+          <div class="text-secondary">Following</div>
+        </div>
+      </div>
+    </CardComponent>
+
+    <div class="h2 mb-2">LinkedIn</div>
+    <div class="row mb-3">
+      <div class="col-md-12 my-2">
+        <el-table :border="true" :data="linkedinExtractedPost">
+          <el-table-column prop="post_content" label="Post Content" min-width="200" />
+          <el-table-column prop="sentiment_analysis" label="Sentiment Analysis">
+            <template #default="scope">
+              <div
+                class="rounded px-2 py-1 d-inline"
+                :class="formatSentimentAnalysis(scope.row.sentiment_analysis)"
+              >
+                {{ scope.row.sentiment_analysis }}
+              </div>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
+  </div>
+
   <div class="mb-3" v-if="data?.sosoValueNews">
     <div class="h2 mb-2">News</div>
     <div class="row">
@@ -123,6 +167,14 @@ const twitterPromptsOutput = computed(() => {
 
 const twitterExtractedPost = computed(() => {
   const output = props.data?.twitter?.extracted_posts;
+  if (output && output.length > 10) {
+    return output.slice(0, 10)
+  }
+  return output;
+})
+
+const linkedinExtractedPost = computed(() => {
+  const output = props.data?.linkedin?.extracted_posts;
   if (output && output.length > 10) {
     return output.slice(0, 10)
   }

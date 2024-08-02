@@ -64,6 +64,7 @@ onMounted(async () => {
       scv: true,
       securityAssessment: true,
       twitter: true,
+      linkedin: true,
       sosoValueNews: true,
       stablecoin: true,
       zanRiskScore: true
