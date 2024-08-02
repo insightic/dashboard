@@ -160,7 +160,6 @@
 import { render, notEmpty } from '@/helpers'
 
 import CardComponent from '@/components/CardComponent.vue'
-import CardTable from '@/components/CardTable.vue'
 
 defineProps({
   data: Object

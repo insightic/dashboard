@@ -172,7 +172,6 @@
 
 <script lang="ts" setup>
 import TimeSeriesComponent from '@/components/TimeSeriesComponent.vue'
-import ChartComponent from '@/components/ChartComponent.vue'
 import PieChartComponent from '@/components/PieChartComponent.vue'
 import { formatDate, formatTime } from '@/helpers'
 

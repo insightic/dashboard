@@ -73,7 +73,6 @@
 </template>
 
 <script lang="ts" setup>
-import ChartComponent from '@/components/ChartComponent.vue'
 import { computed, ref } from 'vue'
 import { formatDate } from '@/helpers'
 import TimeSeriesComponent from '@/components/TimeSeriesComponent.vue'

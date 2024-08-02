@@ -25,5 +25,5 @@
 
 <script lang="ts" setup>
 import CardComponent from '@/components/CardComponent.vue'
-const props = defineProps(['data'])
+defineProps(['data'])
 </script>

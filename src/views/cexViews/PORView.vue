@@ -20,7 +20,7 @@
                   <th width="20%">Ratio</th>
                 </thead>
                 <tbody>
-                  <tr v-for="(row, idx) in data?.por?.por?.balanceDetails">
+                  <tr v-for="(row, idx) in data?.por?.por?.balanceDetails" :key="idx">
                     <td>{{ row.symbol }}</td>
                     <td>
                       <div>{{ formatNumber(row.tokenBalance) }}</div>
