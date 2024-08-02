@@ -12,50 +12,53 @@
               />
             </div>
             <div class="col-md-8">
-              <table class="table table-vcenter">
-                <thead>
-                  <th width="20%">Symbol</th>
-                  <th width="30%">Token Balance</th>
-                  <th width="30%">Change</th>
-                  <th width="20%">Ratio</th>
-                </thead>
-                <tbody>
-                  <tr v-for="(row, idx) in data?.por?.por?.balanceDetails" :key="idx">
-                    <td>{{ row.symbol }}</td>
-                    <td>
-                      <div>{{ formatNumber(row.tokenBalance) }}</div>
-                      <div class="small">≈ {{ formatNumber(row.balanceUSDT) }} USDT</div>
-                    </td>
-                    <td>
-                      <div
-                        :class="{
-                          'text-success': row.tokenBalanceChange >= 0,
-                          'text-danger': row.tokenBalanceChange < 0
-                        }"
-                      >
-                        {{ row.tokenBalanceChange.toFixed(2) }}%
+              <el-table :border="true" :data="data?.por?.por?.balanceDetails">
+                <el-table-column label="Symbol">
+                  <template #default="scope">
+                    <div>{{ scope.row.symbol }}</div>
+                  </template>
+                </el-table-column>
 
-                        <IconTrendingUp :size="16" v-if="row.tokenBalanceChange >= 0" />
-                        <IconTrendingDown :size="16" v-else />
-                      </div>
-                      <div
-                        class="small"
-                        :class="{
-                          'text-success': row.balanceUSDTChange >= 0,
-                          'text-danger': row.balanceUSDTChange < 0
-                        }"
-                        v-if="row.symbol.toLowerCase() !== 'others'"
-                      >
-                        ≈ {{ row.balanceUSDTChange.toFixed(2) }}% USDT
+                <el-table-column label="Token Balance">
+                  <template #default="scope">
+                    <div>{{ formatNumber(scope.row.tokenBalance) }}</div>
+                    <div class="small">≈ {{ formatNumber(scope.row.balanceUSDT) }} USDT</div>
+                  </template>
+                </el-table-column>
+                <el-table-column label="Change">
+                  <template #default="scope">
+                    <div
+                      :class="{
+                        'text-success': scope.row.tokenBalanceChange >= 0,
+                        'text-danger': scope.row.tokenBalanceChange < 0
+                      }"
+                    >
+                      {{ scope.row.tokenBalanceChange.toFixed(2) }}%
 
-                        <IconTrendingUp :size="16" v-if="row.balanceUSDTChange >= 0" />
-                        <IconTrendingDown :size="16" v-else />
-                      </div>
-                    </td>
-                    <td>{{ ((row.balanceUSDT / total) * 100).toFixed(2) }}%</td>
-                  </tr>
-                </tbody>
-              </table>
+                      <IconTrendingUp :size="16" v-if="scope.row.tokenBalanceChange >= 0" />
+                      <IconTrendingDown :size="16" v-else />
+                    </div>
+                    <div
+                      class="small"
+                      :class="{
+                        'text-success': scope.row.balanceUSDTChange >= 0,
+                        'text-danger': scope.row.balanceUSDTChange < 0
+                      }"
+                      v-if="scope.row.symbol.toLowerCase() !== 'others'"
+                    >
+                      ≈ {{ scope.row.balanceUSDTChange.toFixed(2) }}% USDT
+
+                      <IconTrendingUp :size="16" v-if="scope.row.balanceUSDTChange >= 0" />
+                      <IconTrendingDown :size="16" v-else />
+                    </div>
+                  </template>
+                </el-table-column>
+                <el-table-column label="Ratio">
+                  <template #default="scope">
+                    {{ ((scope.row.balanceUSDT / total) * 100).toFixed(2) }}%
+                  </template>
+                </el-table-column>
+              </el-table>
             </div>
           </div>
         </CardComponent>
