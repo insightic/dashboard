@@ -1,7 +1,7 @@
 <template>
-  <div class="mb-3" v-if="notEmpty(data?.team)">
+  <div v-if="notEmpty(data?.team)">
     <div class="h2 mb-2">Team</div>
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-sm-6 col-md-4 my-2" v-for="(people, idx) in data?.team" :key="idx">
         <PeopleComponent
           class="h-100"
@@ -15,21 +15,47 @@
     </div>
   </div>
 
-  <div class="mb-3" v-if="data?.twitter">
+  <div v-if="data?.twitter">
+    <div class="h2">Twitter Profile</div>
+    <CardComponent class="mb-3">
+      <div class="d-flex align-items-center">
+        <div class="rounded me-4" :style="{height: '100px', width: '100px', backgroundSize: 'cover', backgroundImage: `url(${data?.twitter?.profile_imageURL})`}">
+        </div>
+
+        <div>
+          <div>{{data?.twitter?.profile_name}}</div>
+          <div>{{data?.twitter?.profile_handle}}</div>
+          <div>{{data?.twitter?.profile_joining_date}}</div>
+        </div>
+
+        <div class="mx-auto"></div>
+
+        <div class="text-center" style="width: 200px">
+          <div class="h4">{{data?.twitter?.profile_followers}}</div>
+          <div class="text-secondary">Followers</div>
+        </div>
+
+        <div class="text-center" style="width: 200px">
+          <div class="h4">{{data?.twitter?.profile_following}}</div>
+          <div class="text-secondary">Following</div>
+        </div>
+      </div>
+    </CardComponent>
+
     <div class="h2 mb-2">Twitter</div>
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-md-12 my-2">
         <CardComponent subheader="Overall Prompt Summary">
           {{ data?.twitter?.overall_prompt_summary }}
         </CardComponent>
       </div>
-      <div class="col-md-6 my-2" v-for="(prompt, idx) in data?.twitter?.prompts_output" :key="idx">
+      <div class="col-md-6 my-2" v-for="(prompt, idx) in twitterPromptsOutput" :key="idx">
         <CardComponent :subheader="prompt.category" class="h-100">
           {{ prompt.Output }}
         </CardComponent>
       </div>
       <div class="col-md-12 my-2">
-        <el-table :border="true" :data="data?.twitter?.extracted_posts">
+        <el-table :border="true" :data="twitterExtractedPost">
           <el-table-column prop="post_content" label="Post Content" min-width="200" />
           <el-table-column prop="sentiment_analysis" label="Sentiment Analysis">
             <template #default="scope">
@@ -81,11 +107,26 @@
 import { notEmpty } from '@/helpers'
 import PeopleComponent from '@/components/PeopleComponent.vue'
 import CardComponent from '@/components/CardComponent.vue'
-import CardTable from '@/components/CardTable.vue'
 import { computed } from 'vue'
 
 const props = defineProps({
   data: Object
+})
+
+const twitterPromptsOutput = computed(() => {
+  const output = props.data?.twitter?.prompts_output;
+  if (output && output.length > 4) {
+    return output.slice(0, 4)
+  }
+  return output;
+})
+
+const twitterExtractedPost = computed(() => {
+  const output = props.data?.twitter?.extracted_posts;
+  if (output && output.length > 10) {
+    return output.slice(0, 10)
+  }
+  return output;
 })
 
 const extractedNews = computed(() => {
