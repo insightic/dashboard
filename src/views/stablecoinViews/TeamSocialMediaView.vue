@@ -121,23 +121,25 @@
     <div class="row">
       <div class="col-md-12 my-2">
         <CardComponent>
-          {{ data?.sosoValueNews?.overall_prompt_summary }}
-        </CardComponent>
-      </div>
-      <div class="col-md-12 my-2">
-        <CardComponent>
-          <apexchart
-            class="d-flex justify-content-center"
-            width="540"
-            type="pie"
-            :options="{
+          <div class="d-flex">
+            <apexchart
+              class=""
+              width="540"
+              type="pie"
+              :options="{
               labels: Object.keys(data?.sosoValueNews?.overall_sentiment_analysis?.distribution),
               legend: {
                 labels: { colors: '#FFFFFF' }
               }
             }"
-            :series="Object.values(data?.sosoValueNews?.overall_sentiment_analysis?.distribution)"
-          />
+              :series="Object.values(data?.sosoValueNews?.overall_sentiment_analysis?.distribution)"
+            />
+
+            <div>
+              {{ data?.sosoValueNews?.overall_prompt_summary }}
+            </div>
+          </div>
+
         </CardComponent>
       </div>
       <div class="col-md-12 my-2">
