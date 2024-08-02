@@ -127,10 +127,14 @@
       <div class="col-md-12 my-2">
         <CardComponent>
           <apexchart
+            class="d-flex justify-content-center"
             width="540"
             type="pie"
             :options="{
-              labels: Object.keys(data?.sosoValueNews?.overall_sentiment_analysis?.distribution)
+              labels: Object.keys(data?.sosoValueNews?.overall_sentiment_analysis?.distribution),
+              legend: {
+                labels: { colors: '#FFFFFF' }
+              }
             }"
             :series="Object.values(data?.sosoValueNews?.overall_sentiment_analysis?.distribution)"
           />
