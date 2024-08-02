@@ -19,6 +19,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.website_info?.url"
                   :href="data.website_info.url"
                   target="_blank"
@@ -27,6 +28,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.website_info?.facebook"
                   :href="data.website_info.facebook"
                   target="_blank"
@@ -35,6 +37,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.website_info?.twitter"
                   :href="data.website_info.twitter"
                   target="_blank"
@@ -43,6 +46,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.website_info?.linkedin"
                   :href="data.website_info.linkedin"
                   target="_blank"
@@ -51,6 +55,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.website_info?.discord"
                   :href="data.website_info.discord"
                   target="_blank"
@@ -59,6 +64,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.website_info?.reddit"
                   :href="data.website_info.reddit"
                   target="_blank"
@@ -67,6 +73,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.website_info?.github"
                   :href="data.website_info.github"
                   target="_blank"
@@ -75,6 +82,7 @@
                 </a>
                 <a
                   class="me-2"
+                  :style="{ color: `var(--el-color-primary)` }"
                   v-if="data?.website_info?.telegram"
                   :href="data.website_info.telegram"
                   target="_blank"
