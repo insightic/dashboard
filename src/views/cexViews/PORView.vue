@@ -5,11 +5,17 @@
         <CardComponent>
           <div class="row">
             <div class="col-md-4">
-              <PieChartComponent
-                title="Crypto distribution"
-                :labels="data?.por?.por?.balanceDetails.map((d: any) => String(d.symbol))"
-                :data="data?.por?.por?.balanceDetails.map((d: any) => Number(d.balanceUSDT))"
-              />
+              <div class="h5 text-center mb-5">Crypto distribution</div>
+              <apexchart
+                class="d-flex justify-content-center"
+                type="pie"
+                max-height="300px"
+                :options="{
+                  labels: data?.por?.por?.balanceDetails.map((d: any) => String(d.symbol)),
+                  legend: { labels: { colors: '#FFFFFF' } }
+                }"
+                :series="data?.por?.por?.balanceDetails.map((d: any) => Number(d.balanceUSDT))"
+              ></apexchart>
             </div>
             <div class="col-md-8">
               <el-table :border="true" :data="data?.por?.por?.balanceDetails">
@@ -69,7 +75,6 @@
 
 <script lang="ts" setup>
 import CardComponent from '@/components/CardComponent.vue'
-import PieChartComponent from '@/components/PieChartComponent.vue'
 import { IconTrendingUp, IconTrendingDown } from '@tabler/icons-vue'
 import { computed } from 'vue'
 import { formatNumber } from '@/helpers'
