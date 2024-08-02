@@ -93,7 +93,7 @@ onMounted(() => {
 
 <style scoped>
 .chart-canvas {
-  background: white;
+  background: transparent;
   background-image: radial-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 0);
   background-size: 30px 30px;
   background-position: -19px -19px;
