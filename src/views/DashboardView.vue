@@ -105,7 +105,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, computed, type ComputedRef } from 'vue'
+import { ref, computed, type ComputedRef, onActivated } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
 import NavBar from '@/components/NavBar.vue'
@@ -117,7 +117,7 @@ const router = useRouter()
 const route = useRoute()
 const projectsStore = useProjectsStore()
 
-onMounted(async () => {
+onActivated(async () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   await fetch()
 })
