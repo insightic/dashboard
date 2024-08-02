@@ -33,8 +33,8 @@ const router = useRouter()
 const emits = defineEmits(['change'])
 
 let activeTab = '1'
-if(route.path.startsWith('/cex')) activeTab = '2'
-if(route.path.startsWith('/lending')) activeTab = '3'
+if (route.path.startsWith('/cex')) activeTab = '2'
+if (route.path.startsWith('/lending')) activeTab = '3'
 const activeIndex = ref(activeTab)
 
 function goto(idx: number, type: string) {

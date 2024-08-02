@@ -21,23 +21,20 @@
 
           <apexchart
             class="d-flex justify-content-center"
-            v-if="
-                notEmpty(data?.financial_analysis?.financial_audit?.reserve_holdings_percentage)
-              "
+            v-if="notEmpty(data?.financial_analysis?.financial_audit?.reserve_holdings_percentage)"
             width="540"
             type="pie"
             :options="{
-                  labels:
-                    data?.financial_analysis?.financial_audit?.reserve_holdings_percentage.map(
-                      (t: any) => t.title
-                    ),
-                    legend: { labels: { colors:'#FFFFFF' } }
-                }"
+              labels: data?.financial_analysis?.financial_audit?.reserve_holdings_percentage.map(
+                (t: any) => t.title
+              ),
+              legend: { labels: { colors: '#FFFFFF' } }
+            }"
             :series="
-                  data?.financial_analysis?.financial_audit?.reserve_holdings_percentage.map(
-                    (t: any) => t.value
-                  )
-                "
+              data?.financial_analysis?.financial_audit?.reserve_holdings_percentage.map(
+                (t: any) => t.value
+              )
+            "
           />
         </CardComponent>
       </div>

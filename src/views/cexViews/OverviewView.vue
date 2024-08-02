@@ -100,7 +100,6 @@
 
 <script lang="ts" setup>
 import CardComponent from '@/components/CardComponent.vue'
-import CardTable from '@/components/CardTable.vue'
 import { render } from '@/helpers'
 
 defineProps({

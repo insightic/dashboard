@@ -19,24 +19,31 @@
     <div class="h2">Twitter Profile</div>
     <CardComponent class="mb-3">
       <div class="d-flex align-items-center">
-        <div class="rounded me-4" :style="{height: '100px', width: '100px', backgroundSize: 'cover', backgroundImage: `url(${data?.twitter?.profile_imageURL})`}">
-        </div>
+        <div
+          class="rounded me-4"
+          :style="{
+            height: '100px',
+            width: '100px',
+            backgroundSize: 'cover',
+            backgroundImage: `url(${data?.twitter?.profile_imageURL})`
+          }"
+        ></div>
 
         <div>
-          <div>{{data?.twitter?.profile_name}}</div>
-          <div>{{data?.twitter?.profile_handle}}</div>
-          <div>{{data?.twitter?.profile_joining_date}}</div>
+          <div>{{ data?.twitter?.profile_name }}</div>
+          <div>{{ data?.twitter?.profile_handle }}</div>
+          <div>{{ data?.twitter?.profile_joining_date }}</div>
         </div>
 
         <div class="mx-auto"></div>
 
         <div class="text-center" style="width: 200px">
-          <div class="h4">{{data?.twitter?.profile_followers}}</div>
+          <div class="h4">{{ data?.twitter?.profile_followers }}</div>
           <div class="text-secondary">Followers</div>
         </div>
 
         <div class="text-center" style="width: 200px">
-          <div class="h4">{{data?.twitter?.profile_following}}</div>
+          <div class="h4">{{ data?.twitter?.profile_following }}</div>
           <div class="text-secondary">Following</div>
         </div>
       </div>
@@ -77,20 +84,20 @@
     <CardComponent class="mb-3">
       <div class="d-flex align-items-center">
         <div>
-          <div>{{data?.linkedin?.profile_title}}</div>
-          <div>{{data?.linkedin?.profile_overview}}</div>
-          <div>{{data?.linkedin?.industry}}</div>
+          <div>{{ data?.linkedin?.profile_title }}</div>
+          <div>{{ data?.linkedin?.profile_overview }}</div>
+          <div>{{ data?.linkedin?.industry }}</div>
         </div>
 
         <div class="mx-auto"></div>
 
         <div class="text-center" style="width: 200px">
-          <div class="h4">{{data?.linkedin?.profile_followers ?? '0'}}</div>
+          <div class="h4">{{ data?.linkedin?.profile_followers ?? '0' }}</div>
           <div class="text-secondary">Followers</div>
         </div>
 
         <div class="text-center" style="width: 200px">
-          <div class="h4">{{data?.linkedin?.profile_following ?? '0'}}</div>
+          <div class="h4">{{ data?.linkedin?.profile_following ?? '0' }}</div>
           <div class="text-secondary">Following</div>
         </div>
       </div>
@@ -126,11 +133,11 @@
               width="540"
               type="pie"
               :options="{
-              labels: Object.keys(data?.sosoValueNews?.overall_sentiment_analysis?.distribution),
-              legend: {
-                labels: { colors: '#FFFFFF' }
-              }
-            }"
+                labels: Object.keys(data?.sosoValueNews?.overall_sentiment_analysis?.distribution),
+                legend: {
+                  labels: { colors: '#FFFFFF' }
+                }
+              }"
               :series="Object.values(data?.sosoValueNews?.overall_sentiment_analysis?.distribution)"
             />
 
@@ -138,7 +145,6 @@
               {{ data?.sosoValueNews?.overall_prompt_summary }}
             </div>
           </div>
-
         </CardComponent>
       </div>
       <div class="col-md-12 my-2">
@@ -163,27 +169,27 @@ const props = defineProps({
 })
 
 const twitterPromptsOutput = computed(() => {
-  const output = props.data?.twitter?.prompts_output;
+  const output = props.data?.twitter?.prompts_output
   if (output && output.length > 4) {
     return output.slice(0, 4)
   }
-  return output;
+  return output
 })
 
 const twitterExtractedPost = computed(() => {
-  const output = props.data?.twitter?.extracted_posts;
+  const output = props.data?.twitter?.extracted_posts
   if (output && output.length > 10) {
     return output.slice(0, 10)
   }
-  return output;
+  return output
 })
 
 const linkedinExtractedPost = computed(() => {
-  const output = props.data?.linkedin?.extracted_posts;
+  const output = props.data?.linkedin?.extracted_posts
   if (output && output.length > 10) {
     return output.slice(0, 10)
   }
-  return output;
+  return output
 })
 
 const extractedNews = computed(() => {
