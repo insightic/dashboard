@@ -27,11 +27,15 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+const route = useRoute()
 const router = useRouter()
 const emits = defineEmits(['change'])
 
-const activeIndex = ref('1')
+let activeTab = '1'
+if(route.path.startsWith('/cex')) activeTab = '2'
+if(route.path.startsWith('/lending')) activeTab = '3'
+const activeIndex = ref(activeTab)
 
 function goto(idx: number, type: string) {
   activeIndex.value = idx.toString()
