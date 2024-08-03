@@ -26,7 +26,7 @@ class DifyAPI {
   }
 
   sendChatMessage(
-    message: string,
+    { query, conversation_id }: { query: string; conversation_id?: string },
     onmessage: (msg: EventSourceMessage) => void,
     onclose: () => void
   ) {
@@ -34,9 +34,9 @@ class DifyAPI {
       '/chat-messages',
       {
         inputs: {},
-        query: message,
+        query: query ?? '',
         response_mode: 'streaming',
-        conversation_id: '',
+        conversation_id: conversation_id ?? '',
         user: 'abc-123'
       },
       onmessage,

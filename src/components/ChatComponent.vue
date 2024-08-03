@@ -49,6 +49,7 @@ const messages = ref(
   }>
 )
 
+const conversationId = ref('')
 const input = ref('')
 
 async function send() {
@@ -62,11 +63,12 @@ async function send() {
   })
   messages.value.push(resp)
   difyClient.sendChatMessage(
-    input.value,
+    { query: input.value, conversation_id: conversationId.value },
     (msg) => {
       try {
         const data = JSON.parse(msg.data)
         resp.message += data['answer'] ?? ''
+        conversationId.value = data['conversation_id']
       } catch (e) {
         // ignore
       }
