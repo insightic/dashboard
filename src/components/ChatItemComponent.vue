@@ -17,16 +17,16 @@
       :style="{
         backgroundColor: isUser ? 'var(--el-color-success)' : 'var(--el-color-primary)',
         minWidth: '300px',
-        maxWidth: '80%'
+        maxWidth: '70%'
       }"
-    >
-      {{ message }}
-    </div>
+      v-html="render(message)"
+    ></div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { render } from '@/helpers'
 
 const props = defineProps({
   isUser: {
