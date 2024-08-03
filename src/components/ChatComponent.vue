@@ -45,6 +45,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import ChatItemComponent from '@/components/ChatItemComponent.vue'
+import difyClient from '@/dify'
 
+// difyClient.sendChatMessage('Hello', (msg)=> {
+//   try {
+//     const data = JSON.parse(msg.data)
+//     console.log(data)
+//   } catch (e) {
+//     // ignore
+//   }
+// }, ()=> {});
 const textarea = ref('')
 </script>
