@@ -27,14 +27,16 @@
     </div>
   </el-menu>
 
-  <el-drawer v-model="drawer" title="Chat with Insightic AI">
-    <span>Hi there!</span>
+  <el-drawer v-model="drawer" :with-header="false">
+    <div class="h-100"><ChatComponent /></div>
   </el-drawer>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import ChartComponent from '@/components/ChartComponent.vue'
+import ChatComponent from '@/components/ChatComponent.vue'
 const route = useRoute()
 const router = useRouter()
 const emits = defineEmits(['change'])
