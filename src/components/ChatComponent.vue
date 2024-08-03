@@ -17,23 +17,18 @@
         class="flex-grow-1 p-3 overflow-auto"
         style="display: flex; flex-direction: column; gap: 10px"
       >
-        <ChatItemComponent />
-        <ChatItemComponent is-user />
-        <ChatItemComponent />
-        <ChatItemComponent is-user />
-        <ChatItemComponent />
-        <ChatItemComponent />
-        <ChatItemComponent />
-        <ChatItemComponent />
-        <ChatItemComponent />
-        <ChatItemComponent />
-        <ChatItemComponent />
+        <ChatItemComponent
+          v-for="(msg, idx) in messages"
+          :key="idx"
+          :is-user="msg.isUser"
+          :message="msg.message"
+        />
       </div>
       <div style="height: 70px; border-top: 0.5px solid #cccccc55" class="p-2">
         <div class="d-flex h-100 w-100 justify-content-center align-items-center">
-          <el-input v-model="textarea" style="width: 100%; height: 56px" placeholder="Please input">
+          <el-input v-model="input" style="width: 100%; height: 56px" placeholder="Please input">
             <template #append>
-              <el-button>Send</el-button>
+              <el-button @click="send()">Send</el-button>
             </template>
           </el-input>
         </div>
@@ -43,17 +38,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import ChatItemComponent from '@/components/ChatItemComponent.vue'
 import difyClient from '@/dify'
 
-// difyClient.sendChatMessage('Hello', (msg)=> {
-//   try {
-//     const data = JSON.parse(msg.data)
-//     console.log(data)
-//   } catch (e) {
-//     // ignore
-//   }
-// }, ()=> {});
-const textarea = ref('')
+const messages = ref(
+  [] as Array<{
+    isUser: boolean
+    message: string
+  }>
+)
+
+const input = ref('')
+
+async function send() {
+  messages.value.push({
+    isUser: true,
+    message: input.value
+  })
+  const resp = reactive({
+    isUser: false,
+    message: ''
+  })
+  messages.value.push(resp)
+  difyClient.sendChatMessage(
+    input.value,
+    (msg) => {
+      try {
+        const data = JSON.parse(msg.data)
+        resp.message += data['answer'] ?? ''
+      } catch (e) {
+        // ignore
+      }
+    },
+    () => {}
+  )
+
+  input.value = ''
+}
 </script>

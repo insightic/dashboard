@@ -20,7 +20,7 @@
         maxWidth: '80%'
       }"
     >
-      Place holder
+      {{ message }}
     </div>
   </div>
 </template>
@@ -32,6 +32,10 @@ const props = defineProps({
   isUser: {
     type: Boolean,
     default: false
+  },
+  message: {
+    type: String,
+    default: ''
   }
 })
 
