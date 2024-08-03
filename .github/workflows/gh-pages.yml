@@ -22,6 +22,8 @@ jobs:
         with:
           version: 'latest'
       - name: Build
+        env:
+          VITE_DIFY_TOKEN: ${{ secrets.VITE_DIFY_TOKEN }}
         run: |
           pnpm install
           pnpm run build
